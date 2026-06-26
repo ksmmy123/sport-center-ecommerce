@@ -1,0 +1,655 @@
+DEBUG - 2026-05-07 01:42:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-07 01:42:42 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\CI4_SportCenter\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\CI4_SportCenter\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'db_sport_center', 3306, '', 0)
+#1 C:\xampp\htdocs\CI4_SportCenter\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\CI4_SportCenter\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\CI4_SportCenter\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\CI4_SportCenter\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\CI4_SportCenter\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\CI4_SportCenter\app\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\CI4_SportCenter\system\CodeIgniter.php(951): App\Controllers\Auth->attemptLogin()
+#8 C:\xampp\htdocs\CI4_SportCenter\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\CI4_SportCenter\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\CI4_SportCenter\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\CI4_SportCenter\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\CI4_SportCenter\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\CI4_SportCenter\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\CI4_SportCenter\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\CI4_SportCenter\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\CI4_SportCenter\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\CI4_SportCenter\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\CI4_SportCenter\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\CI4_SportCenter\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\CI4_SportCenter\app\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\CI4_SportCenter\system\CodeIgniter.php(951): App\Controllers\Auth->attemptLogin()
+#7 C:\xampp\htdocs\CI4_SportCenter\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\CI4_SportCenter\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\CI4_SportCenter\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\CI4_SportCenter\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\CI4_SportCenter\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\CI4_SportCenter\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2026-05-07 01:42:42 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: POST, Route: auth/attemptLogin]
+in SYSTEMPATH\Database\BaseConnection.php on line 606.
+ 1 SYSTEMPATH\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `username` = :username:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Auth->attemptLogin()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-07 01:43:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 02:20:55 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layout/sidebar.php"
+[Method: GET, Route: admin/dashboard]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/sidebar.php')
+ 2 SYSTEMPATH\View\View.php(489): CodeIgniter\View\View->render('layout/sidebar', null, true)
+ 3 APPPATH\Views\layout\admin\main.php(39): CodeIgniter\View\View->include('layout/sidebar')
+ 4 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\admin\\main.php')
+ 5 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\View\View.php(256): CodeIgniter\View\View->render('layout/admin/main', [], true)
+ 7 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 8 APPPATH\Controllers\Admin.php(18): view('admin/dashboard', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 02:55:27 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/invoices.php"
+[Method: GET, Route: admin/invoices]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/invoices.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/invoices', [], true)
+ 3 APPPATH\Controllers\Admin.php(58): view('admin/invoices')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->invoices()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 02:55:42 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/pengaturan.php"
+[Method: GET, Route: admin/pengaturan]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/pengaturan.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/pengaturan', [], true)
+ 3 APPPATH\Controllers\Admin.php(80): view('admin/pengaturan')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->pengaturan()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 02:55:59 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/invoices.php"
+[Method: GET, Route: admin/invoices]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/invoices.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/invoices', [], true)
+ 3 APPPATH\Controllers\Admin.php(58): view('admin/invoices')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->invoices()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 02:58:07 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/invoices.php"
+[Method: GET, Route: admin/invoices]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/invoices.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/invoices', [], true)
+ 3 APPPATH\Controllers\Admin.php(58): view('admin/invoices')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->invoices()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 03:01:43 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/pengaturan.php"
+[Method: GET, Route: admin/pengaturan]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/pengaturan.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/pengaturan', [], true)
+ 3 APPPATH\Controllers\Admin.php(80): view('admin/pengaturan')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->pengaturan()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 03:25:45 --> ErrorException: Undefined variable $transaksi
+[Method: GET, Route: admin/transaksi]
+in APPPATH\Views\admin\transaksi.php on line 35.
+ 1 APPPATH\Views\admin\transaksi.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $transaksi', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\transaksi.php', 35)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\transaksi.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/transaksi', [], true)
+ 5 APPPATH\Controllers\Admin.php(61): view('admin/transaksi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->transaksi()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-07 09:52:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 09:52:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 09:56:01 --> ErrorException: Undefined variable $stok_tipis_count
+[Method: GET, Route: admin/dashboard]
+in APPPATH\Views\admin\dashboard.php on line 21.
+ 1 APPPATH\Views\admin\dashboard.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $stok_tipis_count', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\dashboard.php', 21)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\Admin.php(35): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 10:09:13 --> ErrorException: Undefined variable $chart_labels
+[Method: GET, Route: admin/dashboard]
+in APPPATH\Views\admin\dashboard.php on line 78.
+ 1 APPPATH\Views\admin\dashboard.php(78): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $chart_labels', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\dashboard.php', 78)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\Admin.php(37): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-05-07 10:13:40 --> Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'db_sport_center.orders.tgl_pesan' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = :YEAR(tgl_pesan):
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC', [...], false)
+ 5 APPPATH\Controllers\Admin.php(25): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 10:13:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'db_sport_center.orders.tgl_pesan' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+[Method: GET, Route: admin/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = :YEAR(tgl_pesan):
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC', [...], false)
+ 2 APPPATH\Controllers\Admin.php(25): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 10:13:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'db_sport_center.orders.tgl_pesan' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = :YEAR(tgl_pesan):
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC', [...], false)
+ 4 APPPATH\Controllers\Admin.php(25): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 10:13:40 --> [Caused by] mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'db_sport_center.orders.tgl_pesan' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = :YEAR(tgl_pesan):
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC', [...], false)
+ 5 APPPATH\Controllers\Admin.php(25): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-05-07 10:21:34 --> Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'db_sport_center.orders.tgl_pesan' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = :YEAR(tgl_pesan):
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC', [...], false)
+ 5 APPPATH\Controllers\Admin.php(25): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 10:21:34 --> CodeIgniter\Database\Exceptions\DatabaseException: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'db_sport_center.orders.tgl_pesan' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+[Method: GET, Route: admin/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = :YEAR(tgl_pesan):
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC', [...], false)
+ 2 APPPATH\Controllers\Admin.php(25): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 10:21:34 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'db_sport_center.orders.tgl_pesan' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = :YEAR(tgl_pesan):
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC', [...], false)
+ 4 APPPATH\Controllers\Admin.php(25): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 10:21:34 --> [Caused by] mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'db_sport_center.orders.tgl_pesan' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = \'2026\'
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(tgl_pesan, \'%b\') as bulan, SUM(total_harga) as total
+FROM `orders`
+WHERE YEAR(tgl_pesan) = :YEAR(tgl_pesan):
+GROUP BY MONTH(tgl_pesan)
+ORDER BY MONTH(tgl_pesan) ASC', [...], false)
+ 5 APPPATH\Controllers\Admin.php(25): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 10:26:47 --> ErrorException: Undefined variable $omzet
+[Method: GET, Route: admin/dashboard]
+in APPPATH\Views\admin\dashboard.php on line 17.
+ 1 APPPATH\Views\admin\dashboard.php(17): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $omzet', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\dashboard.php', 17)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\Admin.php(53): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 10:26:54 --> ErrorException: Undefined variable $omzet
+[Method: GET, Route: admin/dashboard]
+in APPPATH\Views\admin\dashboard.php on line 17.
+ 1 APPPATH\Views\admin\dashboard.php(17): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $omzet', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\dashboard.php', 17)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\Admin.php(53): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 10:27:02 --> ErrorException: Undefined variable $omzet
+[Method: GET, Route: admin/dashboard]
+in APPPATH\Views\admin\dashboard.php on line 17.
+ 1 APPPATH\Views\admin\dashboard.php(17): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $omzet', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\dashboard.php', 17)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\Admin.php(53): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 10:54:26 --> ErrorException: Undefined array key "kategori"
+[Method: GET, Route: admin/produk]
+in APPPATH\Views\admin\produk.php on line 80.
+ 1 APPPATH\Views\admin\produk.php(80): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "kategori"', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\produk.php', 80)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\admin\\produk.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/produk', [], true)
+ 5 APPPATH\Controllers\Admin.php(65): view('admin/produk', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->produk()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-05-07 11:57:03 --> Unknown column 'sku' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE :nama_produk: ESCAPE \'!\'
+OR  `sku` LIKE :sku: ESCAPE \'!\'', [...], false)
+ 5 APPPATH\Controllers\Admin.php(74): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->produk()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 11:57:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sku' in 'where clause'
+[Method: GET, Route: admin/produk]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE :nama_produk: ESCAPE \'!\'
+OR  `sku` LIKE :sku: ESCAPE \'!\'', [...], false)
+ 2 APPPATH\Controllers\Admin.php(74): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->produk()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 11:57:03 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sku' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE :nama_produk: ESCAPE \'!\'
+OR  `sku` LIKE :sku: ESCAPE \'!\'', [...], false)
+ 4 APPPATH\Controllers\Admin.php(74): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->produk()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 11:57:03 --> [Caused by] mysqli_sql_exception: Unknown column 'sku' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE :nama_produk: ESCAPE \'!\'
+OR  `sku` LIKE :sku: ESCAPE \'!\'', [...], false)
+ 5 APPPATH\Controllers\Admin.php(74): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->produk()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-05-07 11:57:20 --> Unknown column 'sku' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE :nama_produk: ESCAPE \'!\'
+OR  `sku` LIKE :sku: ESCAPE \'!\'', [...], false)
+ 5 APPPATH\Controllers\Admin.php(74): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->produk()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 11:57:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sku' in 'where clause'
+[Method: GET, Route: admin/produk]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE :nama_produk: ESCAPE \'!\'
+OR  `sku` LIKE :sku: ESCAPE \'!\'', [...], false)
+ 2 APPPATH\Controllers\Admin.php(74): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->produk()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 11:57:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sku' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE :nama_produk: ESCAPE \'!\'
+OR  `sku` LIKE :sku: ESCAPE \'!\'', [...], false)
+ 4 APPPATH\Controllers\Admin.php(74): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->produk()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 11:57:20 --> [Caused by] mysqli_sql_exception: Unknown column 'sku' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE \'%celana sport nike%\' ESCAPE \'!\'
+OR  `sku` LIKE \'%celana sport nike%\' ESCAPE \'!\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `nama_produk` LIKE :nama_produk: ESCAPE \'!\'
+OR  `sku` LIKE :sku: ESCAPE \'!\'', [...], false)
+ 5 APPPATH\Controllers\Admin.php(74): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->produk()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-07 12:12:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 12:12:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 12:12:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 12:12:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 12:28:00 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/produk_tambah.php"
+[Method: GET, Route: admin/produk/tambah]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/produk_tambah.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/produk_tambah', [], true)
+ 3 APPPATH\Controllers\Product.php(18): view('admin/produk_tambah')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Product->tambah()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-07 12:28:14 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/produk_edit.php"
+[Method: GET, Route: admin/produk/edit/1]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/produk_edit.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('admin/produk_edit', [], true)
+ 3 APPPATH\Controllers\Product.php(31): view('admin/produk_edit', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Product->edit('1')
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')

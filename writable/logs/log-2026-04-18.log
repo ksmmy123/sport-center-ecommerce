@@ -1,0 +1,1624 @@
+DEBUG - 2026-04-18 02:44:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 02:44:45 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/login.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/login.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('auth/login', [], true)
+ 3 APPPATH\Controllers\Auth.php(7): view('auth/login')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Auth->login()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 02:50:54 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/login_choice.php"
+[Method: GET, Route: /]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/login_choice.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('auth/login_choice', [], true)
+ 3 APPPATH\Controllers\Auth.php(7): view('auth/login_choice')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Auth->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 02:51:23 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/login_password.php"
+[Method: GET, Route: auth/inputPassword/pelanggan]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/login_password.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('auth/login_password', [], true)
+ 3 APPPATH\Controllers\Auth.php(11): view('auth/login_password', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Auth->inputPassword('pelanggan')
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 02:51:27 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/login_password.php"
+[Method: GET, Route: auth/inputPassword/admin]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/login_password.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('auth/login_password', [], true)
+ 3 APPPATH\Controllers\Auth.php(11): view('auth/login_password', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Auth->inputPassword('admin')
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 02:51:34 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/login_password.php"
+[Method: GET, Route: auth/inputPassword/pelanggan]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/login_password.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('auth/login_password', [], true)
+ 3 APPPATH\Controllers\Auth.php(11): view('auth/login_password', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Auth->inputPassword('pelanggan')
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 02:53:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 02:54:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 02:54:14 --> CodeIgniter\Filters\Exceptions\FilterException: "auth" filter must have a matching alias defined.
+[Method: GET, Route: pelanggan/dashboard]
+in SYSTEMPATH\Filters\Filters.php on line 590.
+ 1 SYSTEMPATH\Filters\Filters.php(590): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('auth')
+ 2 SYSTEMPATH\Filters\Filters.php(641): CodeIgniter\Filters\Filters->enableFilter('auth', 'before')
+ 3 SYSTEMPATH\CodeIgniter.php(453): CodeIgniter\Filters\Filters->enableFilters([...], 'before')
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 03:00:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:03:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:03:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:03:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:03:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:04:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:04:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:53:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:54:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:54:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:54:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:57:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:57:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:57:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 03:59:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:06:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 04:06:09 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pelanggan/wishlist.php"
+[Method: GET, Route: pelanggan/wishlist]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pelanggan/wishlist.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/wishlist', [], true)
+ 3 APPPATH\Controllers\Pelanggan.php(18): view('pelanggan/wishlist', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->wishlist()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 04:06:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 04:06:16 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pelanggan/cart.php"
+[Method: GET, Route: pelanggan/cart]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pelanggan/cart.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/cart', [], true)
+ 3 APPPATH\Controllers\Pelanggan.php(25): view('pelanggan/cart', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->cart()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:06:19 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pelanggan/wishlist.php"
+[Method: GET, Route: pelanggan/wishlist]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pelanggan/wishlist.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/wishlist', [], true)
+ 3 APPPATH\Controllers\Pelanggan.php(18): view('pelanggan/wishlist', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->wishlist()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 04:07:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 04:07:20 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pelanggan/wishlist.php"
+[Method: GET, Route: pelanggan/wishlist]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pelanggan/wishlist.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/wishlist', [], true)
+ 3 APPPATH\Controllers\Pelanggan.php(18): view('pelanggan/wishlist', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->wishlist()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:07:25 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pelanggan/wishlist.php"
+[Method: GET, Route: pelanggan/wishlist]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pelanggan/wishlist.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/wishlist', [], true)
+ 3 APPPATH\Controllers\Pelanggan.php(18): view('pelanggan/wishlist', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->wishlist()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 04:07:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 04:07:36 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pelanggan/profile.php"
+[Method: GET, Route: pelanggan/profile]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pelanggan/profile.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/profile', [], true)
+ 3 APPPATH\Controllers\Pelanggan.php(32): view('pelanggan/profile', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->profile()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:07:40 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pelanggan/cart.php"
+[Method: GET, Route: pelanggan/cart]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pelanggan/cart.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/cart', [], true)
+ 3 APPPATH\Controllers\Pelanggan.php(25): view('pelanggan/cart', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->cart()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 04:07:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:08:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:08:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 04:08:15 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pelanggan/wishlist.php"
+[Method: GET, Route: pelanggan/wishlist]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pelanggan/wishlist.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/wishlist', [], true)
+ 3 APPPATH\Controllers\Pelanggan.php(18): view('pelanggan/wishlist', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->wishlist()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:08:47 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pelanggan/wishlist.php"
+[Method: GET, Route: pelanggan/wishlist]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pelanggan/wishlist.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/wishlist', [], true)
+ 3 APPPATH\Controllers\Pelanggan.php(18): view('pelanggan/wishlist', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->wishlist()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:09:34 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pelanggan/wishlist.php"
+[Method: GET, Route: pelanggan/wishlist]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pelanggan/wishlist.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/wishlist', [], true)
+ 3 APPPATH\Controllers\Pelanggan.php(18): view('pelanggan/wishlist', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->wishlist()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 04:09:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:10:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 04:10:18 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pelanggan/wishlist.php"
+[Method: GET, Route: pelanggan/wishlist]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pelanggan/wishlist.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/wishlist', [], true)
+ 3 APPPATH\Controllers\Pelanggan.php(18): view('pelanggan/wishlist', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->wishlist()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:15:38 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pelanggan/cart.php"
+[Method: GET, Route: pelanggan/cart]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pelanggan/cart.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/cart', [], true)
+ 3 APPPATH\Controllers\Pelanggan.php(29): view('pelanggan/cart', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->cart()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 04:23:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:26:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:32:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:32:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:33:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:33:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:36:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:41:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:42:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:45:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 04:47:45 --> Error: Class "App\Models\ProdukModel" not found
+[Method: GET, Route: pelanggan/dashboard]
+in APPPATH\Controllers\Pelanggan.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 04:48:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:48:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:51:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:52:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:52:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:53:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:54:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:56:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:56:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:56:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 04:58:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 04:58:26 --> Error: Class "App\Models\ProdukModel" not found
+[Method: GET, Route: pelanggan/dashboard]
+in APPPATH\Controllers\Pelanggan.php on line 9.
+ 1 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 04:58:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-18 04:58:43 --> Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:58:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'kategori' in 'where clause'
+[Method: GET, Route: pelanggan/dashboard/Celana%20Pendek]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:58:43 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:58:43 --> [Caused by] mysqli_sql_exception: Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-04-18 04:58:48 --> Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Training\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Training\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Training\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Training')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:58:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'kategori' in 'where clause'
+[Method: GET, Route: pelanggan/dashboard/Celana%20Training]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Training')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:58:48 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Training\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Training\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Training')
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:58:48 --> [Caused by] mysqli_sql_exception: Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Training\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Training\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Training\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Training')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-04-18 04:58:52 --> Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:58:52 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'kategori' in 'where clause'
+[Method: GET, Route: pelanggan/dashboard/Celana%20Pendek]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:58:52 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 04:58:52 --> [Caused by] mysqli_sql_exception: Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-04-18 05:03:04 --> Unknown table 'produk'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = :categories.nama_kategori:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(21): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:03:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'produk'
+[Method: GET, Route: pelanggan/dashboard/Celana%20Pendek]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = :categories.nama_kategori:', [...], false)
+ 2 APPPATH\Controllers\Pelanggan.php(21): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:03:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'produk'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = :categories.nama_kategori:', [...], false)
+ 4 APPPATH\Controllers\Pelanggan.php(21): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:03:04 --> [Caused by] mysqli_sql_exception: Unknown table 'produk'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = :categories.nama_kategori:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(21): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:08:13 --> Error: Class "App\Controllers\ProductModel" not found
+[Method: GET, Route: pelanggan/dashboard/Celana%20Pendek]
+in APPPATH\Controllers\Pelanggan.php on line 9.
+ 1 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-04-18 05:08:40 --> Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:08:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'kategori' in 'where clause'
+[Method: GET, Route: pelanggan/dashboard/Celana%20Pendek]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:08:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:08:40 --> [Caused by] mysqli_sql_exception: Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 05:11:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 05:11:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 05:11:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-18 05:11:32 --> Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:11:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'kategori' in 'where clause'
+[Method: GET, Route: pelanggan/dashboard/Celana%20Pendek]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:11:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:11:32 --> [Caused by] mysqli_sql_exception: Unknown column 'kategori' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `products`
+WHERE `kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `products`
+WHERE `kategori` = :kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Pelanggan.php(14): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-04-18 05:18:09 --> Unknown column 'produk.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = :categories.nama_kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:18:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'produk.id_kategori' in 'on clause'
+[Method: GET, Route: pelanggan/dashboard/Celana%20Pendek]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = :categories.nama_kategori:', [...], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts('Celana Pendek')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:18:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'produk.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = :categories.nama_kategori:', [...], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts('Celana Pendek')
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:18:09 --> [Caused by] mysqli_sql_exception: Unknown column 'produk.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = :categories.nama_kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-04-18 05:18:21 --> Unknown column 'produk.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = :categories.nama_kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:18:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'produk.id_kategori' in 'on clause'
+[Method: GET, Route: pelanggan/dashboard/Celana%20Pendek]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = :categories.nama_kategori:', [...], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts('Celana Pendek')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:18:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'produk.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = :categories.nama_kategori:', [...], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts('Celana Pendek')
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:18:21 --> [Caused by] mysqli_sql_exception: Unknown column 'produk.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = \'Celana Pendek\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`
+WHERE `categories`.`nama_kategori` = :categories.nama_kategori:', [...], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts('Celana Pendek')
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index('Celana Pendek')
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-04-18 05:18:28 --> Unknown column 'produk.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(21): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts(null)
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:18:28 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'produk.id_kategori' in 'on clause'
+[Method: GET, Route: pelanggan/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\ProductModel.php(21): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts(null)
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:18:28 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'produk.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\ProductModel.php(21): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts(null)
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:18:28 --> [Caused by] mysqli_sql_exception: Unknown column 'produk.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(21): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts(null)
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 05:18:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-18 05:18:32 --> Unknown column 'produk.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(21): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts(null)
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:18:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'produk.id_kategori' in 'on clause'
+[Method: GET, Route: pelanggan/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\ProductModel.php(21): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts(null)
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:18:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'produk.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\ProductModel.php(21): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts(null)
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:18:32 --> [Caused by] mysqli_sql_exception: Unknown column 'produk.id_kategori' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `products`.*, `categories`.`nama_kategori`
+FROM `products`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(21): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(16): App\Models\ProductModel->getProducts(null)
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 05:19:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 05:19:14 --> ErrorException: Undefined variable $category
+[Method: GET, Route: pelanggan/dashboard]
+in APPPATH\Views\pelanggan\dashboard.php on line 87.
+ 1 APPPATH\Views\pelanggan\dashboard.php(87): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $category', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php', 87)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/dashboard', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(15): view('pelanggan/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 05:19:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 05:19:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 05:19:20 --> ErrorException: Undefined variable $category
+[Method: GET, Route: pelanggan/dashboard]
+in APPPATH\Views\pelanggan\dashboard.php on line 87.
+ 1 APPPATH\Views\pelanggan\dashboard.php(87): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $category', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php', 87)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/dashboard', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(15): view('pelanggan/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-04-18 05:21:57 --> Table 'db_sport_center.produk' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(15): App\Models\ProductModel->getAllProducts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:21:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'db_sport_center.produk' doesn't exist
+[Method: GET, Route: pelanggan/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pelanggan.php(15): App\Models\ProductModel->getAllProducts()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:21:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'db_sport_center.produk' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pelanggan.php(15): App\Models\ProductModel->getAllProducts()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:21:57 --> [Caused by] mysqli_sql_exception: Table 'db_sport_center.produk' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(15): App\Models\ProductModel->getAllProducts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-04-18 05:22:00 --> Table 'db_sport_center.produk' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(15): App\Models\ProductModel->getAllProducts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:22:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'db_sport_center.produk' doesn't exist
+[Method: GET, Route: pelanggan/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pelanggan.php(15): App\Models\ProductModel->getAllProducts()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:22:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'db_sport_center.produk' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pelanggan.php(15): App\Models\ProductModel->getAllProducts()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:22:00 --> [Caused by] mysqli_sql_exception: Table 'db_sport_center.produk' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(18): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(15): App\Models\ProductModel->getAllProducts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 05:27:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 05:27:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 05:27:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 05:27:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 05:28:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 05:28:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 05:31:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 05:37:28 --> ErrorException: Undefined variable $produk
+[Method: GET, Route: pelanggan/dashboard]
+in APPPATH\Views\pelanggan\dashboard.php on line 62.
+ 1 APPPATH\Views\pelanggan\dashboard.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $produk', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php', 62)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/dashboard', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(10): view('pelanggan/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 05:41:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 05:50:17 --> Error: Class "App\Controllers\ProductModel" not found
+[Method: GET, Route: pelanggan/dashboard]
+in APPPATH\Controllers\Pelanggan.php on line 9.
+ 1 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:52:13 --> Error: Class "App\Controllers\ProductModel" not found
+[Method: GET, Route: pelanggan/dashboard]
+in APPPATH\Controllers\Pelanggan.php on line 9.
+ 1 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+ERROR - 2026-04-18 05:55:32 --> Table 'db_sport_center.produk' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(17): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(15): App\Models\ProductModel->getProdukHome()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:55:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'db_sport_center.produk' doesn't exist
+[Method: GET, Route: pelanggan/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\ProductModel.php(17): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pelanggan.php(15): App\Models\ProductModel->getProdukHome()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:55:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'db_sport_center.produk' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\ProductModel.php(17): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pelanggan.php(15): App\Models\ProductModel->getProdukHome()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 05:55:32 --> [Caused by] mysqli_sql_exception: Table 'db_sport_center.produk' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `produk`.*, `categories`.`nama_kategori`
+FROM `produk`
+JOIN `categories` ON `categories`.`id` = `produk`.`id_kategori`', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\ProductModel.php(17): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pelanggan.php(15): App\Models\ProductModel->getProdukHome()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 06:04:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 06:05:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 06:05:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 06:06:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 06:22:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 06:24:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 06:45:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 06:51:38 --> ErrorException: Undefined variable $products
+[Method: GET, Route: pelanggan/index]
+in APPPATH\Views\pelanggan\dashboard.php on line 116.
+ 1 APPPATH\Views\pelanggan\dashboard.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $products', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php', 116)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/dashboard', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(17): view('pelanggan/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-18 06:51:58 --> ErrorException: Undefined variable $products
+[Method: GET, Route: pelanggan/index]
+in APPPATH\Views\pelanggan\dashboard.php on line 116.
+ 1 APPPATH\Views\pelanggan\dashboard.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $products', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php', 116)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/dashboard', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(17): view('pelanggan/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 06:52:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 06:52:15 --> ErrorException: Undefined variable $products
+[Method: GET, Route: pelanggan/index]
+in APPPATH\Views\pelanggan\dashboard.php on line 116.
+ 1 APPPATH\Views\pelanggan\dashboard.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $products', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php', 116)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/dashboard', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(17): view('pelanggan/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 07:16:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 07:17:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-18 07:17:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-18 07:28:21 --> ErrorException: Undefined variable $orders
+[Method: GET, Route: pelanggan/orders]
+in APPPATH\Views\pelanggan\orders.php on line 13.
+ 1 APPPATH\Views\pelanggan\orders.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $orders', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\orders.php', 13)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\orders.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/orders', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(50): view('pelanggan/orders', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->orders()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-18 07:58:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

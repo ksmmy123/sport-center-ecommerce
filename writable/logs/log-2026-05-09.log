@@ -1,0 +1,843 @@
+DEBUG - 2026-05-09 03:19:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 03:19:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 03:52:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 03:52:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 03:52:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-09 04:01:02 --> ErrorException: Undefined array key "ukuran"
+[Method: GET, Route: pelanggan/detail/1]
+in APPPATH\Views\pelanggan\detail_produk.php on line 21.
+ 1 APPPATH\Views\pelanggan\detail_produk.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ukuran"', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\detail_produk.php', 21)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\detail_produk.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/detail_produk', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(221): view('pelanggan/detail_produk', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->detail('1')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 04:11:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 04:12:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 04:55:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 04:57:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-09 04:57:30 --> Unknown column 'nama_lengkap' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `no_hp` = NULL, `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `no_hp` = NULL, `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `no_hp` = NULL, `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama_lengkap` = :nama_lengkap:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 04:57:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'nama_lengkap' in 'field list'
+[Method: POST, Route: pelanggan/update_profile]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama_lengkap` = :nama_lengkap:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 2 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 04:57:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'nama_lengkap' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `no_hp` = NULL, `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `no_hp` = NULL, `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama_lengkap` = :nama_lengkap:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 4 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 04:57:30 --> [Caused by] mysqli_sql_exception: Unknown column 'nama_lengkap' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `no_hp` = NULL, `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `no_hp` = NULL, `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `no_hp` = NULL, `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama_lengkap` = :nama_lengkap:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 05:00:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-09 05:00:50 --> Unknown column 'nama_lengkap' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama_lengkap` = :nama_lengkap:, `email` = :email:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(292): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:00:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'nama_lengkap' in 'field list'
+[Method: POST, Route: pelanggan/update_profile]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama_lengkap` = :nama_lengkap:, `email` = :email:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 2 APPPATH\Controllers\Pelanggan.php(292): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:00:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'nama_lengkap' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama_lengkap` = :nama_lengkap:, `email` = :email:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 4 APPPATH\Controllers\Pelanggan.php(292): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:00:50 --> [Caused by] mysqli_sql_exception: Unknown column 'nama_lengkap' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama_lengkap` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama_lengkap` = :nama_lengkap:, `email` = :email:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(292): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 05:03:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-09 05:03:42 --> Unknown column 'email' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `username` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `username` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `username` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `username` = :username:, `email` = :email:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(296): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:03:42 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'email' in 'field list'
+[Method: POST, Route: pelanggan/update_profile]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `username` = :username:, `email` = :email:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 2 APPPATH\Controllers\Pelanggan.php(296): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:03:42 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'email' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `username` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `username` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `username` = :username:, `email` = :email:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 4 APPPATH\Controllers\Pelanggan.php(296): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:03:42 --> [Caused by] mysqli_sql_exception: Unknown column 'email' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `username` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `username` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `username` = \'kismiati\', `email` = \'ksmmy@gmail.com\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `username` = :username:, `email` = :email:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(296): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 05:07:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:07:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:07:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:07:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:07:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:16:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:16:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:16:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-09 05:16:31 --> Unknown column 'no_hp' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama` = :nama:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:16:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'no_hp' in 'field list'
+[Method: POST, Route: pelanggan/update_profile]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama` = :nama:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 2 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:16:31 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'no_hp' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama` = :nama:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 4 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:16:31 --> [Caused by] mysqli_sql_exception: Unknown column 'no_hp' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama` = :nama:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 05:16:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-09 05:16:42 --> Unknown column 'no_hp' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081255555555\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081255555555\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081255555555\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama` = :nama:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:16:42 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'no_hp' in 'field list'
+[Method: POST, Route: pelanggan/update_profile]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama` = :nama:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 2 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:16:42 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'no_hp' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081255555555\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081255555555\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama` = :nama:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 4 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:16:42 --> [Caused by] mysqli_sql_exception: Unknown column 'no_hp' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081255555555\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081255555555\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081255555555\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama` = :nama:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 05:16:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-09 05:16:52 --> Unknown column 'no_hp' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama` = :nama:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:16:52 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'no_hp' in 'field list'
+[Method: POST, Route: pelanggan/update_profile]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama` = :nama:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 2 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:16:52 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'no_hp' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama` = :nama:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 4 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:16:52 --> [Caused by] mysqli_sql_exception: Unknown column 'no_hp' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `nama` = \'kismiati\', `no_hp` = \'081234567890\', `alamat` = \'jl.menur 5 RT05/RW03 kebojongan \'
+WHERE `id` = \'2\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `nama` = :nama:, `no_hp` = :no_hp:, `alamat` = :alamat:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Pelanggan.php(285): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->update_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 05:20:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:20:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:21:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:21:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:28:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-09 05:28:06 --> ErrorException: Undefined variable $active
+[Method: GET, Route: pelanggan/ringkasan_pesanan/1/3]
+in APPPATH\Views\layout\pelanggan_layout.php on line 107.
+ 1 APPPATH\Views\layout\pelanggan_layout.php(107): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $active', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php', 107)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(256): CodeIgniter\View\View->render('layout/pelanggan_layout', [], true)
+ 5 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/ringkasan_pesanan', [], true)
+ 6 APPPATH\Controllers\Pelanggan.php(280): view('pelanggan/ringkasan_pesanan', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->ringkasan_pesanan('1', '3')
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 05:28:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-09 05:28:30 --> ErrorException: Undefined variable $active
+[Method: GET, Route: pelanggan/ringkasan_pesanan/1/3]
+in APPPATH\Views\layout\pelanggan_layout.php on line 107.
+ 1 APPPATH\Views\layout\pelanggan_layout.php(107): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $active', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php', 107)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(256): CodeIgniter\View\View->render('layout/pelanggan_layout', [], true)
+ 5 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/ringkasan_pesanan', [], true)
+ 6 APPPATH\Controllers\Pelanggan.php(280): view('pelanggan/ringkasan_pesanan', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->ringkasan_pesanan('1', '3')
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:32:23 --> ErrorException: Undefined variable $produk
+[Method: GET, Route: pelanggan/ringkasan_pesanan/1/3]
+in APPPATH\Controllers\Pelanggan.php on line 269.
+ 1 APPPATH\Controllers\Pelanggan.php(269): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $produk', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Controllers\\Pelanggan.php', 269)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->ringkasan_pesanan('1', '3')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:32:27 --> ErrorException: Undefined variable $produk
+[Method: GET, Route: pelanggan/ringkasan_pesanan/1/3]
+in APPPATH\Controllers\Pelanggan.php on line 269.
+ 1 APPPATH\Controllers\Pelanggan.php(269): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $produk', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Controllers\\Pelanggan.php', 269)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->ringkasan_pesanan('1', '3')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:32:51 --> ErrorException: Undefined variable $products
+[Method: GET, Route: pelanggan/ringkasan_pesanan/1/3]
+in APPPATH\Controllers\Pelanggan.php on line 269.
+ 1 APPPATH\Controllers\Pelanggan.php(269): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $products', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Controllers\\Pelanggan.php', 269)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->ringkasan_pesanan('1', '3')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 05:34:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:35:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:35:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:35:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:39:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-09 05:39:26 --> ErrorException: Undefined variable $total_akhir
+[Method: GET, Route: pelanggan/ringkasan_pesanan/1/3]
+in APPPATH\Views\pelanggan\ringkasan_pesanan.php on line 63.
+ 1 APPPATH\Views\pelanggan\ringkasan_pesanan.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $total_akhir', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\ringkasan_pesanan.php', 63)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\ringkasan_pesanan.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/ringkasan_pesanan', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(296): view('pelanggan/ringkasan_pesanan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->ringkasan_pesanan('1', '3')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 05:40:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:51:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:51:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:56:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:56:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-09 05:56:54 --> Unknown column 'stok' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < :stok:', [...], false)
+ 5 APPPATH\Controllers\Admin.php(47): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:56:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'stok' in 'where clause'
+[Method: GET, Route: admin/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < :stok:', [...], false)
+ 2 APPPATH\Controllers\Admin.php(47): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:56:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'stok' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < :stok:', [...], false)
+ 4 APPPATH\Controllers\Admin.php(47): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 05:56:54 --> [Caused by] mysqli_sql_exception: Unknown column 'stok' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < :stok:', [...], false)
+ 5 APPPATH\Controllers\Admin.php(47): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 05:57:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:57:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:57:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:57:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:57:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:57:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:57:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:57:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:58:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:59:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:59:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 05:59:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 06:00:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 06:00:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-09 06:00:11 --> Unknown column 'stok' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < :stok:', [...], false)
+ 5 APPPATH\Controllers\Admin.php(47): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 06:00:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'stok' in 'where clause'
+[Method: GET, Route: admin/dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < :stok:', [...], false)
+ 2 APPPATH\Controllers\Admin.php(47): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 06:00:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'stok' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < :stok:', [...], false)
+ 4 APPPATH\Controllers\Admin.php(47): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-05-09 06:00:11 --> [Caused by] mysqli_sql_exception: Unknown column 'stok' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < 10')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `products`
+WHERE `stok` < :stok:', [...], false)
+ 5 APPPATH\Controllers\Admin.php(47): CodeIgniter\Database\BaseBuilder->countAllResults()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 06:03:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-09 06:08:38 --> ErrorException: Undefined variable $dataBulanan
+[Method: GET, Route: admin/dashboard]
+in APPPATH\Controllers\Admin.php on line 38.
+ 1 APPPATH\Controllers\Admin.php(38): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dataBulanan', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Controllers\\Admin.php', 38)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Admin->index()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 07:04:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:05:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:05:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:13:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:13:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:16:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:16:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:16:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:16:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:16:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:16:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:16:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:16:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:16:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:16:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:17:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:17:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:17:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:17:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:17:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:17:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:17:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:17:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:17:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:17:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:18:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:23:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:23:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:23:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:23:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:23:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:23:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:23:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-09 07:23:42 --> ErrorException: Undefined variable $produk
+[Method: POST, Route: pelanggan/proses_pilihan]
+in APPPATH\Views\pelanggan\ringkasan_pesanan.php on line 26.
+ 1 APPPATH\Views\pelanggan\ringkasan_pesanan.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $produk', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\ringkasan_pesanan.php', 26)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\ringkasan_pesanan.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/ringkasan_pesanan', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(284): view('pelanggan/ringkasan_pesanan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->proses_pilihan()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 07:26:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-09 07:26:23 --> ErrorException: Undefined variable $harga_asli
+[Method: POST, Route: pelanggan/proses_pilihan]
+in APPPATH\Views\pelanggan\ringkasan_pesanan.php on line 42.
+ 1 APPPATH\Views\pelanggan\ringkasan_pesanan.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $harga_asli', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\ringkasan_pesanan.php', 42)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\ringkasan_pesanan.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/ringkasan_pesanan', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(281): view('pelanggan/ringkasan_pesanan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->proses_pilihan()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 07:28:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-09 07:28:01 --> ErrorException: Undefined variable $biaya_layanan
+[Method: POST, Route: pelanggan/proses_pilihan]
+in APPPATH\Views\pelanggan\ringkasan_pesanan.php on line 54.
+ 1 APPPATH\Views\pelanggan\ringkasan_pesanan.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $biaya_layanan', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\ringkasan_pesanan.php', 54)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\ringkasan_pesanan.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/ringkasan_pesanan', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(291): view('pelanggan/ringkasan_pesanan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->proses_pilihan()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 07:30:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-09 07:30:36 --> ErrorException: Undefined variable $total_akhir
+[Method: POST, Route: pelanggan/proses_pilihan]
+in APPPATH\Views\pelanggan\ringkasan_pesanan.php on line 63.
+ 1 APPPATH\Views\pelanggan\ringkasan_pesanan.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $total_akhir', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\ringkasan_pesanan.php', 63)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\ringkasan_pesanan.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/ringkasan_pesanan', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(296): view('pelanggan/ringkasan_pesanan', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->proses_pilihan()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 07:33:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:33:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:33:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:35:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:35:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:35:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:35:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:35:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:36:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:36:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:36:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:53:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:53:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:53:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 07:56:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 08:01:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-09 08:02:06 --> ParseError: syntax error, unexpected token "=>"
+[Method: GET, Route: pelanggan/ringkasan_pesanan/2/7]
+in APPPATH\Controllers\Pelanggan.php on line 290.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Controllers\\Pelanggan.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Pelanggan')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Pelanggan')
+ 4 SYSTEMPATH\Router\Router.php(792): class_exists('\\App\\Controllers\\Pelanggan')
+ 5 SYSTEMPATH\Router\Router.php(230): CodeIgniter\Router\Router->processRouteAttributes()
+ 6 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('pelanggan/ringkasan_pesanan/2/7')
+ 7 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-05-09 08:03:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 08:03:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 08:03:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 08:49:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 08:50:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 08:50:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 08:50:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 08:54:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 08:57:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-09 09:00:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -1,0 +1,407 @@
+DEBUG - 2026-04-23 09:32:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-23 09:33:03 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\CI4_SportCenter\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\CI4_SportCenter\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'db_sport_center', 3306, '', 0)
+#1 C:\xampp\htdocs\CI4_SportCenter\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\CI4_SportCenter\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\CI4_SportCenter\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\CI4_SportCenter\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\CI4_SportCenter\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\CI4_SportCenter\app\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\CI4_SportCenter\system\CodeIgniter.php(951): App\Controllers\Auth->attemptLogin()
+#8 C:\xampp\htdocs\CI4_SportCenter\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\CI4_SportCenter\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\CI4_SportCenter\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\CI4_SportCenter\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\CI4_SportCenter\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\CI4_SportCenter\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\CI4_SportCenter\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\CI4_SportCenter\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\CI4_SportCenter\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\CI4_SportCenter\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\CI4_SportCenter\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\CI4_SportCenter\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\CI4_SportCenter\app\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\CI4_SportCenter\system\CodeIgniter.php(951): App\Controllers\Auth->attemptLogin()
+#7 C:\xampp\htdocs\CI4_SportCenter\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\CI4_SportCenter\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\CI4_SportCenter\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\CI4_SportCenter\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\CI4_SportCenter\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\CI4_SportCenter\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2026-04-23 09:33:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: POST, Route: auth/attemptLogin]
+in SYSTEMPATH\Database\BaseConnection.php on line 606.
+ 1 SYSTEMPATH\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `username` = :username:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Auth.php(26): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Auth->attemptLogin()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-23 09:33:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 09:34:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 09:34:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 09:34:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 09:34:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 09:34:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 09:45:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 09:45:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 09:45:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 09:45:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 09:58:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-23 10:27:36 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layout/header.php"
+[Method: GET, Route: pelanggan/security]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/header.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('layout/header', [], true)
+ 3 APPPATH\Views\pelanggan\security.php(1): view('layout/header')
+ 4 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\security.php')
+ 5 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/security', [], true)
+ 7 APPPATH\Controllers\Pelanggan.php(88): view('pelanggan/security', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->security()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-23 10:28:16 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layout/sidebar_pelanggan.php"
+[Method: GET, Route: pelanggan/security]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/sidebar_pelanggan.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('layout/sidebar_pelanggan', [], true)
+ 3 APPPATH\Views\pelanggan\security.php(6): view('layout/sidebar_pelanggan')
+ 4 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\security.php')
+ 5 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/security', [], true)
+ 7 APPPATH\Controllers\Pelanggan.php(88): view('pelanggan/security', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->security()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-23 10:28:17 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layout/sidebar_pelanggan.php"
+[Method: GET, Route: pelanggan/security]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/sidebar_pelanggan.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('layout/sidebar_pelanggan', [], true)
+ 3 APPPATH\Views\pelanggan\security.php(6): view('layout/sidebar_pelanggan')
+ 4 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\security.php')
+ 5 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/security', [], true)
+ 7 APPPATH\Controllers\Pelanggan.php(88): view('pelanggan/security', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->security()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-23 10:29:12 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layout/sidebar_pelanggan.php"
+[Method: GET, Route: pelanggan/security]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/sidebar_pelanggan.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('layout/sidebar_pelanggan', [], true)
+ 3 APPPATH\Views\pelanggan\security.php(7): view('layout/sidebar_pelanggan')
+ 4 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\security.php')
+ 5 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/security', [], true)
+ 7 APPPATH\Controllers\Pelanggan.php(88): view('pelanggan/security', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->security()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-23 10:29:13 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layout/sidebar_pelanggan.php"
+[Method: GET, Route: pelanggan/security]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/sidebar_pelanggan.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('layout/sidebar_pelanggan', [], true)
+ 3 APPPATH\Views\pelanggan\security.php(7): view('layout/sidebar_pelanggan')
+ 4 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\security.php')
+ 5 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/security', [], true)
+ 7 APPPATH\Controllers\Pelanggan.php(88): view('pelanggan/security', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->security()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-23 10:32:22 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layout/header.php"
+[Method: GET, Route: pelanggan/security]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/header.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('layout/header', [], true)
+ 3 APPPATH\Views\pelanggan\security.php(1): view('layout/header')
+ 4 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\security.php')
+ 5 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/security', [], true)
+ 7 APPPATH\Controllers\Pelanggan.php(88): view('pelanggan/security', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->security()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-23 10:32:44 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layout/sidebar_pelanggan.php"
+[Method: GET, Route: pelanggan/security]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/sidebar_pelanggan.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('layout/sidebar_pelanggan', [], true)
+ 3 APPPATH\Views\pelanggan\security.php(6): view('layout/sidebar_pelanggan')
+ 4 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\security.php')
+ 5 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/security', [], true)
+ 7 APPPATH\Controllers\Pelanggan.php(88): view('pelanggan/security', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->security()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-23 10:33:02 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layout/sidebar_pelanggan.php"
+[Method: GET, Route: pelanggan/security]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/sidebar_pelanggan.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('layout/sidebar_pelanggan', [], true)
+ 3 APPPATH\Views\pelanggan\security.php(6): view('layout/sidebar_pelanggan')
+ 4 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\security.php')
+ 5 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/security', [], true)
+ 7 APPPATH\Controllers\Pelanggan.php(88): view('pelanggan/security', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->security()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-23 10:33:31 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layout/sidebar_pelanggan.php"
+[Method: GET, Route: pelanggan/security]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layout/sidebar_pelanggan.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('layout/sidebar_pelanggan', [], true)
+ 3 APPPATH\Views\pelanggan\security.php(4): view('layout/sidebar_pelanggan')
+ 4 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\security.php')
+ 5 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/security', [], true)
+ 7 APPPATH\Controllers\Pelanggan.php(88): view('pelanggan/security', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->security()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-23 10:42:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 10:43:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 10:58:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 11:04:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 11:15:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 11:28:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 11:36:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 11:36:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 11:37:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 11:37:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 11:37:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 11:37:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 11:37:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 11:37:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 11:37:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-23 12:03:13 --> ErrorException: Undefined variable $row
+[Method: GET, Route: pelanggan/dashboard]
+in APPPATH\Views\pelanggan\dashboard.php on line 130.
+ 1 APPPATH\Views\pelanggan\dashboard.php(130): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $row', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php', 130)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/dashboard', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(20): view('pelanggan/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+CRITICAL - 2026-04-23 12:03:18 --> ErrorException: Undefined variable $row
+[Method: GET, Route: pelanggan/dashboard]
+in APPPATH\Views\pelanggan\dashboard.php on line 130.
+ 1 APPPATH\Views\pelanggan\dashboard.php(130): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $row', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php', 130)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/dashboard', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(20): view('pelanggan/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-23 12:03:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:03:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-23 12:03:29 --> ErrorException: Undefined variable $row
+[Method: GET, Route: pelanggan/dashboard]
+in APPPATH\Views\pelanggan\dashboard.php on line 130.
+ 1 APPPATH\Views\pelanggan\dashboard.php(130): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $row', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php', 130)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\pelanggan\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/dashboard', [], true)
+ 5 APPPATH\Controllers\Pelanggan.php(20): view('pelanggan/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-23 12:11:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:12:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:12:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:12:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:22:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-23 12:22:21 --> ErrorException: Undefined variable $active
+[Method: GET, Route: pelanggan/keranjang]
+in APPPATH\Views\layout\pelanggan_layout.php on line 92.
+ 1 APPPATH\Views\layout\pelanggan_layout.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $active', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php', 92)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(256): CodeIgniter\View\View->render('layout/pelanggan_layout', [], true)
+ 5 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/keranjang', [], true)
+ 6 APPPATH\Controllers\Pelanggan.php(50): view('pelanggan/keranjang', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->keranjang()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-23 12:22:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-23 12:22:27 --> ErrorException: Undefined variable $active
+[Method: GET, Route: pelanggan/keranjang]
+in APPPATH\Views\layout\pelanggan_layout.php on line 92.
+ 1 APPPATH\Views\layout\pelanggan_layout.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $active', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php', 92)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(256): CodeIgniter\View\View->render('layout/pelanggan_layout', [], true)
+ 5 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/keranjang', [], true)
+ 6 APPPATH\Controllers\Pelanggan.php(50): view('pelanggan/keranjang', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->keranjang()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-23 12:22:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:22:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-23 12:22:32 --> ErrorException: Undefined variable $active
+[Method: GET, Route: pelanggan/keranjang]
+in APPPATH\Views\layout\pelanggan_layout.php on line 92.
+ 1 APPPATH\Views\layout\pelanggan_layout.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $active', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php', 92)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(256): CodeIgniter\View\View->render('layout/pelanggan_layout', [], true)
+ 5 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/keranjang', [], true)
+ 6 APPPATH\Controllers\Pelanggan.php(50): view('pelanggan/keranjang', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->keranjang()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-23 12:22:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:23:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:23:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-23 12:23:20 --> Error: Call to undefined method CodeIgniter\Autoloader\Autoloader::extend()
+[Method: GET, Route: pelanggan/keranjang]
+in APPPATH\Controllers\Pelanggan.php on line 1.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(315): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Controllers\\Pelanggan.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Pelanggan')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Pelanggan')
+ 5 SYSTEMPATH\Router\Router.php(792): class_exists('\\App\\Controllers\\Pelanggan')
+ 6 SYSTEMPATH\Router\Router.php(230): CodeIgniter\Router\Router->processRouteAttributes()
+ 7 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('pelanggan/keranjang')
+ 8 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-23 12:23:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:24:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:24:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:25:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:25:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:25:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:27:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-23 12:27:25 --> ErrorException: Undefined variable $active
+[Method: GET, Route: pelanggan/keranjang]
+in APPPATH\Views\layout\pelanggan_layout.php on line 92.
+ 1 APPPATH\Views\layout\pelanggan_layout.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $active', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php', 92)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(256): CodeIgniter\View\View->render('layout/pelanggan_layout', [], true)
+ 5 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/keranjang', [], true)
+ 6 APPPATH\Controllers\Pelanggan.php(49): view('pelanggan/keranjang', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->keranjang()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-23 12:27:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:27:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-23 12:27:34 --> ErrorException: Undefined variable $active
+[Method: GET, Route: pelanggan/keranjang]
+in APPPATH\Views\layout\pelanggan_layout.php on line 92.
+ 1 APPPATH\Views\layout\pelanggan_layout.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $active', 'C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php', 92)
+ 2 SYSTEMPATH\View\View.php(240): include('C:\\xampp\\htdocs\\CI4_SportCenter\\app\\Views\\layout\\pelanggan_layout.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(256): CodeIgniter\View\View->render('layout/pelanggan_layout', [], true)
+ 5 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pelanggan/keranjang', [], true)
+ 6 APPPATH\Controllers\Pelanggan.php(49): view('pelanggan/keranjang', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pelanggan->keranjang()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pelanggan))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\CI4_SportCenter\\public\\index.php')
+DEBUG - 2026-04-23 12:33:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:33:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:33:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:33:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:33:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:33:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:37:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:42:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:42:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:42:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-23 12:42:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
