@@ -30,19 +30,6 @@
         align-items: center;
         gap: 10px;
     }
-    .flash-error {
-        background: rgba(239,68,68,0.1);
-        color: #f87171;
-        border: 1px solid rgba(248,113,113,0.2);
-        padding: 14px 18px;
-        border-radius: var(--radius-md);
-        margin-bottom: 20px;
-        font-size: 13.5px;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
 
     /* ── EMPTY ── */
     .orders-empty {
@@ -192,34 +179,6 @@
     }
     .va-notice i { flex-shrink: 0; margin-top: 1px; }
 
-    /* Bukti sudah diupload */
-    .bukti-uploaded {
-        background: rgba(34,197,94,0.07);
-        border-top: 1px solid var(--border);
-        padding: 12px 20px;
-        font-size: 12.5px;
-        color: #4ade80;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .bukti-uploaded a {
-        color: #60a5fa;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 12px;
-        margin-left: auto;
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        padding: 4px 10px;
-        border: 1px solid rgba(96,165,250,0.25);
-        border-radius: var(--radius-sm);
-        background: rgba(59,130,246,0.08);
-        transition: background var(--transition);
-    }
-    .bukti-uploaded a:hover { background: rgba(59,130,246,0.18); }
-
     /* Card footer */
     .order-card-foot {
         padding: 12px 20px;
@@ -237,7 +196,6 @@
     .order-help a { color: #60a5fa; text-decoration: none; }
     .order-help a:hover { text-decoration: underline; }
 
-    /* Tombol aksi footer */
     .btn-konfirmasi {
         display: inline-flex; align-items: center; gap: 7px;
         background: rgba(34,197,94,0.15);
@@ -252,20 +210,6 @@
     }
     .btn-konfirmasi:hover { background: rgba(34,197,94,0.25); color: #86efac; }
 
-    .btn-upload {
-        display: inline-flex; align-items: center; gap: 7px;
-        background: rgba(59,130,246,0.15);
-        color: #60a5fa;
-        border: 1px solid rgba(96,165,250,0.25);
-        text-decoration: none;
-        padding: 8px 16px;
-        border-radius: var(--radius-md);
-        font-size: 12.5px;
-        font-weight: 700;
-        transition: background var(--transition), color var(--transition);
-    }
-    .btn-upload:hover { background: rgba(59,130,246,0.25); color: #93c5fd; }
-
     .btn-selesai-disabled {
         display: inline-flex; align-items: center; gap: 7px;
         background: var(--surface-raised);
@@ -278,24 +222,38 @@
         cursor: not-allowed;
     }
 
-    /* Badge verifikasi */
-    .badge-verifikasi {
-        display: inline-flex; align-items: center; gap: 6px;
-        background: rgba(234,179,8,0.12);
-        color: #fde047;
-        border: 1px solid rgba(253,224,71,0.2);
-        padding: 8px 14px;
-        border-radius: var(--radius-md);
-        font-size: 12px;
-        font-weight: 700;
-    }
 
-    /* Ulasan section */
-    .review-section {
-        padding: 16px 20px;
-        border-top: 1px solid var(--border);
-        background: var(--surface-raised);
+    /* Modal preview gambar */
+    .img-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.85);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
     }
+    .img-modal.active { display: flex; }
+    .img-modal img {
+        max-width: 90vw;
+        max-height: 85vh;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+    }
+    .img-modal-close {
+        position: absolute;
+        top: 16px; right: 16px;
+        width: 40px; height: 40px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.15);
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: background var(--transition);
+    }
+    .img-modal-close:hover { background: rgba(255,255,255,0.3); }
     .review-form {
         display: flex;
         gap: 10px;
@@ -358,13 +316,114 @@
     .review-done-label { font-size: 12px; font-weight: 700; color: #4ade80; margin-bottom: 4px; }
     .review-done-text  { font-size: 13px; color: var(--ink-secondary); font-style: italic; }
 
+    /* ── BUKTI TRANSFER UPLOAD ── */
+    .bukti-section {
+        padding: 16px 20px;
+        border-top: 1px solid var(--border);
+        background: var(--surface-raised);
+    }
+    .bukti-section-title {
+        font-size: 13px; font-weight: 700; color: var(--ink);
+        margin-bottom: 12px;
+        display: flex; align-items: center; gap: 8px;
+    }
+    .bukti-section-title i { color: var(--brand); }
+
+    /* Info rekening */
+    .rekening-info {
+        background: rgba(234,179,8,0.08);
+        border: 1px solid rgba(234,179,8,0.2);
+        border-radius: var(--radius-md);
+        padding: 12px 14px;
+        margin-bottom: 14px;
+        font-size: 13px;
+        color: #fde68a;
+        line-height: 1.7;
+    }
+    .rekening-info strong { color: #fbbf24; }
+    .rekening-num {
+        font-size: 18px; font-weight: 800;
+        letter-spacing: 2px; color: #fbbf24;
+        display: block; margin-top: 4px;
+    }
+
+    /* Upload form */
+    .upload-form { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+    .upload-input-wrap { flex: 1; min-width: 200px; }
+    .upload-label-text {
+        font-size: 11.5px; font-weight: 600;
+        color: var(--ink-secondary); display: block; margin-bottom: 6px;
+    }
+    .upload-input {
+        width: 100%;
+        padding: 9px 12px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-md);
+        background: var(--surface);
+        color: var(--ink);
+        font-family: 'Outfit', sans-serif;
+        font-size: 13px;
+        cursor: pointer;
+        transition: border-color var(--transition);
+    }
+    .upload-input:focus { outline: none; border-color: var(--brand); }
+    .upload-hint {
+        font-size: 11px; color: var(--ink-muted); margin-top: 4px;
+        display: flex; align-items: center; gap: 4px;
+    }
+    .btn-upload {
+        display: flex; align-items: center; gap: 7px;
+        background: var(--brand); color: #fff;
+        border: none; border-radius: var(--radius-md);
+        padding: 10px 18px;
+        font-family: 'Outfit', sans-serif;
+        font-size: 13px; font-weight: 700;
+        cursor: pointer; white-space: nowrap;
+        box-shadow: 0 3px 10px rgba(249,115,22,0.3);
+        transition: background var(--transition), transform var(--transition);
+    }
+    .btn-upload:hover { background: var(--brand-dark); transform: translateY(-1px); }
+    .btn-upload-small {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    /* Sudah upload — preview */
+    .bukti-uploaded {
+        display: flex; align-items: center; gap: 12px;
+        background: rgba(34,197,94,0.08);
+        border: 1px solid rgba(74,222,128,0.18);
+        border-radius: var(--radius-md);
+        padding: 10px 14px;
+        margin-top: 10px;
+    }
+    .bukti-thumb {
+        width: 52px; height: 52px;
+        border-radius: var(--radius-sm);
+        overflow: hidden; flex-shrink: 0;
+        border: 1px solid rgba(74,222,128,0.2);
+    }
+    .bukti-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .bukti-uploaded-label { font-size: 12.5px; font-weight: 600; color: #4ade80; }
+    .bukti-uploaded-name  { font-size: 11.5px; color: var(--ink-muted); margin-top: 2px; }
+    .btn-ganti-bukti {
+        margin-left: auto; font-size: 11.5px; font-weight: 600;
+        color: var(--ink-secondary); background: var(--surface-high);
+        border: 1px solid var(--border); border-radius: var(--radius-sm);
+        padding: 5px 10px; cursor: pointer; white-space: nowrap;
+        transition: background var(--transition);
+        font-family: 'Outfit', sans-serif;
+    }
+    .btn-ganti-bukti:hover { background: var(--surface); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
         .order-card-head { flex-direction: column; align-items: flex-start; }
         .order-price-breakdown { min-width: 100%; }
         .review-form { flex-direction: column; align-items: stretch; }
         .review-select, .btn-review { width: 100%; }
-        .order-card-foot { flex-direction: column; align-items: flex-start; }
+        .upload-form { flex-direction: column; }
+        .btn-upload { width: 100%; justify-content: center; }
     }
 </style>
 
@@ -379,14 +438,6 @@
     <div class="flash-success">
         <i class="fa-solid fa-circle-check"></i>
         <?= session()->getFlashdata('success') ?>
-    </div>
-<?php endif; ?>
-
-<!-- FLASH ERROR -->
-<?php if (session()->getFlashdata('error')) : ?>
-    <div class="flash-error">
-        <i class="fa-solid fa-circle-xmark"></i>
-        <?= session()->getFlashdata('error') ?>
     </div>
 <?php endif; ?>
 
@@ -405,14 +456,8 @@
 <?php else : ?>
     <?php foreach ($orders as $o) :
         $st = strtolower($o['status_pengiriman'] ?? 'diproses');
-        $sp = $o['status_pembayaran'] ?? 'belum_bayar';
-        $subtotal_produk = $o['total_harga'] - ($o['ongkir'] + $o['biaya_layanan'] + $o['biaya_penanganan']);
-        $is_va      = ($o['metode_pembayaran'] == 'va_bank');
-        $belum_bayar      = ($sp == 'belum_bayar');
-        $menunggu_verif   = ($sp == 'menunggu_verifikasi');
-        $sudah_upload     = !empty($o['bukti_transfer']);
-        $is_selesai       = in_array($st, ['selesai', 'sampai']);
-        $is_batal         = ($st == 'dibatalkan');
+        $pajak_order     = $o['pajak'] ?? 0;
+        $subtotal_produk = $o['total_harga'] - ($o['ongkir'] + $o['biaya_layanan'] + $o['biaya_penanganan'] + $pajak_order);
     ?>
     <div class="order-card">
 
@@ -429,9 +474,9 @@
                     echo '<span class="status-badge status-diproses"><i class="fa-solid fa-clock"></i> Diproses</span>';
                 elseif (in_array($st, ['dikemas','dikirim'])) :
                     echo '<span class="status-badge status-dikirim"><i class="fa-solid fa-truck"></i> Dikirim</span>';
-                elseif ($is_selesai) :
+                elseif (in_array($st, ['selesai','sampai'])) :
                     echo '<span class="status-badge status-selesai"><i class="fa-solid fa-circle-check"></i> Selesai</span>';
-                elseif ($is_batal) :
+                elseif ($st == 'dibatalkan') :
                     echo '<span class="status-badge status-batal"><i class="fa-solid fa-xmark"></i> Dibatalkan</span>';
                 else :
                     echo '<span class="status-badge status-lain">' . esc($o['status_pengiriman']) . '</span>';
@@ -465,6 +510,12 @@
                         <span>Ongkir</span>
                         <span>Rp <?= number_format($o['ongkir'], 0, ',', '.') ?></span>
                     </div>
+                    <?php if ($pajak_order > 0) : ?>
+                    <div class="price-row">
+                        <span>Pajak (7.5%)</span>
+                        <span>Rp <?= number_format($pajak_order, 0, ',', '.') ?></span>
+                    </div>
+                    <?php endif; ?>
                     <div class="price-row">
                         <span>Biaya Layanan</span>
                         <span>Rp <?= number_format($o['biaya_layanan'], 0, ',', '.') ?></span>
@@ -482,28 +533,49 @@
             </div>
         </div>
 
-        <!-- VA NOTICE — tampil hanya jika va_bank & belum upload bukti -->
-        <?php if ($is_va && $belum_bayar && !$sudah_upload) : ?>
-            <div class="va-notice">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <span>
-                    <strong>Instruksi Pembayaran:</strong>
-                    Silakan transfer ke rekening BRI <strong>1234-567-890</strong>
-                    sebesar <strong>Rp <?= number_format($o['total_harga'], 0, ',', '.') ?></strong>,
-                    lalu upload bukti transfernya.
-                </span>
-            </div>
-        <?php endif; ?>
+        <!-- BUKTI TRANSFER UPLOAD -->
+        <?php if ($o['metode_pembayaran'] == 'va_bank' && $o['status_pembayaran'] == 'belum_bayar') : ?>
+            <div class="bukti-section">
+                <div class="bukti-section-title">
+                    <i class="fa-solid fa-building-columns"></i>
+                    Instruksi & Konfirmasi Pembayaran Transfer Bank
+                </div>
 
-        <!-- BUKTI SUDAH DIUPLOAD — tampil jika sudah upload & menunggu verifikasi -->
-        <?php if ($is_va && $sudah_upload && $menunggu_verif) : ?>
-            <div class="bukti-uploaded">
-                <i class="fa-solid fa-image"></i>
-                <span>Bukti transfer sudah dikirim &mdash; menunggu verifikasi admin.</span>
-                <a href="<?= base_url('uploads/bukti_transfer/' . esc($o['bukti_transfer'])) ?>"
-                   target="_blank">
-                    <i class="fa-solid fa-eye"></i> Lihat Bukti
-                </a>
+                <!-- Info rekening -->
+                <div class="rekening-info">
+                    <div>Silakan transfer ke rekening berikut:</div>
+                    <strong>Bank BRI — a.n. Sport Center Pemalang</strong>
+                    <span class="rekening-num">1234-567-890</span>
+                    <div style="margin-top:6px; font-size:12px; color:rgba(253,230,138,0.7);">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Setelah transfer, upload screenshot bukti pembayaran di bawah ini.
+                    </div>
+                </div>
+
+                <?php if (empty($o['bukti_transfer'])) : ?>
+                    <a href="<?= base_url('pelanggan/upload_bukti/' . $o['id']) ?>" class="btn-upload btn-upload-small">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        Upload
+                    </a>
+                <?php else : ?>
+                    <div class="bukti-uploaded">
+                        <div class="bukti-thumb">
+                            <img src="<?= base_url('uploads/bukti_transfer/' . $o['bukti_transfer']) ?>"
+                                 alt="Bukti Transfer">
+                        </div>
+                        <div>
+                            <div class="bukti-uploaded-label">
+                                <i class="fa-solid fa-circle-check"></i>
+                                Bukti sudah diupload
+                            </div>
+                            <div class="bukti-uploaded-name"><?= esc($o['bukti_transfer']) ?></div>
+                        </div>
+                        <a href="<?= base_url('pelanggan/upload_bukti/' . $o['id']) ?>" class="btn-ganti-bukti" style="display:inline-flex; align-items:center; gap:8px;">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            Upload Ulang
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
 
@@ -514,51 +586,23 @@
                 <a href="#">Hubungi Toko</a>
             </span>
 
-            <?php
-            // ─── Logika tombol footer ───────────────────────────────────────
-            // 1. Transfer & belum upload → tombol Upload Bukti
-            if ($is_va && $belum_bayar && !$sudah_upload) :
-            ?>
-                <a href="<?= base_url('pelanggan/upload_bukti/' . $o['id']) ?>"
-                   class="btn-upload">
-                    <i class="fa-solid fa-upload"></i>
-                    Upload Bukti Transfer
-                </a>
-
-            <?php
-            // 2. Transfer & sudah upload & menunggu verifikasi → badge tunggu
-            elseif ($is_va && $sudah_upload && $menunggu_verif) :
-            ?>
-                <span class="badge-verifikasi">
-                    <i class="fa-solid fa-hourglass-half"></i>
-                    Menunggu Verifikasi
-                </span>
-
-            <?php
-            // 3. Pesanan aktif (COD atau transfer yang sudah lunas) & belum selesai → Konfirmasi Selesai
-            elseif (!$is_selesai && !$is_batal) :
-            ?>
+            <?php if (!in_array($st, ['selesai', 'sampai', 'dibatalkan'])) : ?>
                 <a href="<?= base_url('pelanggan/konfirmasi_selesai/' . $o['id']) ?>"
                    class="btn-konfirmasi"
                    onclick="return confirm('Apakah Anda yakin pesanan telah diterima dengan baik?')">
                     <i class="fa-solid fa-circle-check"></i>
                     Konfirmasi Selesai
                 </a>
-
-            <?php
-            // 4. Sudah selesai atau dibatalkan → badge statis
-            else :
-            ?>
+            <?php else : ?>
                 <span class="btn-selesai-disabled">
                     <i class="fa-solid fa-check"></i>
-                    <?= $is_selesai ? 'Selesai' : 'Dibatalkan' ?>
+                    <?= in_array($st, ['selesai','sampai']) ? 'Selesai' : 'Dibatalkan' ?>
                 </span>
-
             <?php endif; ?>
         </div>
 
-        <!-- ULASAN — hanya muncul jika pesanan selesai -->
-        <?php if ($is_selesai) : ?>
+        <!-- ULASAN -->
+        <?php if (in_array($st, ['selesai', 'sampai'])) : ?>
             <div class="review-section">
                 <?php if (empty($o['ulasan'])) : ?>
                     <form action="<?= base_url('pelanggan/simpan_ulasan/' . $o['id']) ?>"

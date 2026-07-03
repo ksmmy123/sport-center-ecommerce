@@ -531,70 +531,70 @@ class Pelanggan extends BaseController
            ->where('id', $id_order)
            ->update([
                'status_pengiriman' => 'selesai',
-               'status_pembayaran' => 'Sudah Bayar'
+               'status_pembayaran' => 'sudah_bayar'
            ]);
 
         return redirect()->to('/pelanggan/orders')
                          ->with('success', 'Pesanan selesai dan status pembayaran diperbarui!');
     }
     // Tampilkan halaman upload bukti
-public function upload_bukti($order_id)
-{
-    $orderModel = new \App\Models\OrderModel();
-    $order = $orderModel->find($order_id);
+    public function upload_bukti($order_id)
+    {
+        $orderModel = new \App\Models\OrderModel();
+        $order = $orderModel->find($order_id);
 
-    // Pastikan order milik user yang login
-    $user_id = session()->get('user_id');
-    if (!$order || $order['user_id'] != $user_id) {
-        return redirect()->to('pelanggan/orders')->with('error', 'Order tidak ditemukan.');
+        // Pastikan order milik user yang login
+        $user_id = session()->get('id');
+        if (!$order || $order['user_id'] != $user_id) {
+            return redirect()->to('pelanggan/orders')->with('error', 'Order tidak ditemukan.');
+        }
+
+        return view('pelanggan/upload_bukti', ['order' => $order]);
     }
 
-    return view('pelanggan/upload_bukti', ['order' => $order]);
-}
+    // Proses upload bukti
+    public function proses_upload_bukti($order_id)
+    {
+        $orderModel = new \App\Models\OrderModel();
+        $order = $orderModel->find($order_id);
 
-// Proses upload bukti
-public function proses_upload_bukti($order_id)
-{
-    $orderModel = new \App\Models\OrderModel();
-    $order = $orderModel->find($order_id);
+        $user_id = session()->get('id');
+        if (!$order || $order['user_id'] != $user_id) {
+            return redirect()->to('pelanggan/orders');
+        }
 
-    $user_id = session()->get('user_id');
-    if (!$order || $order['user_id'] != $user_id) {
-        return redirect()->to('pelanggan/orders');
+        $file = $this->request->getFile('bukti_transfer');
+
+        // Validasi server-side
+        if (!$file || !$file->isValid() || $file->hasMoved()) {
+            return redirect()->back()->with('error', 'File tidak valid, coba lagi.');
+        }
+
+        $allowedExt  = ['jpg', 'jpeg', 'png'];
+        $allowedMime = ['image/jpeg', 'image/png'];
+
+        if (!in_array(strtolower($file->getClientExtension()), $allowedExt) ||
+            !in_array($file->getMimeType(), $allowedMime)) {
+            return redirect()->back()->with('error', 'Format file tidak didukung. Gunakan JPG atau PNG.');
+        }
+
+        if ($file->getSize() > 2 * 1024 * 1024) {
+            return redirect()->back()->with('error', 'Ukuran file maksimal 2MB.');
+        }
+
+        // Simpan file
+        $namaFile = $file->getRandomName();
+        $file->move(ROOTPATH . 'public/uploads/bukti_transfer/', $namaFile);
+
+        // Update database
+        $orderModel->update($order_id, [
+            'bukti_transfer'    => $namaFile,
+            'status_pembayaran' => 'menunggu_verifikasi',
+        ]);
+
+        return redirect()->to('pelanggan/orders')
+                         ->with('success', 'Bukti transfer berhasil dikirim! Menunggu verifikasi admin.');
     }
-
-    $file = $this->request->getFile('bukti_transfer');
-
-    // Validasi server-side
-    if (!$file || !$file->isValid() || $file->hasMoved()) {
-        return redirect()->back()->with('error', 'File tidak valid, coba lagi.');
-    }
-
-    $allowedExt  = ['jpg', 'jpeg', 'png'];
-    $allowedMime = ['image/jpeg', 'image/png'];
-
-    if (!in_array(strtolower($file->getClientExtension()), $allowedExt) ||
-        !in_array($file->getMimeType(), $allowedMime)) {
-        return redirect()->back()->with('error', 'Format file tidak didukung. Gunakan JPG atau PNG.');
-    }
-
-    if ($file->getSize() > 2 * 1024 * 1024) {
-        return redirect()->back()->with('error', 'Ukuran file maksimal 2MB.');
-    }
-
-    // Simpan file
-    $namaFile = $file->getRandomName();
-    $file->move(ROOTPATH . 'public/uploads/bukti_transfer/', $namaFile);
-
-    // Update database
-    $orderModel->update($order_id, [
-        'bukti_transfer'   => $namaFile,
-        'status_pembayaran' => 'menunggu_verifikasi',
-    ]);
-
-    return redirect()->to('pelanggan/orders')
-                     ->with('success', 'Bukti transfer berhasil dikirim! Menunggu verifikasi admin.');
-}
 
     public function dashboard() { return view('pelanggan/dashboard'); }
     public function wishlist()  { return view('pelanggan/wishlist', ['active' => 'wishlist']); }

@@ -663,6 +663,63 @@ public function tambah()
         
         return redirect()->to(base_url('admin/produk'))->with('success', 'Produk berhasil dihapus!');
     }
+    public function terima_pembayaran($id)
+{
+    $db    = \Config\Database::connect();
+    $order = $db->table('orders')->where('id', $id)->get()->getRowArray();
+ 
+    if (!$order) {
+        return redirect()->to(base_url('admin/pesanan'))
+                         ->with('error', 'Pesanan tidak ditemukan.');
+    }
+ 
+    $db->table('orders')->where('id', $id)->update([
+        'status_pembayaran' => 'sudah_bayar',
+    ]);
+ 
+    return redirect()->to(base_url('admin/pesanan'))
+                     ->with('success', 'Pembayaran #ORD-' . str_pad($id, 3, '0', STR_PAD_LEFT) . ' berhasil diterima.');
+}
+ 
+// ── Tolak Pembayaran ──
+public function tolak_pembayaran($id)
+{
+    $db    = \Config\Database::connect();
+    $order = $db->table('orders')->where('id', $id)->get()->getRowArray();
+ 
+    if (!$order) {
+        return redirect()->to(base_url('admin/pesanan'))
+                         ->with('error', 'Pesanan tidak ditemukan.');
+    }
+ 
+    // Hapus file bukti transfer lama agar pelanggan bisa upload ulang
+    if (!empty($order['bukti_transfer'])) {
+        $filePath = FCPATH . 'uploads/bukti_transfer/' . $order['bukti_transfer'];
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+    }
+ 
+    $db->table('orders')->where('id', $id)->update([
+        'status_pembayaran' => 'belum_bayar',
+        'bukti_transfer'    => null,
+    ]);
+ 
+    return redirect()->to(base_url('admin/pesanan'))
+                     ->with('success', 'Pembayaran #ORD-' . str_pad($id, 3, '0', STR_PAD_LEFT) . ' ditolak. Pelanggan perlu upload ulang bukti.');
+}
 
-    
+    // One-time helper: normalisasi nilai status_pembayaran yang tidak konsisten
+    public function normalize_status_pembayaran()
+    {
+        // Hati-hati: method ini sebaiknya hanya dijalankan sekali oleh admin
+        $sql = "UPDATE orders SET status_pembayaran = 'sudah_bayar' "
+             . "WHERE LOWER(status_pembayaran) REGEXP 'sudah[_ ]?bayar' "
+             . "OR LOWER(status_pembayaran) LIKE '%sudah_payar%' "
+             . "OR LOWER(status_pembayaran) LIKE '%sudahbayar%';";
+
+        $this->db->query($sql);
+
+        return redirect()->to(base_url('admin/dashboard'))->with('success', 'Normalisasi status_pembayaran selesai.');
+    }
 }

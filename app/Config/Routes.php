@@ -47,8 +47,8 @@ $routes->match(['get', 'post'], 'proses_pilihan', 'Pelanggan::proses_pilihan');
     $routes->post('update_password', 'Pelanggan::update_password'); // Sesuai nama fungsi baru di controller
     $routes->post('proses_pesanan', 'Pelanggan::proses_pesanan');   // Perbaikan: hapus kata 'pelanggan/' agar tidak double
     $routes->get('konfirmasi_selesai/(:num)', 'Pelanggan::konfirmasi_selesai/$1'); // Perbaikan: hapus kata 'pelanggan/'
-    $routes->get('pelanggan/upload_bukti/(:num)',       'PelangganController::upload_bukti/$1');
-$routes->post('pelanggan/proses_upload_bukti/(:num)', 'PelangganController::proses_upload_bukti/$1');
+    $routes->get('upload_bukti/(:num)', 'Pelanggan::upload_bukti/$1');
+    $routes->post('proses_upload_bukti/(:num)', 'Pelanggan::proses_upload_bukti/$1');
 });
 
 // 3. Group Admin
@@ -75,4 +75,7 @@ $routes->group('admin', function($routes) {
     $routes->get('feedback', 'Admin::feedback');
     $routes->post('balas_ulasan/(:num)', 'Admin::balas_ulasan/$1');
     $routes->get('pengaturan', 'Admin::pengaturan');
+    $routes->get('terima_pembayaran/(:num)', 'Admin::terima_pembayaran/$1');
+$routes->get('tolak_pembayaran/(:num)',  'Admin::tolak_pembayaran/$1');
+    $routes->get('normalize_status_pembayaran', 'Admin::normalize_status_pembayaran');
 });

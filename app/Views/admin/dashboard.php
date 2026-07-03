@@ -112,14 +112,14 @@
     }
     .stat-grid-4 {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(220px, 1fr));
         gap: 16px;
         margin-bottom: 28px;
     }
     @media (max-width: 1200px) {
         .stat-grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 560px) {
+    @media (max-width: 768px) {
         .stat-grid-4 { grid-template-columns: 1fr; }
     }
 
@@ -432,13 +432,6 @@
 <div class="section-label">Ringkasan Bulan Ini (<?= date('F Y') ?>)</div>
 
 <div class="stat-grid-4">
-    <div class="stat-card">
-        <div class="stat-card-icon purple"><i class="fa-solid fa-receipt"></i></div>
-        <div>
-            <div class="stat-card-value"><?= number_format($total_transaksi_bulan_ini, 0, ',', '.'); ?></div>
-            <div class="stat-card-label">Transaksi Sukses (Sudah Bayar)</div>
-        </div>
-    </div>
 
     <div class="stat-card">
         <div class="stat-card-icon green"><i class="fa-solid fa-sack-dollar"></i></div>
@@ -465,10 +458,18 @@
     </div>
 
     <div class="stat-card">
-        <div class="stat-card-icon blue"><i class="fa-solid fa-chart-simple"></i></div>
+        <div class="stat-card-icon blue"><i class="fa-solid fa-coins"></i></div>
         <div>
-            <div class="stat-card-value">Rp <?= number_format($rata_rata_transaksi, 0, ',', '.'); ?></div>
-            <div class="stat-card-label">Rata-rata Nilai Transaksi</div>
+            <div class="stat-card-value">Rp <?= number_format($omzet, 0, ',', '.'); ?></div>
+            <div class="stat-card-label">Total Penjualan</div>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-card-icon purple"><i class="fa-solid fa-box-open"></i></div>
+        <div>
+            <div class="stat-card-value"><?= number_format($total_produk, 0, ',', '.'); ?> Item</div>
+            <div class="stat-card-label">Total Produk</div>
         </div>
     </div>
 </div>
@@ -491,62 +492,68 @@
     </div>
 
     <div class="restock-card">
-        <h3>Stok Menipis &amp; Habis</h3>
-        <div class="restock-list">
-        <?php if (empty($stok_tipis_list)) : ?>
-            <div class="restock-empty">
-                <i class="fa-solid fa-circle-check" style="font-size:24px; color:#4ade80; display:block; margin-bottom:8px;"></i>
-                Semua stok aman.
-            </div>
-        <?php else : ?>
-            <?php foreach ($stok_tipis_list as $p):
-                $stok = (int) ($p['total_stok'] ?? 0);
-            ?>
-            <div class="restock-item">
-                <div class="restock-thumb">
-                    <img src="<?= base_url('images/'.$p['gambar']); ?>" alt="<?= esc($p['nama_produk']) ?>">
-                </div>
-                <div class="restock-info">
-                    <p class="restock-name"><?= esc($p['nama_produk']); ?></p>
-                    <?php if ($stok <= 0) : ?>
-                        <span class="stock-badge habis"><i class="fa-solid fa-ban"></i> Habis</span>
-                    <?php else : ?>
-                        <span class="stock-badge menipis"><i class="fa-solid fa-triangle-exclamation"></i> Menipis · <?= $stok ?> pcs</span>
-                    <?php endif; ?>
+        <!-- ============================================================
+             MONITORING STOK — Habis & Menipis (UTS E-Business)
+             ============================================================ -->
+       
+            <div class="stockmon-header">
+                <h3>Monitoring Stok</h3>
+                <div class="stockmon-tabs">
+                    <button class="stockmon-tab habis active" data-target="stockmon-habis" type="button">
+                        <i class="fa-solid fa-circle-xmark"></i> Habis
+                        <span class="stockmon-count-pill"><?= $stok_habis_count ?></span>
+                    </button>
+                    <button class="stockmon-tab menipis" data-target="stockmon-menipis" type="button">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Menipis
+                        <span class="stockmon-count-pill"><?= $stok_menipis_count ?></span>
+                    </button>
                 </div>
             </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
-        </div>
-    </div>
-</div>
 
-<!-- ============================================================
-     RINGKASAN ALL-TIME — info bar compact
-     ============================================================ -->
-<div class="info-bar">
-    <div class="info-bar-item">
-        <div class="info-bar-icon blue"><i class="fa-solid fa-coins"></i></div>
-        <div>
-            <div class="info-bar-value">Rp <?= number_format($omzet, 0, ',', '.'); ?></div>
-            <div class="info-bar-label">Total Penjualan (All Time)</div>
+            <!-- TAB: HABIS -->
+            <div class="stockmon-grid" id="stockmon-habis">
+                <?php if (empty($stok_habis_list)) : ?>
+                    <div class="stockmon-empty">
+                        <i class="fa-solid fa-circle-check" style="font-size:22px; color:#4ade80; display:block; margin-bottom:8px;"></i>
+                        Tidak ada produk yang stoknya habis.
+                    </div>
+                <?php else : ?>
+                    <?php foreach ($stok_habis_list as $p) : ?>
+                    <div class="stockmon-item">
+                        <div class="stockmon-thumb">
+                            <img src="<?= base_url('images/' . $p['gambar']); ?>" alt="<?= esc($p['nama_produk']) ?>">
+                        </div>
+                        <div class="stockmon-info">
+                            <p class="stockmon-name"><?= esc($p['nama_produk']); ?></p>
+                            <span class="badge badge-danger">Habis (0 pcs)</span>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+
+            <!-- TAB: MENIPIS -->
+            <div class="stockmon-grid" id="stockmon-menipis" style="display:none;">
+                <?php if (empty($stok_menipis_list)) : ?>
+                    <div class="stockmon-empty">
+                        <i class="fa-solid fa-circle-check" style="font-size:22px; color:#4ade80; display:block; margin-bottom:8px;"></i>
+                        Tidak ada produk dengan stok menipis.
+                    </div>
+                <?php else : ?>
+                    <?php foreach ($stok_menipis_list as $p) : ?>
+                    <div class="stockmon-item">
+                        <div class="stockmon-thumb">
+                            <img src="<?= base_url('images/' . $p['gambar']); ?>" alt="<?= esc($p['nama_produk']) ?>">
+                        </div>
+                        <div class="stockmon-info">
+                            <p class="stockmon-name"><?= esc($p['nama_produk']); ?></p>
+                            <span class="badge badge-warning">Menipis (<?= esc($p['total_stok']); ?> pcs)</span>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
         </div>
-    </div>
-    <div class="info-bar-item">
-        <div class="info-bar-icon purple"><i class="fa-solid fa-box-open"></i></div>
-        <div>
-            <div class="info-bar-value"><?= $total_produk; ?> Item</div>
-            <div class="info-bar-label">Total Produk</div>
-        </div>
-    </div>
-    <div class="info-bar-item">
-        <div class="info-bar-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
-        <div>
-            <div class="info-bar-value"><?= $stok_tipis_count; ?> Produk</div>
-            <div class="info-bar-label">Stok Tipis</div>
-        </div>
-    </div>
-</div>
 
 <!-- ============================================================
      PRODUK TERLARIS (UTS E-Business — Top 5)
@@ -588,68 +595,7 @@
     <?php endif; ?>
 </div>
 
-<!-- ============================================================
-     MONITORING STOK — Habis & Menipis (UTS E-Business)
-     ============================================================ -->
-<div class="stockmon-card">
-    <div class="stockmon-header">
-        <h3>Monitoring Stok</h3>
-        <div class="stockmon-tabs">
-            <button class="stockmon-tab habis active" data-target="stockmon-habis" type="button">
-                <i class="fa-solid fa-circle-xmark"></i> Habis
-                <span class="stockmon-count-pill"><?= $stok_habis_count ?></span>
-            </button>
-            <button class="stockmon-tab menipis" data-target="stockmon-menipis" type="button">
-                <i class="fa-solid fa-triangle-exclamation"></i> Menipis
-                <span class="stockmon-count-pill"><?= $stok_menipis_count ?></span>
-            </button>
-        </div>
-    </div>
 
-    <!-- TAB: HABIS -->
-    <div class="stockmon-grid" id="stockmon-habis">
-        <?php if (empty($stok_habis_list)) : ?>
-            <div class="stockmon-empty">
-                <i class="fa-solid fa-circle-check" style="font-size:22px; color:#4ade80; display:block; margin-bottom:8px;"></i>
-                Tidak ada produk yang stoknya habis.
-            </div>
-        <?php else : ?>
-            <?php foreach ($stok_habis_list as $p) : ?>
-            <div class="stockmon-item">
-                <div class="stockmon-thumb">
-                    <img src="<?= base_url('images/' . $p['gambar']); ?>" alt="<?= esc($p['nama_produk']) ?>">
-                </div>
-                <div class="stockmon-info">
-                    <p class="stockmon-name"><?= esc($p['nama_produk']); ?></p>
-                    <span class="badge badge-danger">Habis (0 pcs)</span>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
-
-    <!-- TAB: MENIPIS -->
-    <div class="stockmon-grid" id="stockmon-menipis" style="display:none;">
-        <?php if (empty($stok_menipis_list)) : ?>
-            <div class="stockmon-empty">
-                <i class="fa-solid fa-circle-check" style="font-size:22px; color:#4ade80; display:block; margin-bottom:8px;"></i>
-                Tidak ada produk dengan stok menipis.
-            </div>
-        <?php else : ?>
-            <?php foreach ($stok_menipis_list as $p) : ?>
-            <div class="stockmon-item">
-                <div class="stockmon-thumb">
-                    <img src="<?= base_url('images/' . $p['gambar']); ?>" alt="<?= esc($p['nama_produk']) ?>">
-                </div>
-                <div class="stockmon-info">
-                    <p class="stockmon-name"><?= esc($p['nama_produk']); ?></p>
-                    <span class="badge badge-warning">Menipis (<?= $p['total_stok'] ?> pcs)</span>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
