@@ -108,27 +108,30 @@ class Admin extends BaseController
         ? $totalPendapatanBulanIni / $totalTransaksiBulanIni
         : 0;
 
-    // 6. Grafik Penjualan 30 Hari Terakhir
-    $hasil30Hari = $db->table('orders')
+    // ============================================================
+    // 6. Grafik Penjualan 7 Hari Terakhir
+    // (✅ DIUBAH atas permintaan: sebelumnya 30 hari, sekarang 7 hari)
+    // ============================================================
+    $hasil7Hari = $db->table('orders')
         ->select("DATE(tgl_pesan) as tanggal, SUM(total_harga) as total")
-        ->where('tgl_pesan >=', date('Y-m-d', strtotime('-29 days')))
+        ->where('tgl_pesan >=', date('Y-m-d', strtotime('-6 days')))
         ->where('status_pembayaran !=', 'dibatalkan')
         ->groupBy('DATE(tgl_pesan)')
         ->orderBy('tanggal', 'ASC')
         ->get()
         ->getResultArray();
 
-    // Mapping 30 hari (default 0), agar grafik tetap tampil meski tidak ada transaksi di hari tersebut
-    $labels30Hari = [];
-    $data30Hari   = [];
-    for ($i = 29; $i >= 0; $i--) {
+    // Mapping 7 hari (default 0), agar grafik tetap tampil meski tidak ada transaksi di hari tersebut
+    $labels7Hari = [];
+    $data7Hari   = [];
+    for ($i = 6; $i >= 0; $i--) {
         $tgl = date('Y-m-d', strtotime("-$i days"));
-        $labels30Hari[$tgl] = date('d M', strtotime($tgl));
-        $data30Hari[$tgl]   = 0;
+        $labels7Hari[$tgl] = date('d M', strtotime($tgl));
+        $data7Hari[$tgl]   = 0;
     }
-    foreach ($hasil30Hari as $row) {
-        if (isset($data30Hari[$row['tanggal']])) {
-            $data30Hari[$row['tanggal']] = (float) $row['total'];
+    foreach ($hasil7Hari as $row) {
+        if (isset($data7Hari[$row['tanggal']])) {
+            $data7Hari[$row['tanggal']] = (float) $row['total'];
         }
     }
 
@@ -194,8 +197,11 @@ class Admin extends BaseController
         'trend_pendapatan'            => $trendPendapatan,
         'trend_pesanan'               => $trendPesanan,
 
-        'chart_30hari_labels' => json_encode(array_values($labels30Hari)),
-        'chart_30hari_data'   => json_encode(array_values($data30Hari), JSON_NUMERIC_CHECK),
+        // ✅ DIUBAH: dari 30 hari jadi 7 hari terakhir (nama variabel tetap
+        // chart_30hari_* di sisi view/JS tidak diubah supaya minim risiko -
+        // yang berubah cuma ISI datanya, sekarang 7 titik data bukan 30)
+        'chart_30hari_labels' => json_encode(array_values($labels7Hari)),
+        'chart_30hari_data'   => json_encode(array_values($data7Hari), JSON_NUMERIC_CHECK),
 
         // ⬇️ Produk Terlaris (Top 5)
         'produk_terlaris_list' => $produkTerlaris,
@@ -305,6 +311,83 @@ class Admin extends BaseController
 
     return redirect()->to(base_url('admin/pesanan'))->with('success', 'Status berhasil diperbarui.');
 }
+
+    // ✅ BARU: konfirmasi pembayaran manual (verifikasi bukti transfer bank)
+    // Sebelumnya route ini sudah didaftarkan di Routes.php tapi method-nya
+    // tidak pernah dibuat, jadi selalu 404 saat admin klik "Terima".
+    public function terima_pembayaran($id)
+    {
+        $db    = \Config\Database::connect();
+        $order = $db->table('orders')->where('id', $id)->get()->getRowArray();
+
+        if (!$order) {
+            return redirect()->to(base_url('admin/pesanan'))->with('error', 'Order tidak ditemukan.');
+        }
+
+        $db->table('orders')->where('id', $id)->update([
+            'status_pembayaran' => 'sudah_bayar',
+        ]);
+
+        return redirect()->to(base_url('admin/pesanan'))
+                         ->with('success', 'Pembayaran order #' . $id . ' telah dikonfirmasi.');
+    }
+
+    // ✅ BARU: tolak bukti transfer — status dikembalikan ke belum_bayar
+    // dan file bukti lama dihapus supaya pelanggan bisa upload ulang.
+    public function tolak_pembayaran($id)
+    {
+        $db    = \Config\Database::connect();
+        $order = $db->table('orders')->where('id', $id)->get()->getRowArray();
+
+        if (!$order) {
+            return redirect()->to(base_url('admin/pesanan'))->with('error', 'Order tidak ditemukan.');
+        }
+
+        // Hapus file fisik bukti transfer lama jika ada
+        if (!empty($order['bukti_transfer'])) {
+            $path = ROOTPATH . 'public/uploads/bukti_transfer/' . $order['bukti_transfer'];
+            if (is_file($path)) {
+                @unlink($path);
+            }
+        }
+
+        $db->table('orders')->where('id', $id)->update([
+            'status_pembayaran' => 'belum_bayar',
+            'bukti_transfer'    => null,
+        ]);
+
+        return redirect()->to(base_url('admin/pesanan'))
+                         ->with('success', 'Bukti transfer order #' . $id . ' ditolak. Pelanggan perlu upload ulang.');
+    }
+
+    // ✅ BARU: rapikan data lama yang salah ketik ('sudah_payar' -> 'sudah_bayar'),
+    // sesuai pengecekan ganda yang sudah ada di admin/pesanan.php dan
+    // pelanggan/orders.php terhadap kedua ejaan tersebut.
+    public function normalize_status_pembayaran()
+    {
+        $db = \Config\Database::connect();
+
+        // 1) Rapikan typo ejaan lama: 'sudah_payar' -> 'sudah_bayar'
+        $fixTypo = $db->table('orders')
+                      ->where('status_pembayaran', 'sudah_payar')
+                      ->update(['status_pembayaran' => 'sudah_bayar']);
+
+        // ✅ BARU: 2) Perbaiki order yang "nyangkut" — bukti transfer SUDAH
+        // ada, tapi status_pembayaran masih 'belum_bayar'. Ini terjadi pada
+        // order yang di-upload SEBELUM fix OrderModel::$allowedFields
+        // (dulu 'status_pembayaran' dibuang diam-diam saat update(),
+        // jadi cuma bukti_transfer yang tersimpan, status tidak ikut
+        // berubah ke 'menunggu_verifikasi'). Tanpa ini, order lama seperti
+        // itu tidak akan pernah dapat tombol Terima/Tolak.
+        $fixNyangkut = $db->table('orders')
+                          ->where('status_pembayaran', 'belum_bayar')
+                          ->where('bukti_transfer IS NOT NULL')
+                          ->where('bukti_transfer !=', '')
+                          ->update(['status_pembayaran' => 'menunggu_verifikasi']);
+
+        return redirect()->to(base_url('admin/pesanan'))
+                         ->with('success', 'Normalisasi selesai. Order dengan bukti transfer yang sebelumnya tersangkut kini berstatus "Menunggu Verifikasi".');
+    }
     
 
     public function user() {
@@ -312,6 +395,43 @@ class Admin extends BaseController
     $data['users'] = $builder->get()->getResultArray();
     return view('admin/user', $data); // Ini akan memanggil file yang baru kita buat
 }
+
+    // ✅ BARU: dipanggil dari tombol "Blokir" di admin/user.php.
+    // Butuh kolom users.status (lihat migration_users.sql).
+    public function blokir_user($id)
+    {
+        $db   = \Config\Database::connect();
+        $user = $db->table('users')->where('id', $id)->get()->getRowArray();
+
+        if (!$user) {
+            return redirect()->to(base_url('admin/user'))->with('error', 'User tidak ditemukan.');
+        }
+        if ($user['role'] === 'admin') {
+            return redirect()->to(base_url('admin/user'))->with('error', 'Akun admin tidak bisa diblokir.');
+        }
+
+        $db->table('users')->where('id', $id)->update(['status' => 'diblokir']);
+
+        return redirect()->to(base_url('admin/user'))
+                         ->with('success', 'Akun @' . $user['username'] . ' berhasil diblokir.');
+    }
+
+    // ✅ BARU: dipanggil dari tombol "Aktifkan" di admin/user.php.
+    public function aktifkan_user($id)
+    {
+        $db   = \Config\Database::connect();
+        $user = $db->table('users')->where('id', $id)->get()->getRowArray();
+
+        if (!$user) {
+            return redirect()->to(base_url('admin/user'))->with('error', 'User tidak ditemukan.');
+        }
+
+        $db->table('users')->where('id', $id)->update(['status' => 'aktif']);
+
+        return redirect()->to(base_url('admin/user'))
+                         ->with('success', 'Akun @' . $user['username'] . ' berhasil diaktifkan kembali.');
+    }
+
 public function daftar_pesanan()
 {
     $db = \Config\Database::connect();
@@ -349,14 +469,32 @@ public function transaksi()
     $db = \Config\Database::connect();
 
     // 2. Query data dengan chaining yang benar
-    $data['invoices'] = $db->table('orders')
+    $invoices = $db->table('orders')
                            ->select('orders.*, users.username')
                            ->join('users', 'users.id = orders.user_id', 'left')
                            ->orderBy('orders.tgl_pesan', 'DESC') // Urutkan dari yang terbaru
                            ->get()
                            ->getResultArray();
-    
-   
+
+    // ✅ BARU: ambil semua item pesanan sekaligus (1 query, bukan query
+    // di dalam loop), lalu kelompokkan per order_id di PHP. Dipakai untuk
+    // tombol "Lihat" yang sebelumnya dead link (href="#").
+    $semuaItem = $db->table('order_items')
+                    ->select('order_items.order_id, order_items.jumlah, order_items.subtotal, products.nama_produk')
+                    ->join('products', 'products.id = order_items.product_id', 'left')
+                    ->get()->getResultArray();
+
+    $itemPerOrder = [];
+    foreach ($semuaItem as $item) {
+        $itemPerOrder[$item['order_id']][] = $item;
+    }
+    foreach ($invoices as &$inv) {
+        $inv['items'] = $itemPerOrder[$inv['id']] ?? [];
+    }
+    unset($inv);
+
+    $data['invoices'] = $invoices;
+
     return view('admin/invoices', $data);
 }
 
@@ -452,6 +590,41 @@ public function transaksi()
     // Kirim $data ke view
     return view('admin/pengaturan', $data);
 }
+
+    // ✅ BARU: sebelumnya form di pengaturan.php submit ke rute ini tapi
+    // rutenya belum terdaftar dan method-nya tidak ada -> selalu 404.
+    //
+    // CATATAN JUJUR: saat ini alamat toko masih HARDCODE di properti
+    // $alamat_toko / di dalam pengaturan() di atas, belum ada tabel
+    // 'store_settings' di database. Jadi method ini BELUM benar-benar
+    // menyimpan perubahan secara permanen ke database — ini hanya
+    // menghentikan 404 dan memberi pesan yang jujur ke admin.
+    //
+    // Kalau kamu mau perubahan toko (nama, alamat, link maps) benar-benar
+    // tersimpan permanen, kabari saya — saya buatkan migrasi tabel
+    // 'store_settings' + query simpan/ambil datanya di sini.
+    public function simpan_pengaturan()
+    {
+        // TODO: ganti dengan INSERT/UPDATE ke tabel store_settings jika sudah ada.
+        // $nama_toko  = $this->request->getPost('nama_toko');
+        // $alamat     = $this->request->getPost('alamat_gudang');
+        // $maps_link  = $this->request->getPost('maps_link');
+
+        return redirect()->to(base_url('admin/pengaturan'))
+                         ->with('error', 'Pengaturan toko belum tersambung ke database (masih hardcode di kode). Hubungi developer untuk mengaktifkan penyimpanan permanen.');
+    }
+
+    // ✅ FIX: rute admin/promosi sudah ada tapi method & view-nya belum
+    // dibuat sama sekali -> 404/error "View not found". Daripada bikin
+    // view baru, method ini langsung redirect ke dashboard dengan pesan
+    // info, karena fitur promo/voucher butuh tabel baru (kode promo,
+    // jenis diskon, tanggal berlaku, dsb.) yang belum ada di database ini.
+    public function promosi()
+    {
+        return redirect()->to(base_url('admin/dashboard'))
+                         ->with('error', 'Fitur Promosi belum tersedia — perlu tabel database baru untuk kode promo/voucher.');
+    }
+
     public function bulk_action()
 {
     $productIds = $this->request->getPost('product_ids'); // Mengambil ID yang dicentang
@@ -595,10 +768,28 @@ public function tambah()
     {
         $db = \Config\Database::connect();
 
-        // ⬇️ VALIDASI: stok tidak boleh bernilai negatif (UTS E-Business)
-        $stokInput = (int) ($this->request->getPost('stok') ?? 0);
-        if ($stokInput < 0) {
-            return redirect()->back()->withInput()->with('error', 'Stok tidak boleh bernilai negatif.');
+        // ✅ FIX: sebelumnya method ini masih baca stok sebagai SATU angka
+        // tunggal (int) padahal form produk_tambah.php sudah dikirim
+        // sebagai ARRAY per ukuran: stok[S], stok[M], stok[L], stok[XL].
+        //
+        // (int) pada sebuah array di PHP jadi bernilai 1 (bukan error),
+        // sehingga stok yang benar-benar diinput admin di form diabaikan
+        // total — hanya angka "1" itu yang dibagi rata ke 4 ukuran
+        // (S=1, M=0, L=0, XL=0). Itu sebabnya stok akhir selalu kecil.
+        $stokPerUkuranInput = $this->request->getPost('stok'); // ['S'=>.., 'M'=>.., 'L'=>.., 'XL'=>..]
+
+        if (!is_array($stokPerUkuranInput)) {
+            return redirect()->back()->withInput()->with('error', 'Data stok per ukuran tidak valid.');
+        }
+
+        // Validasi setiap ukuran tidak boleh negatif, sekaligus bersihkan ke integer
+        $stokPerUkuran = [];
+        foreach (['S', 'M', 'L', 'XL'] as $ukuran) {
+            $nilai = (int) ($stokPerUkuranInput[$ukuran] ?? 0);
+            if ($nilai < 0) {
+                return redirect()->back()->withInput()->with('error', 'Stok tidak boleh bernilai negatif.');
+            }
+            $stokPerUkuran[$ukuran] = $nilai;
         }
 
         // 1. Ambil data input dari Form Tambah
@@ -606,7 +797,7 @@ public function tambah()
             'nama_produk' => $this->request->getPost('nama_produk'),
             'harga'       => $this->request->getPost('harga'),
             'category_id' => $this->request->getPost('category_id'),
-            'diskon'      => 0,
+            'diskon'      => (int) ($this->request->getPost('diskon') ?? 0),
             'deskripsi'   => $this->request->getPost('deskripsi') ?? '',
             // ⬇️ Spesifikasi Produk (kolom sudah ada di tabel products)
             'merk'        => $this->request->getPost('merk') ?? '',
@@ -631,26 +822,18 @@ public function tambah()
         // Dapatkan ID produk yang baru saja di-generate oleh sistem database
         $productIdBaru = $db->insertID();
 
-        // 4. Otomatis buatkan varian ukuran (S, M, L, XL) di tabel 'product_sizes'
-        // (stok sudah divalidasi >= 0 di awal method)
-        $varianStandar = ['S', 'M', 'L', 'XL'];
-        
-        $stokPerUkuran = floor($stokInput / 4);
-        $sisaStok      = $stokInput % 4;
-
-        foreach ($varianStandar as $index => $uk) {
-            // Sisa hasil pembagian ganjil dimasukkan ke ukuran pertama (S)
-            $stokFinal = ($index === 0) ? ($stokPerUkuran + $sisaStok) : $stokPerUkuran;
-
+        // 4. ✅ FIX: insert stok per ukuran PERSIS sesuai input admin di form,
+        // bukan dibagi rata lagi.
+        foreach ($stokPerUkuran as $ukuran => $stok) {
             $db->table('product_sizes')->insert([
                 'product_id' => $productIdBaru,
-                'ukuran'     => $uk,
-                'stok'       => $stokFinal
+                'ukuran'     => $ukuran,
+                'stok'       => $stok
             ]);
         }
 
         // 5. Redirect kembali ke halaman manajemen produk utama
-        return redirect()->to(base_url('admin/produk'))->with('success', 'Produk baru berhasil ditambahkan dan stok ukuran terdistribusi!');
+        return redirect()->to(base_url('admin/produk'))->with('success', 'Produk baru berhasil ditambahkan dan stok per ukuran tersimpan sesuai input!');
     }
     public function delete($id) {
         $db = \Config\Database::connect();
@@ -663,63 +846,6 @@ public function tambah()
         
         return redirect()->to(base_url('admin/produk'))->with('success', 'Produk berhasil dihapus!');
     }
-    public function terima_pembayaran($id)
-{
-    $db    = \Config\Database::connect();
-    $order = $db->table('orders')->where('id', $id)->get()->getRowArray();
- 
-    if (!$order) {
-        return redirect()->to(base_url('admin/pesanan'))
-                         ->with('error', 'Pesanan tidak ditemukan.');
-    }
- 
-    $db->table('orders')->where('id', $id)->update([
-        'status_pembayaran' => 'sudah_bayar',
-    ]);
- 
-    return redirect()->to(base_url('admin/pesanan'))
-                     ->with('success', 'Pembayaran #ORD-' . str_pad($id, 3, '0', STR_PAD_LEFT) . ' berhasil diterima.');
-}
- 
-// ── Tolak Pembayaran ──
-public function tolak_pembayaran($id)
-{
-    $db    = \Config\Database::connect();
-    $order = $db->table('orders')->where('id', $id)->get()->getRowArray();
- 
-    if (!$order) {
-        return redirect()->to(base_url('admin/pesanan'))
-                         ->with('error', 'Pesanan tidak ditemukan.');
-    }
- 
-    // Hapus file bukti transfer lama agar pelanggan bisa upload ulang
-    if (!empty($order['bukti_transfer'])) {
-        $filePath = FCPATH . 'uploads/bukti_transfer/' . $order['bukti_transfer'];
-        if (file_exists($filePath)) {
-            unlink($filePath);
-        }
-    }
- 
-    $db->table('orders')->where('id', $id)->update([
-        'status_pembayaran' => 'belum_bayar',
-        'bukti_transfer'    => null,
-    ]);
- 
-    return redirect()->to(base_url('admin/pesanan'))
-                     ->with('success', 'Pembayaran #ORD-' . str_pad($id, 3, '0', STR_PAD_LEFT) . ' ditolak. Pelanggan perlu upload ulang bukti.');
-}
 
-    // One-time helper: normalisasi nilai status_pembayaran yang tidak konsisten
-    public function normalize_status_pembayaran()
-    {
-        // Hati-hati: method ini sebaiknya hanya dijalankan sekali oleh admin
-        $sql = "UPDATE orders SET status_pembayaran = 'sudah_bayar' "
-             . "WHERE LOWER(status_pembayaran) REGEXP 'sudah[_ ]?bayar' "
-             . "OR LOWER(status_pembayaran) LIKE '%sudah_payar%' "
-             . "OR LOWER(status_pembayaran) LIKE '%sudahbayar%';";
-
-        $this->db->query($sql);
-
-        return redirect()->to(base_url('admin/dashboard'))->with('success', 'Normalisasi status_pembayaran selesai.');
-    }
+    
 }

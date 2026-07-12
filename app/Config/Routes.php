@@ -23,7 +23,7 @@ $routes->group('pelanggan', function($routes) {
     $routes->get('keranjang', 'Pelanggan::keranjang');
     $routes->get('orders', 'Pelanggan::orders');
     $routes->post('simpan_ulasan/(:num)', 'Pelanggan::simpan_ulasan/$1');
-    
+
     // Fitur Keranjang
     $routes->post('tambah_keranjang', 'Pelanggan::tambah_keranjang'); // Sudah POST
     $routes->get('tambah/(:num)', 'Pelanggan::tambah/$1');
@@ -38,11 +38,11 @@ $routes->group('pelanggan', function($routes) {
     $routes->get('security', 'Pelanggan::security');
     $routes->get('search', 'Pelanggan::search'); // Perbaikan: hapus kata 'pelanggan/' karena sudah di dalam group
     // Ganti baris $routes->post('proses_pilihan', ...); menjadi:
-$routes->match(['get', 'post'], 'proses_pilihan', 'Pelanggan::proses_pilihan');
-    
+    $routes->match(['get', 'post'], 'proses_pilihan', 'Pelanggan::proses_pilihan');
+
     $routes->get('ringkasan_pesanan/(:num)/(:num)', 'Pelanggan::ringkasan_pesanan/$1/$2');
-    $routes->post('buat_pesanan_final', 'Pelanggan::buat_pesanan_final'); 
-    
+    $routes->post('buat_pesanan_final', 'Pelanggan::buat_pesanan_final');
+
 
     $routes->post('update_password', 'Pelanggan::update_password'); // Sesuai nama fungsi baru di controller
     $routes->post('proses_pesanan', 'Pelanggan::proses_pesanan');   // Perbaikan: hapus kata 'pelanggan/' agar tidak double
@@ -53,19 +53,19 @@ $routes->match(['get', 'post'], 'proses_pilihan', 'Pelanggan::proses_pilihan');
 
 // 3. Group Admin
 $routes->group('admin', function($routes) {
-    $routes->get('dashboard', 'Admin::index'); 
-    $routes->get('produk', 'Admin::produk');   
-    $routes->get('pesanan', 'Admin::pesanan'); 
-    $routes->get('user', 'Admin::user');    
+    $routes->get('dashboard', 'Admin::index');
+    $routes->get('produk', 'Admin::produk');
+    $routes->get('pesanan', 'Admin::pesanan');
+    $routes->get('user', 'Admin::user');
     $routes->get('laporan', 'Admin::laporan'); // Perbaikan: cukup 'laporan'
     $routes->get('admin/laporan', 'Admin::laporan');
     // Produk Management
-    $routes->get('produk/tambah', 'Admin::tambah'); 
+    $routes->get('produk/tambah', 'Admin::tambah');
     $routes->post('produk/simpan', 'Admin::simpan');
     $routes->get('produk/edit/(:num)', 'Admin::edit/$1');
     $routes->post('produk/update/(:num)', 'Admin::update/$1');
     $routes->get('produk/delete/(:num)', 'Admin::delete/$1');
-    
+
     $routes->get('delete/(:num)', 'Admin::delete/$1');
     $routes->get('transaksi', 'Admin::transaksi');
     $routes->get('invoices', 'Admin::invoices');
@@ -75,7 +75,14 @@ $routes->group('admin', function($routes) {
     $routes->get('feedback', 'Admin::feedback');
     $routes->post('balas_ulasan/(:num)', 'Admin::balas_ulasan/$1');
     $routes->get('pengaturan', 'Admin::pengaturan');
+    // ✅ FIX: rute ini belum terdaftar sebelumnya padahal form di
+    // pengaturan.php sudah submit ke sini -> selalu 404.
+    $routes->post('simpan_pengaturan', 'Admin::simpan_pengaturan');
+    // (rute 'promosi' sudah terdaftar di atas — method & view-nya
+    // yang tadinya belum ada, sudah ditambahkan di Admin.php)
+
+    // Konfirmasi pembayaran (verifikasi bukti transfer)
     $routes->get('terima_pembayaran/(:num)', 'Admin::terima_pembayaran/$1');
-$routes->get('tolak_pembayaran/(:num)',  'Admin::tolak_pembayaran/$1');
+    $routes->get('tolak_pembayaran/(:num)',  'Admin::tolak_pembayaran/$1');
     $routes->get('normalize_status_pembayaran', 'Admin::normalize_status_pembayaran');
 });

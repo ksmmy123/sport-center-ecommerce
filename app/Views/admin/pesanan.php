@@ -1,8 +1,11 @@
 <?= $this->extend('layout/admin/main') ?>
+
 <?= $this->section('content') ?>
 
 <style>
-    /* ── ALERTS ── */
+    /* ============================================================
+       PESANAN — Dark theme, selaras pelanggan_layout.php
+       ============================================================ */
     .alert-success {
         background: rgba(34,197,94,0.12);
         border: 1px solid rgba(34,197,94,0.3);
@@ -18,7 +21,7 @@
     }
     .alert-error {
         background: rgba(239,68,68,0.12);
-        border: 1px solid rgba(239,68,68,0.25);
+        border: 1px solid rgba(239,68,68,0.3);
         color: #f87171;
         padding: 14px 18px;
         border-radius: var(--radius-md);
@@ -30,11 +33,9 @@
         gap: 10px;
     }
 
-    /* ── TABLE ── */
-    .table-wrapper table { min-width: 900px; }
+    .table-wrapper table { min-width: 860px; }
     .table-wrapper th, .table-wrapper td { white-space: nowrap; }
 
-    /* ── STATUS SELECT ── */
     .status-select {
         padding: 8px 12px;
         border-radius: var(--radius-sm);
@@ -49,171 +50,87 @@
         transition: border-color var(--transition);
     }
     .status-select:focus { border-color: var(--brand); }
+
     .status-select.diproses { color: #facc15; }
     .status-select.dikirim  { color: #60a5fa; }
     .status-select.sampai   { color: #4ade80; }
 
-    /* ── BUKTI TRANSFER SECTION ── */
-    .bukti-wrap {
-        display: flex;
+    /* ── Kolom Bukti Transfer / Verifikasi ── */
+    .bukti-link {
+        display: inline-flex;
         align-items: center;
-        gap: 10px;
-    }
-
-    /* Thumbnail bukti — klik untuk perbesar */
-    .bukti-thumb {
-        width: 44px;
-        height: 44px;
+        gap: 6px;
+        color: #60a5fa;
+        text-decoration: none;
+        font-size: 12.5px;
+        font-weight: 600;
+        padding: 6px 10px;
+        border: 1px solid rgba(96,165,250,0.25);
         border-radius: var(--radius-sm);
-        object-fit: cover;
-        border: 1px solid var(--border);
-        cursor: pointer;
-        transition: transform var(--transition), box-shadow var(--transition);
-        flex-shrink: 0;
+        background: rgba(59,130,246,0.08);
+        transition: background var(--transition);
+        margin-bottom: 6px;
     }
-    .bukti-thumb:hover {
-        transform: scale(1.08);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-    }
+    .bukti-link:hover { background: rgba(59,130,246,0.18); }
 
-    /* Tombol verifikasi */
-    .btn-terima {
+    .verifikasi-group { display: flex; gap: 6px; }
+    .btn-verif {
         display: inline-flex;
         align-items: center;
         gap: 5px;
+        font-size: 11.5px;
+        font-weight: 700;
+        padding: 6px 10px;
+        border-radius: var(--radius-sm);
+        text-decoration: none;
+        transition: background var(--transition);
+        border: 1px solid transparent;
+    }
+    .btn-verif.terima {
         background: rgba(34,197,94,0.15);
         color: #4ade80;
-        border: 1px solid rgba(74,222,128,0.25);
-        padding: 6px 12px;
-        border-radius: var(--radius-sm);
-        font-family: 'Outfit', sans-serif;
-        font-size: 11.5px;
-        font-weight: 700;
-        cursor: pointer;
-        white-space: nowrap;
-        transition: background var(--transition), color var(--transition);
-        text-decoration: none;
+        border-color: rgba(74,222,128,0.25);
     }
-    .btn-terima:hover { background: rgba(34,197,94,0.28); color: #86efac; }
-
-    .btn-tolak {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
+    .btn-verif.terima:hover { background: rgba(34,197,94,0.28); }
+    .btn-verif.tolak {
         background: rgba(239,68,68,0.12);
         color: #f87171;
-        border: 1px solid rgba(239,68,68,0.22);
-        padding: 6px 12px;
-        border-radius: var(--radius-sm);
-        font-family: 'Outfit', sans-serif;
-        font-size: 11.5px;
-        font-weight: 700;
-        cursor: pointer;
-        white-space: nowrap;
-        transition: background var(--transition), color var(--transition);
-        text-decoration: none;
+        border-color: rgba(239,68,68,0.25);
     }
-    .btn-tolak:hover { background: rgba(239,68,68,0.25); color: #fca5a5; }
+    .btn-verif.tolak:hover { background: rgba(239,68,68,0.24); }
 
-    /* Label status bukti */
-    .bukti-status {
-        font-size: 11px;
-        font-weight: 600;
-        padding: 2px 8px;
-        border-radius: var(--radius-pill);
-    }
-    .bukti-status.menunggu {
-        background: rgba(250,204,21,0.12);
-        color: #facc15;
-        border: 1px solid rgba(250,204,21,0.2);
-    }
-    .bukti-status.diterima {
-        background: rgba(34,197,94,0.12);
-        color: #4ade80;
-        border: 1px solid rgba(74,222,128,0.2);
-    }
-
-    /* ── MODAL PREVIEW GAMBAR ── */
-    .img-modal {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.88);
-        z-index: 9999;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 16px;
-    }
-    .img-modal.active { display: flex; }
-    .img-modal-img {
-        max-width: 88vw;
-        max-height: 78vh;
-        border-radius: var(--radius-lg);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-        object-fit: contain;
-    }
-    .img-modal-label {
-        font-size: 13px;
-        color: rgba(255,255,255,0.6);
-        font-weight: 500;
-    }
-    .img-modal-close {
-        position: absolute;
-        top: 16px; right: 16px;
-        width: 40px; height: 40px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.12);
-        border: none;
-        color: #fff;
-        font-size: 18px;
-        cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        transition: background var(--transition);
-    }
-    .img-modal-close:hover { background: rgba(255,255,255,0.25); }
-
-    .empty-row {
-        padding: 30px;
-        text-align: center;
-        color: var(--ink-secondary);
-        font-style: italic;
-    }
+    .empty-row { padding: 30px; text-align: center; color: var(--ink-secondary); font-style: italic; }
 </style>
 
-<!-- MODAL PREVIEW BUKTI TRANSFER -->
-<div class="img-modal" id="imgModal" onclick="tutupModal()">
-    <button class="img-modal-close" onclick="tutupModal()">
-        <i class="fa-solid fa-xmark"></i>
-    </button>
-    <img src="" id="imgModalSrc" class="img-modal-img" alt="Bukti Transfer">
-    <span class="img-modal-label" id="imgModalLabel"></span>
-</div>
-
-<!-- PAGE HEADER -->
+<!-- HEADER -->
 <div class="page-header">
     <div>
         <h1 class="page-title">Daftar Pesanan</h1>
-        <p class="page-subtitle">Pantau status pembayaran, bukti transfer, dan pengiriman pesanan pelanggan.</p>
+        <p class="page-subtitle">Pantau dan kelola status pembayaran serta pengiriman pesanan pelanggan.</p>
+    </div>
+    <div class="page-header-actions">
+        <a href="<?= base_url('admin/normalize_status_pembayaran') ?>" class="btn btn-secondary"
+           onclick="return confirm('Rapikan data status pembayaran lama (ejaan tidak konsisten)?')">
+            <i class="fa-solid fa-broom"></i> Rapikan Status Lama
+        </a>
     </div>
 </div>
 
-<!-- FLASH MESSAGES -->
 <?php if (session()->getFlashdata('success')) : ?>
     <div class="alert-success">
         <i class="fa-solid fa-circle-check"></i>
-        <?= session()->getFlashdata('success') ?>
+        <?= session()->getFlashdata('success'); ?>
     </div>
 <?php endif; ?>
 
 <?php if (session()->getFlashdata('error')) : ?>
     <div class="alert-error">
         <i class="fa-solid fa-circle-exclamation"></i>
-        <?= session()->getFlashdata('error') ?>
+        <?= session()->getFlashdata('error'); ?>
     </div>
 <?php endif; ?>
 
-<!-- TABEL PESANAN -->
+<!-- TABEL -->
 <div class="table-wrapper">
     <table>
         <thead>
@@ -222,156 +139,114 @@
                 <th>Pelanggan</th>
                 <th>Total</th>
                 <th>Metode</th>
-                <th>Bukti Transfer</th>
                 <th>Status Bayar</th>
-                <th>Pengiriman</th>
+                <th>Verifikasi</th>
+                <th>Pengiriman (Aksi)</th>
             </tr>
         </thead>
         <tbody>
             <?php if (!empty($orders)) : ?>
                 <?php foreach ($orders as $row) :
-                    $statusBayar  = $row['status_pembayaran'] ?? '';
-                    $metodeBayar  = strtolower($row['metode_pembayaran'] ?? '');
-                    $buktiFoto    = $row['bukti_transfer'] ?? null;
-                    $sudahBayar   = in_array($statusBayar, ['sudah_bayar', 'sudah_payar']);
-                    $orderId      = str_pad($row['id'], 3, '0', STR_PAD_LEFT);
+                    $statusBayar = $row['status_pembayaran'] ?? '';
+                    $isVaBank    = strtolower($row['metode_pembayaran'] ?? '') === 'va_bank';
+                    $sudahBayar  = ($statusBayar === 'sudah_bayar' || $statusBayar === 'sudah_payar');
+                    $dibatalkan  = ($statusBayar === 'dibatalkan');
+                    $adaBukti    = !empty($row['bukti_transfer']);
+
+                    // ✅ FIX: sebelumnya tombol Terima/Tolak HANYA muncul kalau
+                    // status_pembayaran persis sama dengan string
+                    // 'menunggu_verifikasi'. Kalau ada order lama/aneh yang
+                    // nilainya NULL, kosong, atau ejaan lain (padahal bukti
+                    // transfer sudah jelas-jelas ada), tombolnya tidak pernah
+                    // muncul dan admin harus bolak-balik klik "Rapikan Status
+                    // Lama". Sekarang jauh lebih simpel & tahan bug:
+                    // tampilkan Terima/Tolak selama ada bukti transfer DAN
+                    // belum berstatus sudah bayar / dibatalkan — apa pun
+                    // ejaan persis status_pembayaran-nya saat ini.
+                    $perluVerifikasi = $isVaBank && $adaBukti && !$sudahBayar && !$dibatalkan;
                 ?>
-                <tr>
-                    <!-- ID -->
-                    <td style="font-weight:700; color:var(--ink);">#ORD-<?= $orderId ?></td>
+                    <tr>
+                        <td style="font-weight:700; color:var(--ink);">#ORD-<?= str_pad($row['id'], 3, '0', STR_PAD_LEFT); ?></td>
 
-                    <!-- Pelanggan -->
-                    <td style="color:var(--ink-secondary);">
-                        <?= esc($row['username'] ?? 'Umum/Guest') ?>
-                    </td>
+                        <td style="color:var(--ink-secondary);"><?= esc($row['username'] ?? 'Umum/Guest'); ?></td>
 
-                    <!-- Total -->
-                    <td style="font-weight:800; color:var(--ink);">
-                        Rp <?= number_format($row['total_harga'], 0, ',', '.') ?>
-                    </td>
+                        <td style="font-weight:800; color:var(--ink);">Rp <?= number_format($row['total_harga'], 0, ',', '.'); ?></td>
 
-                    <!-- Metode -->
-                    <td style="text-transform:uppercase; font-weight:600; color:var(--ink-secondary); font-size:12.5px;">
-                        <?= esc($row['metode_pembayaran']) ?>
-                    </td>
+                        <td>
+                            <?php
+                                $metode = strtolower($row['metode_pembayaran']);
+                                $warnaMetode = ($metode === 'cod') ? '#facc15' : (($metode === 'va_bank') ? '#60a5fa' : 'var(--ink-secondary)');
+                            ?>
+                            <span style="text-transform:uppercase; font-weight:600; font-size:12.5px; color:<?= $warnaMetode ?>;"><?= $row['metode_pembayaran']; ?></span>
+                        </td>
 
-                    <!-- Bukti Transfer — hanya untuk va_bank -->
-                    <td>
-                        <?php if ($metodeBayar === 'va_bank') : ?>
-                            <?php if (!empty($buktiFoto)) : ?>
-                                <div class="bukti-wrap">
-                                    <!-- Thumbnail — klik untuk perbesar -->
-                                    <img src="<?= base_url('uploads/bukti_transfer/' . $buktiFoto) ?>"
-                                         class="bukti-thumb"
-                                         alt="Bukti #ORD-<?= $orderId ?>"
-                                         onclick="bukaModal(this.src, '#ORD-<?= $orderId ?>')"
-                                         title="Klik untuk perbesar">
-
-                                    <?php if (!$sudahBayar) : ?>
-                                        <!-- Belum diverifikasi — tampilkan tombol -->
-                                        <div style="display:flex; flex-direction:column; gap:5px;">
-                                            <span class="bukti-status menunggu">
-                                                <i class="fa-solid fa-clock" style="font-size:9px;"></i>
-                                                Menunggu
-                                            </span>
-                                            <!-- Tombol Terima -->
-                                            <a href="<?= base_url('admin/terima_pembayaran/' . $row['id']) ?>"
-                                               class="btn-terima"
-                                               onclick="return confirm('Terima pembayaran #ORD-<?= $orderId ?>?')">
-                                                <i class="fa-solid fa-circle-check"></i> Terima
-                                            </a>
-                                            <!-- Tombol Tolak -->
-                                            <a href="<?= base_url('admin/tolak_pembayaran/' . $row['id']) ?>"
-                                               class="btn-tolak"
-                                               onclick="return confirm('Tolak bukti pembayaran ini? Pelanggan harus upload ulang.')">
-                                                <i class="fa-solid fa-xmark"></i> Tolak
-                                            </a>
-                                        </div>
-                                    <?php else : ?>
-                                        <!-- Sudah diverifikasi -->
-                                        <span class="bukti-status diterima">
-                                            <i class="fa-solid fa-circle-check" style="font-size:9px;"></i>
-                                            Diterima
-                                        </span>
-                                    <?php endif; ?>
-                                </div>
+                        <td style="font-weight:700;">
+                            <?php if ($sudahBayar) : ?>
+                                <span style="color:#4ade80;">Sudah Bayar</span>
+                            <?php elseif ($dibatalkan) : ?>
+                                <span style="color:#f87171;">Dibatalkan</span>
+                            <?php elseif ($perluVerifikasi) : ?>
+                                <span style="color:#facc15;">Menunggu Verifikasi</span>
                             <?php else : ?>
-                                <!-- Belum upload bukti -->
-                                <span style="font-size:12px; color:var(--ink-muted); font-style:italic;">
-                                    Belum upload
-                                </span>
+                                <span style="color:#facc15;">Belum Bayar</span>
                             <?php endif; ?>
-                        <?php else : ?>
-                            <!-- COD / metode lain — tidak perlu bukti -->
-                            <span style="font-size:12px; color:var(--ink-muted);">—</span>
-                        <?php endif; ?>
-                    </td>
+                        </td>
 
-                    <!-- Status Bayar -->
-                    <td style="font-weight:700;">
-                        <?php if ($sudahBayar) : ?>
-                            <span style="color:#4ade80;">
-                                <i class="fa-solid fa-circle-check" style="font-size:10px;"></i>
-                                Sudah Bayar
-                            </span>
-                        <?php elseif ($statusBayar === 'dibatalkan') : ?>
-                            <span style="color:#f87171;">
-                                <i class="fa-solid fa-xmark" style="font-size:10px;"></i>
-                                Dibatalkan
-                            </span>
-                        <?php else : ?>
-                            <span style="color:#facc15;">
-                                <i class="fa-solid fa-clock" style="font-size:10px;"></i>
-                                Belum Bayar
-                            </span>
-                        <?php endif; ?>
-                    </td>
+                        <!-- Kolom Verifikasi bukti transfer -->
+                        <td>
+                            <?php if (!$isVaBank) : ?>
+                                <span style="color:var(--ink-muted); font-size:12px;">— (COD)</span>
+                            <?php elseif (!$adaBukti) : ?>
+                                <span style="color:var(--ink-muted); font-size:12px;">Belum upload</span>
+                            <?php else : ?>
+                                <div>
+                                    <a href="<?= base_url('uploads/bukti_transfer/' . esc($row['bukti_transfer'])) ?>"
+                                       target="_blank" class="bukti-link">
+                                        <i class="fa-solid fa-image"></i> Lihat Bukti
+                                    </a>
+                                </div>
 
-                    <!-- Status Pengiriman -->
-                    <td>
-                        <form action="<?= base_url('admin/update_status_pengiriman/' . $row['id']) ?>" method="POST">
-                            <?= csrf_field() ?>
-                            <select name="status_pengiriman"
-                                    onchange="this.form.submit()"
-                                    class="status-select <?= esc($row['status_pengiriman']) ?>">
-                                <option value="diproses" <?= $row['status_pengiriman'] === 'diproses' ? 'selected' : '' ?>>Diproses</option>
-                                <option value="dikirim"  <?= $row['status_pengiriman'] === 'dikirim'  ? 'selected' : '' ?>>Dikirim</option>
-                                <option value="sampai"   <?= $row['status_pengiriman'] === 'sampai'   ? 'selected' : '' ?>>Selesai</option>
-                            </select>
-                        </form>
-                    </td>
-                </tr>
+                                <?php if ($sudahBayar) : ?>
+                                    <span style="color:#4ade80; font-size:12px; font-weight:600;">
+                                        <i class="fa-solid fa-circle-check"></i> Terverifikasi
+                                    </span>
+                                <?php elseif ($perluVerifikasi) : ?>
+                                    <div class="verifikasi-group">
+                                        <a href="<?= base_url('admin/terima_pembayaran/' . $row['id']) ?>"
+                                           class="btn-verif terima"
+                                           onclick="return confirm('Konfirmasi pembayaran order #<?= $row['id'] ?> sebagai sudah lunas?')">
+                                            <i class="fa-solid fa-check"></i> Terima
+                                        </a>
+                                        <a href="<?= base_url('admin/tolak_pembayaran/' . $row['id']) ?>"
+                                           class="btn-verif tolak"
+                                           onclick="return confirm('Tolak bukti transfer order #<?= $row['id'] ?>? Pelanggan harus upload ulang.')">
+                                            <i class="fa-solid fa-xmark"></i> Tolak
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </td>
+
+                        <td>
+                            <form action="<?= base_url('admin/update_status_pengiriman/' . $row['id']); ?>" method="POST">
+                                <?= csrf_field(); ?>
+                                <select name="status_pengiriman" onchange="this.form.submit()"
+                                        class="status-select <?= esc($row['status_pengiriman']) ?>">
+                                    <option value="diproses" <?= $row['status_pengiriman'] === 'diproses' ? 'selected' : ''; ?>>Diproses</option>
+                                    <option value="dikirim" <?= $row['status_pengiriman'] === 'dikirim' ? 'selected' : ''; ?>>Dikirim</option>
+                                    <option value="sampai" <?= $row['status_pengiriman'] === 'sampai' ? 'selected' : ''; ?>>Selesai</option>
+                                </select>
+                            </form>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
             <?php else : ?>
                 <tr>
-                    <td colspan="7" class="empty-row">
-                        <i class="fa-solid fa-inbox" style="font-size:24px; display:block; margin-bottom:8px; color:var(--ink-muted);"></i>
-                        Belum ada data pesanan masuk ke sistem.
-                    </td>
+                    <td colspan="7" class="empty-row">Belum ada data pesanan masuk ke sistem.</td>
                 </tr>
             <?php endif; ?>
         </tbody>
     </table>
 </div>
-
-<script>
-    function bukaModal(src, label) {
-        document.getElementById('imgModalSrc').src  = src;
-        document.getElementById('imgModalLabel').textContent = 'Bukti Transfer ' + label;
-        document.getElementById('imgModal').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function tutupModal() {
-        document.getElementById('imgModal').classList.remove('active');
-        document.getElementById('imgModalSrc').src = '';
-        document.body.style.overflow = '';
-    }
-
-    // Tutup modal dengan tombol Escape
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') tutupModal();
-    });
-</script>
 
 <?= $this->endSection() ?>

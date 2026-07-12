@@ -20,10 +20,20 @@ class Pelanggan extends BaseController
 
     public function index()
     {
-        $model = new ProductModel();
+        $db = \Config\Database::connect();
+
+        // ✅ FIX: sebelumnya pakai ProductModel::findAll() tanpa join ke
+        // product_sizes, jadi halaman pelanggan tidak tahu stok produk
+        // (produk stok 0 tetap bisa ditambahkan ke keranjang / dibeli).
+        $products = $db->table('products')
+            ->select('products.*, SUM(product_sizes.stok) as total_stok')
+            ->join('product_sizes', 'product_sizes.product_id = products.id', 'left')
+            ->groupBy('products.id')
+            ->get()->getResultArray();
+
         $data = [
             'active'   => 'home',
-            'products' => $model->findAll()
+            'products' => $products,
         ];
         return view('pelanggan/dashboard', $data);
     }
@@ -531,19 +541,22 @@ class Pelanggan extends BaseController
            ->where('id', $id_order)
            ->update([
                'status_pengiriman' => 'selesai',
-               'status_pembayaran' => 'sudah_bayar'
+               'status_pembayaran' => 'Sudah Bayar'
            ]);
 
         return redirect()->to('/pelanggan/orders')
                          ->with('success', 'Pesanan selesai dan status pembayaran diperbarui!');
     }
+
     // Tampilkan halaman upload bukti
     public function upload_bukti($order_id)
     {
         $orderModel = new \App\Models\OrderModel();
         $order = $orderModel->find($order_id);
 
-        // Pastikan order milik user yang login
+        // ✅ FIX: session key yang benar adalah 'id' (lihat Auth::attemptLogin),
+        // bukan 'user_id' — sebelumnya selalu null sehingga order dianggap
+        // "tidak ditemukan" walau order itu memang milik user yang login.
         $user_id = session()->get('id');
         if (!$order || $order['user_id'] != $user_id) {
             return redirect()->to('pelanggan/orders')->with('error', 'Order tidak ditemukan.');
@@ -558,6 +571,7 @@ class Pelanggan extends BaseController
         $orderModel = new \App\Models\OrderModel();
         $order = $orderModel->find($order_id);
 
+        // ✅ FIX: sama seperti di atas, pakai 'id' bukan 'user_id'
         $user_id = session()->get('id');
         if (!$order || $order['user_id'] != $user_id) {
             return redirect()->to('pelanggan/orders');

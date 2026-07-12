@@ -12,6 +12,17 @@ class OrderModel extends Model
         'user_id',
         'total_harga',
         'status',
-        'bukti_transfer',   // ← tambahkan ini
+        'bukti_transfer',
+        'status_pembayaran',
+        'status_pengiriman',
+        'metode_pembayaran',
+        'alamat_pengiriman',
+        'ongkir',
+        'biaya_layanan',
+        'biaya_penanganan',
+        'tgl_pesan',
+        'rating',
+        'ulasan',
+        'balasan_admin',
     ];
 }

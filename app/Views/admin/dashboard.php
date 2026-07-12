@@ -482,7 +482,8 @@
         <div class="chart-card-header">
             <h3>Tren Penjualan</h3>
             <div class="chart-tabs">
-                <button class="chart-tab active" data-mode="30hari" type="button">30 Hari Terakhir</button>
+                <!-- ✅ DIUBAH atas permintaan: dari "30 Hari Terakhir" jadi "7 Hari Terakhir" -->
+                <button class="chart-tab active" data-mode="30hari" type="button">7 Hari Terakhir</button>
                 <button class="chart-tab" data-mode="bulanan" type="button">Per Bulan (<?= date('Y') ?>)</button>
             </div>
         </div>
@@ -605,6 +606,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // ============================================================
     // DATA SET — disiapkan dari PHP
+    // (✅ DIUBAH: nama variabel "dataset30Hari" dipertahankan agar
+    // konsisten dengan key controller, tapi isinya sekarang 7 titik
+    // data harian, bukan 30 - sesuai permintaan)
     // ============================================================
     const dataset30Hari = {
         labels: <?= $chart_30hari_labels; ?>,

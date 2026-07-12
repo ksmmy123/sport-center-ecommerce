@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <style>
     /* ============================================================
-       DASHBOARD — Dark Mode Content Styles
+       DASHBOARD — Marketplace Style (Dark Mode)
        Token warna mengacu ke :root di pelanggan_layout.php
        ============================================================ */
 
@@ -12,7 +12,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 32px;
+        margin-bottom: 20px;
         gap: 16px;
     }
     .welcome-greeting { font-size: 13px; color: var(--ink-secondary); margin-bottom: 4px; }
@@ -46,13 +46,27 @@
     }
     .search-box input::placeholder { color: var(--ink-muted); }
 
+    /* ── STICKY SEARCH BAR (mobile only) ── */
+    .mobile-search-sticky {
+        display: none;
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: var(--bg);
+        padding: 10px 0 12px;
+        margin: -16px -16px 12px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .mobile-search-sticky .search-box { width: 100%; }
+
     /* ── PROMO BANNER ── */
     .promo-banner {
         background: linear-gradient(135deg, #ea580c 0%, #c2410c 45%, #991b1b 100%);
         border-radius: var(--radius-xl);
         padding: 36px 44px;
         color: #fff;
-        margin-bottom: 40px;
+        margin-bottom: 24px;
         position: relative;
         overflow: hidden;
         box-shadow: 0 12px 40px rgba(249,115,22,0.22);
@@ -110,6 +124,42 @@
     }
     .promo-code:hover { background: rgba(255,255,255,0.22); }
 
+    /* ── KATEGORI CHIP (khas marketplace) ── */
+    .kategori-scroll {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 2px 2px 16px;
+        margin-bottom: 8px;
+        scrollbar-width: none;
+    }
+    .kategori-scroll::-webkit-scrollbar { display: none; }
+    .kategori-chip {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        color: var(--ink-secondary);
+        padding: 9px 18px;
+        border-radius: var(--radius-pill);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background var(--transition), color var(--transition), border-color var(--transition);
+        user-select: none;
+    }
+    .kategori-chip i { font-size: 12px; }
+    .kategori-chip:hover { border-color: rgba(249,115,22,0.4); color: var(--ink); }
+    .kategori-chip.active {
+        background: var(--brand);
+        border-color: var(--brand);
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(249,115,22,0.35);
+    }
+
     /* ── SECTION HEADER ── */
     .section-header {
         display: flex;
@@ -143,11 +193,12 @@
         box-shadow: var(--shadow-md);
         border-color: rgba(255,255,255,0.14);
     }
+    .product-card:active { transform: translateY(-1px) scale(0.99); }
 
     .product-img-wrap {
         position: relative;
         overflow: hidden;
-        height: 200px;
+        aspect-ratio: 1 / 1;
         background: var(--surface-raised);
     }
     .product-img-wrap img {
@@ -179,8 +230,37 @@
         display: flex; align-items: center; gap: 4px;
     }
 
+    /* ── STOK HABIS ── */
+    .product-card.habis .product-img-wrap img { filter: grayscale(1) brightness(0.55); }
+    .habis-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .habis-overlay span {
+        background: rgba(15,23,42,0.85);
+        border: 1px solid rgba(255,255,255,0.15);
+        color: #fff;
+        font-size: 11.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        padding: 5px 14px;
+        border-radius: var(--radius-pill);
+    }
+    .btn-add.is-disabled,
+    .btn-buy.is-disabled {
+        pointer-events: none;
+        opacity: 0.4;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
     .product-body {
-        padding: 14px 16px 16px;
+        padding: 12px 14px 14px;
         display: flex;
         flex-direction: column;
         flex: 1;
@@ -194,7 +274,7 @@
         letter-spacing: 0.8px;
     }
     .product-name {
-        font-size: 14.5px;
+        font-size: 13.5px;
         font-weight: 700;
         color: var(--ink);
         line-height: 1.35;
@@ -202,26 +282,38 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
+        min-height: 36px;
     }
 
-    .price-row { display: flex; flex-direction: column; gap: 1px; margin-bottom: 14px; margin-top: auto; }
-    .old-price  { font-size: 12px; color: var(--ink-muted); text-decoration: line-through; }
-    .new-price  { font-size: 18px; font-weight: 800; color: var(--brand); letter-spacing: -0.3px; }
-    .normal-price { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -0.3px; }
+    .price-row { display: flex; flex-direction: column; gap: 1px; margin-bottom: 6px; margin-top: auto; }
+    .old-price  { font-size: 11.5px; color: var(--ink-muted); text-decoration: line-through; }
+    .new-price  { font-size: 16px; font-weight: 800; color: var(--brand); letter-spacing: -0.3px; }
+    .normal-price { font-size: 16px; font-weight: 800; color: var(--ink); letter-spacing: -0.3px; }
+
+    /* Meta seperti marketplace: rating & lokasi (opsional, tampil jika data ada) */
+    .product-meta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        color: var(--ink-muted);
+        margin-bottom: 8px;
+    }
+    .product-meta .stars { color: #facc15; }
 
     .card-actions { display: flex; flex-direction: column; gap: 8px; }
     .card-actions-row { display: flex; gap: 8px; }
     .btn-detail {
         flex: 1;
-        font-size: 12.5px;
+        font-size: 12px;
         font-weight: 600;
         font-family: 'Outfit', sans-serif;
         text-align: center;
         text-decoration: none;
         color: var(--brand);
         border: 1.5px solid rgba(249,115,22,0.5);
-        padding: 9px 10px;
+        padding: 8px 10px;
         border-radius: var(--radius-md);
         transition: background var(--transition), color var(--transition), border-color var(--transition);
         display: flex; align-items: center; justify-content: center; gap: 6px;
@@ -232,17 +324,16 @@
         background: var(--surface-raised);
         color: var(--ink);
         border: 1.5px solid var(--border);
-        width: 38px; height: 38px;
+        width: 36px; height: 36px;
         border-radius: var(--radius-md);
         display: flex; align-items: center; justify-content: center;
         cursor: pointer;
         transition: background var(--transition), color var(--transition), transform var(--transition);
-        flex-shrink: 0; font-size: 14px;
+        flex-shrink: 0; font-size: 13px;
     }
     .btn-add:hover { background: var(--brand); color: #fff; border-color: var(--brand); transform: scale(1.07); }
     .btn-add:active { transform: scale(0.96); }
 
-    /* ✦ TAMBAHAN: Tombol Beli Sekarang — full width, baris kedua */
     .btn-buy {
         display: flex;
         align-items: center;
@@ -251,10 +342,10 @@
         background: var(--brand);
         color: #fff;
         text-decoration: none;
-        font-size: 12.5px;
+        font-size: 12px;
         font-weight: 700;
         font-family: 'Outfit', sans-serif;
-        padding: 9px 10px;
+        padding: 8px 10px;
         border-radius: var(--radius-md);
         border: none;
         cursor: pointer;
@@ -279,20 +370,68 @@
     .empty-state i { font-size: 48px; color: var(--ink-muted); margin-bottom: 16px; display: block; }
     .empty-state p { font-size: 15px; }
 
+    /* ── FLOATING CART BUTTON (khas app marketplace mobile) ── */
+    .fab-cart {
+        display: none;
+        position: fixed;
+        right: 16px;
+        bottom: 86px;
+        width: 54px; height: 54px;
+        border-radius: 50%;
+        background: var(--brand);
+        color: #fff;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        text-decoration: none;
+        box-shadow: 0 8px 24px rgba(249,115,22,0.45);
+        z-index: 90;
+        transition: transform var(--transition);
+    }
+    .fab-cart:active { transform: scale(0.92); }
+    .fab-cart .fab-badge {
+        position: absolute;
+        top: -4px; right: -4px;
+        background: #ef4444;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 800;
+        min-width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        display: flex; align-items: center; justify-content: center;
+        padding: 0 4px;
+        border: 2px solid var(--bg);
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-        .dash-header { flex-direction: column; align-items: flex-start; gap: 14px; }
-        .search-box { width: 100%; }
-        .promo-banner { padding: 28px 24px; }
-        .promo-banner h2 { font-size: 22px; }
+        .dash-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+        .dash-header .search-box { display: none; } /* diganti sticky search di bawah */
+        .mobile-search-sticky { display: block; }
+        .promo-banner { padding: 24px 20px; border-radius: var(--radius-lg); margin-bottom: 18px; }
+        .promo-banner h2 { font-size: 20px; }
+        .promo-banner p { font-size: 13px; }
+        .kategori-scroll { margin: 0 -16px 16px; padding-left: 16px; padding-right: 16px; }
         .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .product-img-wrap { height: 140px; }
+        .product-body { padding: 10px 11px 12px; }
+        .product-name { font-size: 12.5px; min-height: 32px; }
+        .new-price, .normal-price { font-size: 14.5px; }
         .btn-detail span { display: none; }
+        .fab-cart { display: flex; }
     }
     @media (max-width: 400px) {
-        .product-grid { grid-template-columns: 1fr; }
+        .product-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
     }
 </style>
+
+<!-- SEARCH STICKY (khusus mobile) -->
+<div class="mobile-search-sticky">
+    <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInputMobile" placeholder="Cari produk sport favoritmu..." autocomplete="off">
+    </div>
+</div>
 
 <!-- HEADER -->
 <div class="dash-header">
@@ -322,6 +461,22 @@
     </div>
 </div>
 
+<!-- KATEGORI CHIP -->
+<div class="kategori-scroll" id="kategoriScroll">
+    <div class="kategori-chip active" data-kategori="semua">
+        <i class="fa-solid fa-border-all"></i> Semua
+    </div>
+    <div class="kategori-chip" data-kategori="1">
+        <i class="fa-solid fa-socks"></i> Celana Pendek
+    </div>
+    <div class="kategori-chip" data-kategori="2">
+        <i class="fa-solid fa-shirt"></i> Celana Panjang
+    </div>
+    <div class="kategori-chip" data-kategori="diskon">
+        <i class="fa-solid fa-tags"></i> Lagi Diskon
+    </div>
+</div>
+
 <!-- SECTION HEADER -->
 <div class="section-header">
     <h3 class="section-title">Produk Terbaru</h3>
@@ -342,14 +497,23 @@
             if ($p['category_id'] == 1)     $kategori = 'Celana Sport Pendek';
             elseif ($p['category_id'] == 2) $kategori = 'Celana Training Panjang';
             else                            $kategori = 'Produk Lainnya';
+            // total_stok hanya ada jika query controller sudah JOIN product_sizes.
+            // Jika belum ada datanya, anggap tersedia (tidak menganggu tampilan lama).
+            $stokHabis = isset($p['total_stok']) && (int) $p['total_stok'] <= 0;
         ?>
-        <div class="product-card" data-name="<?= strtolower(esc($p['nama_produk'])) ?>">
+        <div class="product-card<?= $stokHabis ? ' habis' : '' ?>"
+             data-name="<?= strtolower(esc($p['nama_produk'])) ?>"
+             data-category="<?= (int) $p['category_id'] ?>"
+             data-diskon="<?= $hasDiskon ? 1 : 0 ?>">
 
             <div class="product-img-wrap">
-                <?php if ($hasDiskon) : ?>
+                <?php if ($hasDiskon && !$stokHabis) : ?>
                     <div class="discount-badge">
                         <i class="fa-solid fa-tag"></i><?= $p['diskon'] ?>%
                     </div>
+                <?php endif; ?>
+                <?php if ($stokHabis) : ?>
+                    <div class="habis-overlay"><span>Stok Habis</span></div>
                 <?php endif; ?>
                 <a href="<?= base_url('pelanggan/detail/' . $p['id']) ?>" tabindex="-1">
                     <img src="<?= base_url('images/' . $p['gambar']) ?>"
@@ -363,6 +527,15 @@
                    style="text-decoration:none; color:inherit;">
                     <span class="product-name"><?= esc($p['nama_produk']) ?></span>
                 </a>
+
+                <?php if (isset($p['rating']) && $p['rating'] > 0) : ?>
+                <div class="product-meta">
+                    <span class="stars"><i class="fa-solid fa-star"></i> <?= number_format($p['rating'], 1) ?></span>
+                    <?php if (isset($p['total_terjual'])): ?>
+                        <span>· <?= (int)$p['total_terjual'] ?> terjual</span>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
 
                 <div class="price-row">
                     <?php if ($hasDiskon) : ?>
@@ -384,20 +557,19 @@
                               style="margin:0;">
                             <?= csrf_field() ?>
                             <input type="hidden" name="product_id" value="<?= $p['id'] ?>">
-                            <button type="submit" class="btn-add" title="Tambah ke keranjang">
+                            <button type="submit" class="btn-add<?= $stokHabis ? ' is-disabled' : '' ?>"
+                                    title="Tambah ke keranjang" <?= $stokHabis ? 'disabled' : '' ?>>
                                 <i class="fa-solid fa-plus"></i>
                             </button>
                         </form>
                     </div>
 
-                    <!-- ✦ TAMBAHAN: Beli Sekarang — arahkan ke detail untuk pilih ukuran
-                         sebelum lanjut ke ringkasan pesanan (sesuai flow checkout) -->
-                    <a href="<?= session()->get('isLoggedIn')
+                    <a href="<?= $stokHabis ? 'javascript:void(0)' : (session()->get('isLoggedIn')
                             ? base_url('pelanggan/detail/' . $p['id'])
-                            : base_url('auth/register') ?>"
-                       class="btn-buy">
+                            : base_url('auth/register')) ?>"
+                       class="btn-buy<?= $stokHabis ? ' is-disabled' : '' ?>">
                         <i class="fa-solid fa-bolt"></i>
-                        Beli Sekarang
+                        <?= $stokHabis ? 'Stok Habis' : 'Beli Sekarang' ?>
                     </a>
                 </div>
             </div>
@@ -406,32 +578,77 @@
     <?php endif; ?>
 </div>
 
+<!-- FLOATING CART BUTTON (mobile) -->
+<a href="<?= base_url('pelanggan/keranjang') ?>" class="fab-cart" title="Keranjang">
+    <i class="fa-solid fa-bag-shopping"></i>
+</a>
+
 <script>
-    /* ── Live search ── */
-    const searchInput  = document.getElementById('searchInput');
     const productGrid  = document.getElementById('productGrid');
     const productCount = document.getElementById('productCount');
     const allCards     = [...document.querySelectorAll('.product-card')];
+    const searchInput       = document.getElementById('searchInput');
+    const searchInputMobile = document.getElementById('searchInputMobile');
+    const kategoriChips     = document.querySelectorAll('.kategori-chip');
 
-    searchInput.addEventListener('input', () => {
-        const q = searchInput.value.toLowerCase().trim();
+    let currentKategori = 'semua';
+    let currentQuery    = '';
+
+    function applyFilter() {
+        const q = currentQuery.toLowerCase().trim();
         let visible = 0;
+
         allCards.forEach(card => {
-            const match = card.dataset.name.includes(q);
+            const matchName = card.dataset.name.includes(q);
+
+            let matchKategori = true;
+            if (currentKategori === 'diskon') {
+                matchKategori = card.dataset.diskon === '1';
+            } else if (currentKategori !== 'semua') {
+                matchKategori = card.dataset.category === currentKategori;
+            }
+
+            const match = matchName && matchKategori;
             card.style.display = match ? '' : 'none';
             if (match) visible++;
         });
+
         productCount.textContent = visible + ' produk';
+
         let emptyEl = productGrid.querySelector('.search-empty');
-        if (visible === 0 && q !== '') {
+        if (visible === 0) {
             if (!emptyEl) {
                 emptyEl = document.createElement('div');
                 emptyEl.className = 'empty-state search-empty';
                 emptyEl.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>
-                    <p>Tidak ada produk untuk "<strong>${q}</strong>"</p>`;
+                    <p>Produk tidak ditemukan${q ? ' untuk "<strong>' + q + '</strong>"' : ''}.</p>`;
                 productGrid.appendChild(emptyEl);
             }
-        } else { emptyEl && emptyEl.remove(); }
+        } else {
+            emptyEl && emptyEl.remove();
+        }
+    }
+
+    /* ── Live search: dua input (desktop & mobile) saling sinkron ── */
+    function bindSearch(input) {
+        input.addEventListener('input', () => {
+            currentQuery = input.value;
+            if (searchInput && input !== searchInput) searchInput.value = input.value;
+            if (searchInputMobile && input !== searchInputMobile) searchInputMobile.value = input.value;
+            applyFilter();
+        });
+    }
+    if (searchInput) bindSearch(searchInput);
+    if (searchInputMobile) bindSearch(searchInputMobile);
+
+    /* ── Filter kategori ── */
+    kategoriChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            kategoriChips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            currentKategori = chip.dataset.kategori;
+            applyFilter();
+        });
     });
 
     /* ── Copy promo code ── */
