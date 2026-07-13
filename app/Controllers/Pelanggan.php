@@ -302,6 +302,19 @@ class Pelanggan extends BaseController
     }
 
     // ✦ DIPERBARUI: validasi batas 3 unit di checkout
+    // ✅ FIX BARU: order_items sekarang ikut menyimpan product_size_id,
+    // nama_produk, dan harga_satuan (snapshot) — sebelumnya kolom ini
+    // selalu NULL/0 karena tidak pernah disertakan saat insert.
+    //
+    // - Jalur "BELI LANGSUNG" (dari halaman detail produk yang sudah
+    //   memilih ukuran lewat $id_size): sekarang product_size_id, nama
+    //   produk, dan harga satuan ikut tersimpan persis sesuai ukuran
+    //   yang dipilih pelanggan.
+    // - Jalur "DARI KERANJANG": nama_produk & harga_satuan sekarang ikut
+    //   tersimpan. product_size_id TETAP NULL untuk jalur ini karena
+    //   tabel `cart` sendiri belum menyimpan ukuran yang dipilih saat
+    //   "Tambah ke Keranjang" (ini perbaikan terpisah yang belum
+    //   dikerjakan — beri tahu saya kalau mau saya lanjutkan).
     public function proses_pesanan()
     {
         $userId = session()->get('id');
@@ -352,7 +365,9 @@ class Pelanggan extends BaseController
                 // DARI KERANJANG — multi item
                 foreach ($id_keranjang_arr as $idk) {
                     $cartItem = $db->table('cart')
-                        ->select('cart.*, products.harga, products.diskon')
+                        // ✅ FIX: tambah products.nama_produk supaya bisa
+                        // disimpan sebagai snapshot di order_items
+                        ->select('cart.*, products.nama_produk, products.harga, products.diskon')
                         ->join('products', 'products.id = cart.product_id')
                         ->where('cart.id', (int)$idk)
                         ->get()->getRowArray();
@@ -370,10 +385,15 @@ class Pelanggan extends BaseController
                     $subtotal    = $harga_final * $cartItem['jumlah'];
 
                     $db->table('order_items')->insert([
-                        'order_id'   => $orderId,
-                        'product_id' => $cartItem['product_id'],
-                        'jumlah'     => $cartItem['jumlah'],
-                        'subtotal'   => $subtotal,
+                        'order_id'        => $orderId,
+                        'product_id'      => $cartItem['product_id'],
+                        // ⬇️ product_size_id TETAP NULL di jalur ini - tabel
+                        // cart belum menyimpan ukuran (perbaikan terpisah)
+                        'product_size_id' => null,
+                        'nama_produk'     => $cartItem['nama_produk'],
+                        'harga_satuan'    => (int) round($harga_final),
+                        'jumlah'          => $cartItem['jumlah'],
+                        'subtotal'        => $subtotal,
                     ]);
 
                     $db->table('cart')->delete(['id' => (int)$idk]);
@@ -393,10 +413,15 @@ class Pelanggan extends BaseController
                 $harga_final = $produk['harga'] - ($produk['harga'] * $disc_persen / 100);
 
                 $db->table('order_items')->insert([
-                    'order_id'   => $orderId,
-                    'product_id' => $id_produk,
-                    'jumlah'     => 1,
-                    'subtotal'   => $harga_final,
+                    'order_id'        => $orderId,
+                    'product_id'      => $id_produk,
+                    // ✅ FIX: sekarang ikut disimpan - sebelumnya $id_size
+                    // hanya dipakai untuk mengurangi stok lalu dibuang
+                    'product_size_id' => $id_size,
+                    'nama_produk'     => $produk['nama_produk'],
+                    'harga_satuan'    => (int) round($harga_final),
+                    'jumlah'          => 1,
+                    'subtotal'        => $harga_final,
                 ]);
 
                 $itemSize = $db->table('product_sizes')->where('id', $id_size)->get()->getRow();
