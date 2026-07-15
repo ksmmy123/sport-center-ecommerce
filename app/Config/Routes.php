@@ -5,7 +5,10 @@ use CodeIgniter\Router\RouteCollection;
 /** @var RouteCollection $routes */
 
 // 1. Halaman Awal & Auth
-$routes->get('/', 'Pelanggan::index');
+// ✅ DIUBAH: sebelumnya '/' langsung ke Pelanggan::index() (dashboard
+// belanja). Sekarang '/' jadi landing page publik (Home::index()),
+// dashboard belanja tetap bisa diakses lewat 'pelanggan/dashboard' atau 'home'.
+$routes->get('/', 'Home::index');
 $routes->get('login', 'Auth::index'); // TAMBAHKAN INI agar rute 'login' ditemukan
 $routes->get('home', 'Pelanggan::index'); 
 $routes->get('auth', 'Auth::index');

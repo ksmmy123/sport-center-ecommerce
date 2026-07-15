@@ -135,10 +135,6 @@ class Admin extends BaseController
         }
     }
 
-    // ============================================================
-
-    // ============================================================
-    // ============================================================
     // 8. MONITORING STOK — Habis (=0) & Menipis (<=3)  (UTS E-Business)
     // ============================================================
     $stokHabis = $db->table('product_sizes')
@@ -369,16 +365,8 @@ class Admin extends BaseController
 
         // 1) Rapikan typo ejaan lama: 'sudah_payar' -> 'sudah_bayar'
         $fixTypo = $db->table('orders')
-                      ->where('status_pembayaran', 'sudah_payar')
+                      ->where('status_pembayaran', 'sudah_bayar')
                       ->update(['status_pembayaran' => 'sudah_bayar']);
-
-        // ✅ BARU: 2) Perbaiki order yang "nyangkut" — bukti transfer SUDAH
-        // ada, tapi status_pembayaran masih 'belum_bayar'. Ini terjadi pada
-        // order yang di-upload SEBELUM fix OrderModel::$allowedFields
-        // (dulu 'status_pembayaran' dibuang diam-diam saat update(),
-        // jadi cuma bukti_transfer yang tersimpan, status tidak ikut
-        // berubah ke 'menunggu_verifikasi'). Tanpa ini, order lama seperti
-        // itu tidak akan pernah dapat tombol Terima/Tolak.
         $fixNyangkut = $db->table('orders')
                           ->where('status_pembayaran', 'belum_bayar')
                           ->where('bukti_transfer IS NOT NULL')
@@ -590,35 +578,12 @@ public function transaksi()
     // Kirim $data ke view
     return view('admin/pengaturan', $data);
 }
-
-    // ✅ BARU: sebelumnya form di pengaturan.php submit ke rute ini tapi
-    // rutenya belum terdaftar dan method-nya tidak ada -> selalu 404.
-    //
-    // CATATAN JUJUR: saat ini alamat toko masih HARDCODE di properti
-    // $alamat_toko / di dalam pengaturan() di atas, belum ada tabel
-    // 'store_settings' di database. Jadi method ini BELUM benar-benar
-    // menyimpan perubahan secara permanen ke database — ini hanya
-    // menghentikan 404 dan memberi pesan yang jujur ke admin.
-    //
-    // Kalau kamu mau perubahan toko (nama, alamat, link maps) benar-benar
-    // tersimpan permanen, kabari saya — saya buatkan migrasi tabel
-    // 'store_settings' + query simpan/ambil datanya di sini.
     public function simpan_pengaturan()
     {
-        // TODO: ganti dengan INSERT/UPDATE ke tabel store_settings jika sudah ada.
-        // $nama_toko  = $this->request->getPost('nama_toko');
-        // $alamat     = $this->request->getPost('alamat_gudang');
-        // $maps_link  = $this->request->getPost('maps_link');
 
         return redirect()->to(base_url('admin/pengaturan'))
                          ->with('error', 'Pengaturan toko belum tersambung ke database (masih hardcode di kode). Hubungi developer untuk mengaktifkan penyimpanan permanen.');
     }
-
-    // ✅ FIX: rute admin/promosi sudah ada tapi method & view-nya belum
-    // dibuat sama sekali -> 404/error "View not found". Daripada bikin
-    // view baru, method ini langsung redirect ke dashboard dengan pesan
-    // info, karena fitur promo/voucher butuh tabel baru (kode promo,
-    // jenis diskon, tanggal berlaku, dsb.) yang belum ada di database ini.
     public function promosi()
     {
         return redirect()->to(base_url('admin/dashboard'))

@@ -117,23 +117,6 @@
                 <textarea name="alamat_gudang" class="form-control" placeholder="Jalan, Kecamatan, Kota, Provinsi"><?= esc(($alamat_admin['jalan'] ?? '') . ', ' . ($alamat_admin['kecamatan'] ?? '') . ', ' . ($alamat_admin['kota'] ?? '')); ?></textarea>
             </div>
 
-            <div class="form-group" style="margin-bottom: 24px;">
-                <label class="form-label">Link Embed Google Maps</label>
-                <input type="text" name="maps_link" class="form-control"
-                       value="<?= esc($alamat_admin['maps_link'] ?? ''); ?>" placeholder="https://www.google.com/maps/embed?pb=...">
-
-                <?php if (!empty($alamat_admin['maps_link'])): ?>
-                    <div class="map-frame">
-                        <iframe src="<?= esc($alamat_admin['maps_link'], 'attr'); ?>" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                <?php else : ?>
-                    <div class="map-placeholder">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                        <span>Belum ada link peta. Tempel link embed Google Maps di atas untuk menampilkan pratinjau lokasi toko.</span>
-                    </div>
-                <?php endif; ?>
-            </div>
-
             <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
                 <i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan
             </button>

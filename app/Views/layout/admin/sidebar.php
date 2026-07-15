@@ -167,6 +167,21 @@
     }
 
     /* ============================================================
+       LIHAT TOKO (link ke landing page / tampilan pelanggan)
+       ============================================================ */
+    .nav-link.lihat-toko {
+        color: #60a5fa;
+    }
+    .nav-link.lihat-toko .nav-icon-wrap {
+        color: #60a5fa;
+        background: rgba(59,130,246,0.12);
+    }
+    .nav-link.lihat-toko:hover {
+        background: rgba(59,130,246,0.12);
+        color: #93c5fd;
+    }
+
+    /* ============================================================
        LOGOUT SECTION
        ============================================================ */
     .sidebar-logout {
@@ -290,6 +305,15 @@
        class="nav-link <?= (uri_string() == 'admin/pengaturan') ? 'active' : '' ?>">
         <span class="nav-icon-wrap"><i class="fas fa-sliders-h"></i></span>
         Pengaturan
+    </a>
+
+    <!-- ✅ BARU: Lihat Toko — buka landing page publik di tab baru, biar
+         admin gampang cek tampilan yang dilihat pelanggan/pengunjung. -->
+    <div class="sidebar-divider"></div>
+    <a href="<?= base_url('/') ?>" target="_blank" class="nav-link lihat-toko">
+        <span class="nav-icon-wrap"><i class="fas fa-store"></i></span>
+        Lihat Toko
+        <i class="fas fa-arrow-up-right-from-square" style="font-size:10px; margin-left:auto; opacity:0.6;"></i>
     </a>
 
     <!-- Logout -->

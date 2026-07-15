@@ -538,7 +538,10 @@
 
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
-        <a href="<?= base_url('pelanggan/dashboard') ?>" class="sidebar-logo">
+        <!-- ✅ DIUBAH: sebelumnya logo mengarah ke pelanggan/dashboard.
+             Sekarang mengarah ke landing page ('/') — pola umum "klik logo
+             = kembali ke beranda toko", bukan langsung ke dashboard belanja. -->
+        <a href="<?= base_url('/') ?>" class="sidebar-logo">
             <div class="sidebar-logo-badge">S</div>
             <span class="sidebar-logo-text">SPORT.</span>
         </a>
