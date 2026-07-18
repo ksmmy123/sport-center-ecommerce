@@ -22,18 +22,47 @@ class Pelanggan extends BaseController
     {
         $db = \Config\Database::connect();
 
+        // ✅ BARU: filter kategori dari query string (?kategori=<id>),
+        // dipakai oleh link kategori di landing page & chip filter di
+        // dashboard supaya menampilkan hanya produk kategori itu.
+        $idKategori = $this->request->getGet('kategori');
+
         // ✅ FIX: sebelumnya pakai ProductModel::findAll() tanpa join ke
         // product_sizes, jadi halaman pelanggan tidak tahu stok produk
         // (produk stok 0 tetap bisa ditambahkan ke keranjang / dibeli).
-        $products = $db->table('products')
-            ->select('products.*, SUM(product_sizes.stok) as total_stok')
+        // ✅ FIX BARU: tambah JOIN ke `categories` supaya nama kategori
+        // produk diambil ASLI dari database, bukan ditebak lewat
+        // if ($category_id == 1) di view (yang sebelumnya bikin salah
+        // kalau ID kategori di database ternyata bukan 1/2).
+        $builder = $db->table('products')
+            ->select('products.*, categories.nama_kategori, SUM(product_sizes.stok) as total_stok')
             ->join('product_sizes', 'product_sizes.product_id = products.id', 'left')
-            ->groupBy('products.id')
-            ->get()->getResultArray();
+            ->join('categories', 'categories.id = products.category_id', 'left')
+            ->groupBy('products.id');
+
+        if (!empty($idKategori)) {
+            $builder->where('products.category_id', (int) $idKategori);
+        }
+
+        $products = $builder->get()->getResultArray();
+
+        // Nama kategori aktif (untuk judul halaman / info filter di view)
+        $kategoriAktif = null;
+        if (!empty($idKategori)) {
+            $kategoriAktif = $db->table('categories')->where('id', (int) $idKategori)->get()->getRowArray();
+        }
+
+        // ✅ BARU: daftar SEMUA kategori asli dari database, dipakai untuk
+        // membangun chip filter di dashboard.php (sebelumnya chip
+        // di-hardcode data-kategori="1" dan "2" yang ternyata tidak
+        // cocok dengan ID asli di tabel categories).
+        $kategori_list = $db->table('categories')->get()->getResultArray();
 
         $data = [
-            'active'   => 'home',
-            'products' => $products,
+            'active'         => 'home',
+            'products'       => $products,
+            'kategori_aktif' => $kategoriAktif,
+            'kategori_list'  => $kategori_list,
         ];
         return view('pelanggan/dashboard', $data);
     }

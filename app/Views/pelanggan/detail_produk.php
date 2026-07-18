@@ -45,6 +45,24 @@
         display: flex; align-items: center; gap: 5px;
     }
 
+    /* ✦ BARU: badge status stok keseluruhan di galeri */
+    .detail-stock-badge {
+        position: absolute;
+        top: 14px; left: 14px;
+        background: rgba(15,23,42,0.85);
+        color: #f87171;
+        padding: 4px 12px;
+        border-radius: var(--radius-pill);
+        font-size: 12px; font-weight: 700;
+        z-index: 2;
+        border: 1px solid rgba(239,68,68,0.3);
+        display: flex; align-items: center; gap: 5px;
+        backdrop-filter: blur(4px);
+    }
+    /* Jika ada diskon DAN produk habis, badge diskon tetap di kiri,
+       badge stok geser sedikit ke bawah supaya tidak tumpuk */
+    .detail-discount-badge + .detail-stock-badge { top: 50px; }
+
     .btn-back {
         position: absolute;
         top: 14px; right: 14px;
@@ -131,10 +149,19 @@
     .size-guide-link { font-size: 12px; color: var(--brand); text-decoration: none; font-weight: 500; }
     .size-guide-link:hover { text-decoration: underline; }
 
-    .size-options { display: flex; gap: 8px; flex-wrap: wrap; }
+    .size-options { display: flex; gap: 10px; flex-wrap: wrap; }
 
-    .size-label { cursor: pointer; }
+    /* ✦ DIUBAH: size-label sekarang wrapper kolom (chip + info stok di bawahnya) */
+    .size-label {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+    .size-label.is-disabled { cursor: not-allowed; }
     .size-label input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+
     .size-chip {
         display: flex; align-items: center; justify-content: center;
         min-width: 52px; height: 44px; padding: 0 14px;
@@ -144,10 +171,11 @@
         color: var(--ink-secondary);
         background: var(--surface-raised);
         transition: border-color var(--transition), color var(--transition),
-                    background var(--transition), transform var(--transition);
+                    background var(--transition), transform var(--transition), opacity var(--transition);
         user-select: none;
+        position: relative;
     }
-    .size-chip:hover {
+    .size-label:not(.is-disabled):hover .size-chip {
         border-color: var(--brand);
         color: var(--brand);
         background: var(--brand-subtle);
@@ -160,12 +188,50 @@
         box-shadow: 0 4px 12px rgba(249,115,22,0.35);
     }
 
+    /* Chip untuk ukuran yang stoknya habis */
+    .size-chip.chip-habis {
+        opacity: 0.4;
+        text-decoration: line-through;
+        background: var(--surface-raised);
+        border-color: var(--border-light);
+        color: var(--ink-muted);
+    }
+    .size-label.is-disabled:hover .size-chip.chip-habis {
+        border-color: var(--border-light);
+        color: var(--ink-muted);
+        background: var(--surface-raised);
+    }
+
+    /* ✦ BARU: label kecil info stok di bawah tiap chip ukuran */
+    .size-stock-info {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+    }
+    .size-stock-info.aman    { color: #4ade80; }
+    .size-stock-info.menipis { color: #facc15; }
+    .size-stock-info.habis   { color: #f87171; }
+
     .size-error {
         display: none;
         align-items: center; gap: 6px;
         font-size: 12.5px; color: #f87171; font-weight: 500;
     }
     .size-error.show { display: flex; }
+
+    /* Ringkasan stok ukuran terpilih */
+    .size-selected-info {
+        display: none;
+        align-items: center; gap: 8px;
+        font-size: 12.5px;
+        font-weight: 600;
+        padding: 9px 14px;
+        border-radius: var(--radius-md);
+        width: fit-content;
+    }
+    .size-selected-info.show { display: flex; }
+    .size-selected-info.aman    { background: rgba(34,197,94,0.1);  color: #4ade80; border: 1px solid rgba(74,222,128,0.2); }
+    .size-selected-info.menipis { background: rgba(234,179,8,0.1);  color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
 
     /* ── DESKRIPSI ── */
     .desc-section { display: flex; flex-direction: column; gap: 10px; }
@@ -230,21 +296,30 @@
     }
     .spec-val.muted { color: var(--ink-muted); font-weight: 400; font-style: italic; }
 
-    /* Chip ukuran kecil di dalam spec-val */
+    /* Chip ukuran + stok kecil di dalam spec-val */
     .spec-size-chip {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        min-width: 28px;
-        padding: 2px 8px;
+        gap: 5px;
+        padding: 3px 10px;
         border: 1px solid var(--border);
         border-radius: var(--radius-sm);
         font-size: 11.5px;
         font-weight: 700;
         color: var(--ink-secondary);
         background: var(--surface);
-        margin-right: 4px;
+        margin-right: 6px;
+        margin-bottom: 6px;
     }
+    .spec-size-chip .dot {
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+    .spec-size-chip .dot.aman    { background: #4ade80; }
+    .spec-size-chip .dot.menipis { background: #facc15; }
+    .spec-size-chip .dot.habis   { background: #f87171; }
+    .spec-size-chip.habis { opacity: 0.55; text-decoration: line-through; }
 
     /* ── ACTIONS ── */
     .action-sticky {
@@ -278,6 +353,12 @@
         box-shadow: 0 8px 24px rgba(249,115,22,0.40);
     }
     .btn-buy-now:active { transform: translateY(0); }
+    .btn-buy-now:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        box-shadow: none;
+        transform: none;
+    }
 
     .btn-keranjang {
         display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -293,6 +374,24 @@
         text-decoration: none; white-space: nowrap;
     }
     .btn-keranjang:hover { background: var(--surface-high); border-color: rgba(255,255,255,0.2); }
+    .btn-keranjang:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+
+    /* Notice produk habis total (semua ukuran stok 0) */
+    .out-of-stock-notice {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(239,68,68,0.1);
+        border: 1px solid rgba(239,68,68,0.25);
+        color: #f87171;
+        padding: 12px 16px;
+        border-radius: var(--radius-md);
+        font-size: 13px;
+        font-weight: 600;
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -329,10 +428,24 @@
             <a href="javascript:history.back()" class="btn-back" title="Kembali">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
-            <?php if (isset($produk['diskon']) && $produk['diskon'] > 0) : ?>
+            <?php
+                // ✦ BARU: hitung total stok gabungan semua ukuran untuk badge & notice
+                $totalStokProduk = 0;
+                foreach ($ukuran as $u) {
+                    $totalStokProduk += (int) ($u['stok'] ?? 0);
+                }
+                $produkHabisTotal = ($totalStokProduk <= 0);
+            ?>
+            <?php if (isset($produk['diskon']) && $produk['diskon'] > 0 && !$produkHabisTotal) : ?>
                 <div class="detail-discount-badge">
                     <i class="fa-solid fa-tag"></i>
                     Hemat <?= $produk['diskon'] ?>%
+                </div>
+            <?php endif; ?>
+            <?php if ($produkHabisTotal) : ?>
+                <div class="detail-stock-badge">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    Stok Habis
                 </div>
             <?php endif; ?>
             <img src="<?= base_url('images/' . $produk['gambar']) ?>"
@@ -367,22 +480,47 @@
             <?php endif; ?>
         </div>
 
+        <?php if ($produkHabisTotal) : ?>
+            <div class="out-of-stock-notice">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Semua ukuran produk ini sedang habis stok. Silakan cek kembali di lain waktu.
+            </div>
+        <?php endif; ?>
+
         <div class="size-section">
             <div class="size-section-label">
                 <span>Pilih Ukuran</span>
                 <a href="#" class="size-guide-link">Panduan Ukuran →</a>
             </div>
             <div class="size-options" id="sizeOptions">
-                <?php foreach ($ukuran as $u) : ?>
-                    <label class="size-label">
-                        <input type="radio" name="selected_size" value="<?= $u['id'] ?>" id="size<?= $u['id'] ?>">
-                        <span class="size-chip"><?= esc($u['ukuran']) ?></span>
+                <?php foreach ($ukuran as $u) :
+                    $stokUkuran = (int) ($u['stok'] ?? 0);
+                    $habis      = ($stokUkuran <= 0);
+                    if ($habis) {
+                        $stokClass = 'habis'; $stokText = 'Habis';
+                    } elseif ($stokUkuran <= 5) {
+                        $stokClass = 'menipis'; $stokText = "Sisa {$stokUkuran}";
+                    } else {
+                        $stokClass = 'aman'; $stokText = "Stok {$stokUkuran}";
+                    }
+                ?>
+                    <label class="size-label <?= $habis ? 'is-disabled' : '' ?>">
+                        <input type="radio" name="selected_size" value="<?= $u['id'] ?>" id="size<?= $u['id'] ?>"
+                               data-stok="<?= $stokUkuran ?>"
+                               data-ukuran="<?= esc($u['ukuran'], 'attr') ?>"
+                               <?= $habis ? 'disabled' : '' ?>>
+                        <span class="size-chip <?= $habis ? 'chip-habis' : '' ?>"><?= esc($u['ukuran']) ?></span>
+                        <span class="size-stock-info <?= $stokClass ?>"><?= esc($stokText) ?></span>
                     </label>
                 <?php endforeach; ?>
             </div>
             <div class="size-error" id="sizeError">
                 <i class="fa-solid fa-circle-exclamation"></i>
                 Silakan pilih ukuran terlebih dahulu.
+            </div>
+            <div class="size-selected-info" id="sizeSelectedInfo">
+                <i class="fa-solid fa-box"></i>
+                <span id="sizeSelectedText"></span>
             </div>
         </div>
 
@@ -409,11 +547,23 @@
 
                 <div class="spec-row">
                     <span class="spec-icon"><i class="fa-solid fa-ruler"></i></span>
-                    <span class="spec-key">Ukuran</span>
+                    <span class="spec-key">Ukuran &amp; Stok</span>
                     <span class="spec-val">
                         <?php if (!empty($ukuran)) : ?>
-                            <?php foreach ($ukuran as $u) : ?>
-                                <span class="spec-size-chip"><?= esc($u['ukuran']) ?></span>
+                            <?php foreach ($ukuran as $u) :
+                                $sUk = (int) ($u['stok'] ?? 0);
+                                if ($sUk <= 0) {
+                                    $dotClass = 'habis'; $chipClass = 'habis';
+                                } elseif ($sUk <= 5) {
+                                    $dotClass = 'menipis'; $chipClass = '';
+                                } else {
+                                    $dotClass = 'aman'; $chipClass = '';
+                                }
+                            ?>
+                                <span class="spec-size-chip <?= $chipClass ?>">
+                                    <span class="dot <?= $dotClass ?>"></span>
+                                    <?= esc($u['ukuran']) ?> · <?= $sUk ?> pcs
+                                </span>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <span class="muted">— Tidak ada data</span>
@@ -455,8 +605,8 @@
         </div>
 
         <div class="action-sticky">
-            <button class="btn-buy-now" onclick="goToCheckout()">
-                <i class="fa-solid fa-bolt"></i> Beli Sekarang
+            <button class="btn-buy-now" onclick="goToCheckout()" <?= $produkHabisTotal ? 'disabled' : '' ?>>
+                <i class="fa-solid fa-bolt"></i> <?= $produkHabisTotal ? 'Stok Habis' : 'Beli Sekarang' ?>
             </button>
             <form action="<?= session()->get('isLoggedIn') ? base_url('pelanggan/tambah_keranjang') : base_url('auth/register') ?>"
                   method="<?= session()->get('isLoggedIn') ? 'POST' : 'GET' ?>"
@@ -464,7 +614,7 @@
                 <?= csrf_field() ?>
                 <input type="hidden" name="product_id" value="<?= $produk['id'] ?>">
                 <input type="hidden" name="size_id" id="cartSizeInput" value="">
-                <button type="button" class="btn-keranjang" onclick="addToCart()">
+                <button type="button" class="btn-keranjang" onclick="addToCart()" <?= $produkHabisTotal ? 'disabled' : '' ?>>
                     <i class="fa-solid fa-cart-plus"></i> Keranjang
                 </button>
             </form>
@@ -476,8 +626,11 @@
     const isLoggedIn   = <?= session()->get('isLoggedIn') ? 'true' : 'false' ?>;
     const checkoutBase = "<?= base_url('pelanggan/ringkasan_pesanan') ?>/<?= $produk['id'] ?>/";
 
+    function getSelectedSizeInput() {
+        return document.querySelector('input[name="selected_size"]:checked');
+    }
     function getSelectedSize() {
-        const checked = document.querySelector('input[name="selected_size"]:checked');
+        const checked = getSelectedSizeInput();
         return checked ? checked.value : null;
     }
     function showSizeError() {
@@ -488,6 +641,36 @@
             r.addEventListener('change', () => err.classList.remove('show'), { once: true });
         });
     }
+
+    // ✦ BARU: tampilkan info stok ukuran yang sedang dipilih
+    function updateSelectedSizeInfo() {
+        const checked = getSelectedSizeInput();
+        const infoBox = document.getElementById('sizeSelectedInfo');
+        const infoText = document.getElementById('sizeSelectedText');
+
+        if (!checked) {
+            infoBox.classList.remove('show', 'aman', 'menipis');
+            return;
+        }
+
+        const stok   = parseInt(checked.getAttribute('data-stok'), 10) || 0;
+        const ukuran = checked.getAttribute('data-ukuran');
+
+        infoBox.classList.remove('aman', 'menipis');
+        if (stok <= 5) {
+            infoBox.classList.add('menipis');
+            infoText.textContent = `Ukuran ${ukuran}: stok tersisa ${stok} pcs — segera checkout!`;
+        } else {
+            infoBox.classList.add('aman');
+            infoText.textContent = `Ukuran ${ukuran}: stok tersedia ${stok} pcs`;
+        }
+        infoBox.classList.add('show');
+    }
+
+    document.querySelectorAll('input[name="selected_size"]').forEach(r => {
+        r.addEventListener('change', updateSelectedSizeInfo);
+    });
+
     function goToCheckout() {
         if (!isLoggedIn) { window.location.href = "<?= base_url('auth/register') ?>"; return; }
         const size = getSelectedSize();

@@ -462,16 +462,24 @@
 </div>
 
 <!-- KATEGORI CHIP -->
+<!-- ✅ FIX: sebelumnya chip di-hardcode data-kategori="1" / "2" dengan
+     asumsi ID kategori "Celana Pendek" = 1 dan "Celana Panjang" = 2.
+     Kalau ID asli di tabel `categories` ternyata beda, chip jadi
+     salah filter (persis yang terjadi: klik "Celana Pendek" hasilnya
+     kosong). Sekarang chip di-loop dari $kategori_list (data ASLI dari
+     database), jadi data-kategori selalu cocok dengan category_id
+     produk, apa pun urutan ID-nya di database. -->
 <div class="kategori-scroll" id="kategoriScroll">
     <div class="kategori-chip active" data-kategori="semua">
         <i class="fa-solid fa-border-all"></i> Semua
     </div>
-    <div class="kategori-chip" data-kategori="1">
-        <i class="fa-solid fa-socks"></i> Celana Pendek
-    </div>
-    <div class="kategori-chip" data-kategori="2">
-        <i class="fa-solid fa-shirt"></i> Celana Panjang
-    </div>
+    <?php if (!empty($kategori_list)) : ?>
+        <?php foreach ($kategori_list as $kat) : ?>
+        <div class="kategori-chip" data-kategori="<?= (int) $kat['id'] ?>">
+            <i class="fa-solid fa-shirt"></i> <?= esc($kat['nama_kategori']) ?>
+        </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
     <div class="kategori-chip" data-kategori="diskon">
         <i class="fa-solid fa-tags"></i> Lagi Diskon
     </div>
@@ -479,7 +487,9 @@
 
 <!-- SECTION HEADER -->
 <div class="section-header">
-    <h3 class="section-title">Produk Terbaru</h3>
+    <h3 class="section-title">
+        <?= !empty($kategori_aktif['nama_kategori']) ? esc($kategori_aktif['nama_kategori']) : 'Produk Terbaru' ?>
+    </h3>
     <span class="section-count" id="productCount"><?= count($products) ?> produk</span>
 </div>
 
@@ -494,9 +504,13 @@
         <?php foreach ($products as $p) :
             $hasDiskon  = isset($p['diskon']) && $p['diskon'] > 0;
             $hargaPromo = $hasDiskon ? $p['harga'] * (1 - $p['diskon'] / 100) : null;
-            if ($p['category_id'] == 1)     $kategori = 'Celana Sport Pendek';
-            elseif ($p['category_id'] == 2) $kategori = 'Celana Training Panjang';
-            else                            $kategori = 'Produk Lainnya';
+
+            // ✅ FIX: sebelumnya nama kategori DITEBAK lewat
+            // if ($category_id == 1) / elseif ($category_id == 2), yang
+            // salah kalau ID di database bukan 1/2. Sekarang pakai
+            // nama_kategori ASLI hasil JOIN di Pelanggan::index().
+            $kategori = !empty($p['nama_kategori']) ? $p['nama_kategori'] : 'Produk Lainnya';
+
             // total_stok hanya ada jika query controller sudah JOIN product_sizes.
             // Jika belum ada datanya, anggap tersedia (tidak menganggu tampilan lama).
             $stokHabis = isset($p['total_stok']) && (int) $p['total_stok'] <= 0;
@@ -522,7 +536,7 @@
             </div>
 
             <div class="product-body">
-                <span class="product-category"><?= $kategori ?></span>
+                <span class="product-category"><?= esc($kategori) ?></span>
                 <a href="<?= base_url('pelanggan/detail/' . $p['id']) ?>"
                    style="text-decoration:none; color:inherit;">
                     <span class="product-name"><?= esc($p['nama_produk']) ?></span>
