@@ -168,26 +168,6 @@
         border-color: var(--brand);
         transform: scale(1.1);
     }
-    /* ✦ TAMBAHAN: tombol + disabled saat jumlah = batas maksimal */
-    .btn-circle.disabled {
-        background: var(--surface-raised);
-        color: var(--ink-muted);
-        border-color: var(--border-light);
-        cursor: not-allowed;
-        opacity: 0.45;
-        pointer-events: none;
-    }
-    /* Badge batas maksimal */
-    .max-badge {
-        font-size: 10.5px;
-        font-weight: 700;
-        color: #f87171;
-        background: rgba(239,68,68,0.12);
-        border: 1px solid rgba(239,68,68,0.2);
-        padding: 2px 8px;
-        border-radius: var(--radius-pill);
-        white-space: nowrap;
-    }
     .qty-value {
         font-weight: 700;
         min-width: 22px;
@@ -196,7 +176,6 @@
         color: var(--ink);
     }
 
-    /* ✦ Form wrapper flex column agar checkout card turun ke bawah */
     .cart-form-wrapper {
         display: flex;
         flex-direction: column;
@@ -213,7 +192,7 @@
         justify-content: space-between;
         align-items: center;
         gap: 16px;
-        margin-top: auto; /* dorong ke bawah */
+        margin-top: auto;
         box-shadow: var(--shadow-sm);
     }
 
@@ -334,19 +313,29 @@
     </div>
 
 <?php else : ?>
-    <?php $batas = 3; // ✦ Batas maksimal unit per produk ?>
     <form id="cartForm" action="<?= base_url('pelanggan/proses_pilihan') ?>" method="post">
         <?= csrf_field() ?>
         <div class="cart-form-wrapper">
 
         <div class="cart-list">
-            <?php foreach ($items as $item) : ?>
+            <?php foreach ($items as $item) : 
+                // Perhitungan Harga Diskon
+                $hargaAsli = (float) $item['harga'];
+                $diskon    = isset($item['diskon']) ? (float) $item['diskon'] : 0;
+                
+                if ($diskon > 0) {
+                    $potongan    = $hargaAsli * ($diskon / 100);
+                    $hargaTampil = $hargaAsli - $potongan;
+                } else {
+                    $hargaTampil = $hargaAsli;
+                }
+            ?>
                 <div class="cart-item">
                     <input type="checkbox"
                            name="id_keranjang[]"
                            value="<?= $item['id_keranjang'] ?>"
                            class="checkbox-custom item-checkbox"
-                           data-harga="<?= $item['harga'] ?>"
+                           data-harga="<?= $hargaTampil ?>"
                            data-jumlah="<?= $item['jumlah'] ?>"
                            checked>
 
@@ -357,14 +346,24 @@
 
                     <div class="cart-info">
                         <span class="cart-name"><?= esc($item['nama_produk']) ?></span>
-                        <span class="cart-price">Rp <?= number_format($item['harga'], 0, ',', '.') ?></span>
-                        <?php if ($item['jumlah'] >= $batas) : ?>
-                            <!-- ✦ Tampilkan badge saat mencapai batas -->
-                            <span class="max-badge" style="display:inline-flex;margin-top:4px;">
-                                <i class="fa-solid fa-triangle-exclamation" style="font-size:9px;"></i>
-                                Batas maksimal <?= $batas ?> unit
-                            </span>
-                        <?php endif; ?>
+                        
+                        <!-- Tampilan Harga & Coretan Diskon -->
+                        <div style="display: flex; flex-direction: column; gap: 2px;">
+                            <?php if ($diskon > 0) : ?>
+                                <span style="font-size: 11px; color: var(--ink-muted); text-decoration: line-through;">
+                                    Rp <?= number_format($hargaAsli, 0, ',', '.') ?>
+                                </span>
+                                <span class="cart-price" style="color: var(--brand);">
+                                    Rp <?= number_format($hargaTampil, 0, ',', '.') ?>
+                                    <span style="font-size: 10px; background: rgba(249,115,22,0.15); color: var(--brand); padding: 1px 6px; border-radius: 4px; margin-left: 4px; font-weight: 700;">
+                                        -<?= $diskon ?>%
+                                    </span>
+                                </span>
+                            <?php else : ?>
+                                <span class="cart-price">Rp <?= number_format($hargaTampil, 0, ',', '.') ?></span>
+                            <?php endif; ?>
+                        </div>
+
                     </div>
 
                     <div class="qty-container">
@@ -372,16 +371,10 @@
                             <i class="fa-solid fa-minus" style="font-size:10px;"></i>
                         </a>
                         <span class="qty-value"><?= $item['jumlah'] ?></span>
-                        <!-- ✦ Tombol + disabled jika sudah mencapai batas -->
-                        <?php if ($item['jumlah'] >= $batas) : ?>
-                            <span class="btn-circle disabled" title="Batas maksimal <?= $batas ?> unit per produk">
-                                <i class="fa-solid fa-plus" style="font-size:10px;"></i>
-                            </span>
-                        <?php else : ?>
-                            <a href="<?= base_url('pelanggan/tambah/' . $item['id_keranjang']) ?>" class="btn-circle">
-                                <i class="fa-solid fa-plus" style="font-size:10px;"></i>
-                            </a>
-                        <?php endif; ?>
+                        
+                        <a href="<?= base_url('pelanggan/tambah/' . $item['id_keranjang']) ?>" class="btn-circle">
+                            <i class="fa-solid fa-plus" style="font-size:10px;"></i>
+                        </a>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -404,8 +397,8 @@
                     <?= session()->get('isLoggedIn') ? 'Checkout (0)' : 'Daftar / Checkout (0)' ?>
                 </button>
             </div>
-        </div><!-- /checkout-bar -->
-        </div><!-- /cart-form-wrapper -->
+        </div>
+        </div>
     </form>
 <?php endif; ?>
 
@@ -422,18 +415,17 @@ document.addEventListener('DOMContentLoaded', function () {
         let total = 0, count = 0;
         checkboxes.forEach(cb => {
             if (cb.checked) {
-                total += parseInt(cb.dataset.harga) * parseInt(cb.dataset.jumlah);
+                total += parseFloat(cb.dataset.harga) * parseInt(cb.dataset.jumlah);
                 count++;
             }
         });
-        displayTotal.textContent = 'Rp ' + total.toLocaleString('id-ID');
-        inputTotal.value = total;
+        displayTotal.textContent = 'Rp ' + Math.round(total).toLocaleString('id-ID');
+        inputTotal.value = Math.round(total);
         btnSubmit.textContent = isLoggedIn
             ? 'Checkout (' + count + ')'
             : 'Daftar / Checkout (' + count + ')';
         btnSubmit.disabled = count === 0;
 
-        // Sinkronisasi checkAll
         if (checkAll) checkAll.checked = count === checkboxes.length && count > 0;
     }
 

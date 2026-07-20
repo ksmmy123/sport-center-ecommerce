@@ -51,9 +51,11 @@
     }
     .status-select:focus { border-color: var(--brand); }
 
-    .status-select.diproses { color: #facc15; }
-    .status-select.dikirim  { color: #60a5fa; }
-    .status-select.sampai   { color: #4ade80; }
+    .status-select.diproses   { color: #facc15; }
+    .status-select.dikirim    { color: #60a5fa; }
+    .status-select.sampai     { color: #4ade80; }
+    /* ✅ BARU: warna untuk opsi status dibatalkan */
+    .status-select.dibatalkan { color: #f87171; }
 
     /* ── Kolom Bukti Transfer / Verifikasi ── */
     .bukti-link {
@@ -147,20 +149,18 @@
         <tbody>
             <?php if (!empty($orders)) : ?>
                 <?php foreach ($orders as $row) :
-                    $statusBayar = $row['status_pembayaran'] ?? '';
-                    $isVaBank    = strtolower($row['metode_pembayaran'] ?? '') === 'va_bank';
-                    $sudahBayar  = ($statusBayar === 'sudah_bayar' || $statusBayar === 'sudah_payar');
-                    $dibatalkan  = ($statusBayar === 'dibatalkan');
-                    $adaBukti    = !empty($row['bukti_transfer']);
+                    $statusBayar   = $row['status_pembayaran'] ?? '';
+                    $statusKirim   = $row['status_pengiriman'] ?? 'diproses';
+                    $isVaBank      = strtolower($row['metode_pembayaran'] ?? '') === 'va_bank';
+                    $sudahBayar    = ($statusBayar === 'sudah_bayar' || $statusBayar === 'sudah_payar');
+                    // ✅ FIX: pesanan dianggap dibatalkan jika salah satu dari
+                    // status_pembayaran ATAU status_pengiriman bernilai
+                    // 'dibatalkan' — supaya konsisten dengan enum kolom
+                    // status_pengiriman yang juga punya opsi 'dibatalkan'.
+                    $dibatalkan    = ($statusBayar === 'dibatalkan' || $statusKirim === 'dibatalkan');
+                    $adaBukti      = !empty($row['bukti_transfer']);
 
-                    // ✅ FIX: sebelumnya tombol Terima/Tolak HANYA muncul kalau
-                    // status_pembayaran persis sama dengan string
-                    // 'menunggu_verifikasi'. Kalau ada order lama/aneh yang
-                    // nilainya NULL, kosong, atau ejaan lain (padahal bukti
-                    // transfer sudah jelas-jelas ada), tombolnya tidak pernah
-                    // muncul dan admin harus bolak-balik klik "Rapikan Status
-                    // Lama". Sekarang jauh lebih simpel & tahan bug:
-                    // tampilkan Terima/Tolak selama ada bukti transfer DAN
+                    // Tombol Terima/Tolak tampil selama ada bukti transfer DAN
                     // belum berstatus sudah bayar / dibatalkan — apa pun
                     // ejaan persis status_pembayaran-nya saat ini.
                     $perluVerifikasi = $isVaBank && $adaBukti && !$sudahBayar && !$dibatalkan;
@@ -181,10 +181,10 @@
                         </td>
 
                         <td style="font-weight:700;">
-                            <?php if ($sudahBayar) : ?>
-                                <span style="color:#4ade80;">Sudah Bayar</span>
-                            <?php elseif ($dibatalkan) : ?>
+                            <?php if ($dibatalkan) : ?>
                                 <span style="color:#f87171;">Dibatalkan</span>
+                            <?php elseif ($sudahBayar) : ?>
+                                <span style="color:#4ade80;">Sudah Bayar</span>
                             <?php elseif ($perluVerifikasi) : ?>
                                 <span style="color:#facc15;">Menunggu Verifikasi</span>
                             <?php else : ?>
@@ -210,6 +210,10 @@
                                     <span style="color:#4ade80; font-size:12px; font-weight:600;">
                                         <i class="fa-solid fa-circle-check"></i> Terverifikasi
                                     </span>
+                                <?php elseif ($dibatalkan) : ?>
+                                    <span style="color:#f87171; font-size:12px; font-weight:600;">
+                                        <i class="fa-solid fa-xmark"></i> Dibatalkan
+                                    </span>
                                 <?php elseif ($perluVerifikasi) : ?>
                                     <div class="verifikasi-group">
                                         <a href="<?= base_url('admin/terima_pembayaran/' . $row['id']) ?>"
@@ -230,11 +234,23 @@
                         <td>
                             <form action="<?= base_url('admin/update_status_pengiriman/' . $row['id']); ?>" method="POST">
                                 <?= csrf_field(); ?>
-                                <select name="status_pengiriman" onchange="this.form.submit()"
-                                        class="status-select <?= esc($row['status_pengiriman']) ?>">
-                                    <option value="diproses" <?= $row['status_pengiriman'] === 'diproses' ? 'selected' : ''; ?>>Diproses</option>
-                                    <option value="dikirim" <?= $row['status_pengiriman'] === 'dikirim' ? 'selected' : ''; ?>>Dikirim</option>
-                                    <option value="sampai" <?= $row['status_pengiriman'] === 'sampai' ? 'selected' : ''; ?>>Selesai</option>
+                                <select name="status_pengiriman" onchange="
+                                        if (this.value === 'dibatalkan') {
+                                            if (confirm('Yakin ingin membatalkan pesanan #<?= $row['id'] ?>? Aksi ini tidak dapat diurungkan begitu saja.')) {
+                                                this.form.submit();
+                                            } else {
+                                                this.value = '<?= esc($statusKirim, 'js') ?>';
+                                            }
+                                        } else {
+                                            this.form.submit();
+                                        }
+                                    "
+                                        class="status-select <?= esc($statusKirim) ?>">
+                                    <option value="diproses" <?= $statusKirim === 'diproses' ? 'selected' : ''; ?>>Diproses</option>
+                                    <option value="dikirim" <?= $statusKirim === 'dikirim' ? 'selected' : ''; ?>>Dikirim</option>
+                                    <option value="sampai" <?= $statusKirim === 'sampai' ? 'selected' : ''; ?>>Selesai</option>
+                                    <!-- ✅ BARU: opsi batalkan pesanan, sesuai enum status_pengiriman di database -->
+                                    <option value="dibatalkan" <?= $statusKirim === 'dibatalkan' ? 'selected' : ''; ?>>Batalkan</option>
                                 </select>
                             </form>
                         </td>

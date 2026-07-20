@@ -3,7 +3,21 @@
 <?= $this->section('content') ?>
 <style>
     /* ── PAGE HEADER ── */
-    .orders-header { margin-bottom: 28px; }
+    .orders-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+    }
+    /* ✦ BARU: tombol kembali */
+    .orders-back {
+        width: 38px; height: 38px; border-radius: 50%;
+        background: var(--surface-raised); border: 1px solid var(--border);
+        display: flex; align-items: center; justify-content: center;
+        color: var(--ink); text-decoration: none; font-size: 14px; flex-shrink: 0;
+        transition: background var(--transition);
+    }
+    .orders-back:hover { background: var(--surface-high); }
     .orders-title {
         font-size: 24px;
         font-weight: 800;
@@ -21,6 +35,19 @@
         background: rgba(34,197,94,0.12);
         color: #4ade80;
         border: 1px solid rgba(74,222,128,0.2);
+        padding: 14px 18px;
+        border-radius: var(--radius-md);
+        margin-bottom: 20px;
+        font-size: 13.5px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .flash-error {
+        background: rgba(239,68,68,0.12);
+        color: #f87171;
+        border: 1px solid rgba(248,113,113,0.2);
         padding: 14px 18px;
         border-radius: var(--radius-md);
         margin-bottom: 20px;
@@ -106,7 +133,7 @@
     .status-batal    { background: rgba(239,68,68,0.15);   color: #f87171; border: 1px solid rgba(248,113,113,0.2); }
     .status-lain     { background: var(--surface-high);    color: var(--ink-secondary); border: 1px solid var(--border); }
 
-    /* ✦ BARU: badge kecil status pembayaran (belum bayar / menunggu verifikasi) */
+    /* ✦ Badge kecil status pembayaran (belum bayar / menunggu verifikasi) */
     .payment-status-badge {
         display: inline-flex;
         align-items: center;
@@ -180,21 +207,6 @@
     }
     .price-total-value { color: var(--brand); }
 
-    /* VA instruksi */
-    .va-notice {
-        background: rgba(234,179,8,0.08);
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-        padding: 12px 20px;
-        font-size: 12.5px;
-        color: #fde68a;
-        line-height: 1.6;
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    .va-notice i { flex-shrink: 0; margin-top: 1px; }
-
     /* Card footer */
     .order-card-foot {
         padding: 12px 20px;
@@ -211,6 +223,27 @@
     }
     .order-help a { color: #60a5fa; text-decoration: none; }
     .order-help a:hover { text-decoration: underline; }
+
+    .order-foot-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    /* ✦ Tombol lacak pesanan (biru) */
+    .btn-lacak {
+        display: inline-flex; align-items: center; gap: 7px;
+        background: rgba(59,130,246,0.12);
+        color: #60a5fa;
+        border: 1px solid rgba(96,165,250,0.25);
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: var(--radius-md);
+        font-size: 12.5px;
+        font-weight: 700;
+        transition: background var(--transition), color var(--transition);
+    }
+    .btn-lacak:hover { background: rgba(59,130,246,0.22); color: #93c5fd; }
 
     .btn-konfirmasi {
         display: inline-flex; align-items: center; gap: 7px;
@@ -414,7 +447,6 @@
         margin-top: 10px;
         flex-wrap: wrap;
     }
-    /* ✦ BARU: variasi warna box saat masih menunggu verifikasi admin */
     .bukti-uploaded.pending {
         background: rgba(234,179,8,0.08);
         border: 1px solid rgba(250,204,21,0.2);
@@ -452,13 +484,21 @@
         .btn-upload { width: 100%; justify-content: center; }
         .bukti-uploaded { flex-direction: column; align-items: flex-start; }
         .btn-ganti-bukti { margin-left: 0; width: 100%; justify-content: center; }
+        .order-card-foot { flex-direction: column; align-items: stretch; }
+        .order-foot-actions { width: 100%; }
+        .order-foot-actions a { flex: 1; justify-content: center; }
     }
 </style>
 
 <!-- HEADER -->
 <div class="orders-header">
-    <h1 class="orders-title">Riwayat Pesanan</h1>
-    <p class="orders-subtitle">Pantau status pengiriman dan riwayat transaksi belanja Anda</p>
+    <a href="<?= base_url('pelanggan/profile') ?>" class="orders-back">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a>
+    <div>
+        <h1 class="orders-title">Riwayat Pesanan</h1>
+        <p class="orders-subtitle">Pantau status pengiriman dan riwayat transaksi belanja Anda</p>
+    </div>
 </div>
 
 <!-- FLASH SUCCESS -->
@@ -471,7 +511,7 @@
 
 <!-- FLASH ERROR -->
 <?php if (session()->getFlashdata('error')) : ?>
-    <div class="flash-success" style="background: rgba(239,68,68,0.12); color:#f87171; border-color: rgba(248,113,113,0.2);">
+    <div class="flash-error">
         <i class="fa-solid fa-circle-exclamation"></i>
         <?= session()->getFlashdata('error') ?>
     </div>
@@ -494,9 +534,6 @@
         $st = strtolower($o['status_pengiriman'] ?? 'diproses');
         $pajak_order     = $o['pajak'] ?? 0;
         $subtotal_produk = $o['total_harga'] - ($o['ongkir'] + $o['biaya_layanan'] + $o['biaya_penanganan'] + $pajak_order);
-
-        // ✅ FIX: variabel status pembayaran dipakai berkali-kali di bawah,
-        // jadi diambil sekali di sini agar konsisten.
         $statusBayarOrder = $o['status_pembayaran'] ?? '';
     ?>
     <div class="order-card">
@@ -525,8 +562,6 @@
                 ?>
 
                 <?php
-                    // ✅ BARU: badge kecil status pembayaran khusus VA Bank,
-                    // supaya pelanggan langsung tahu tanpa scroll ke bawah.
                     if ($o['metode_pembayaran'] == 'va_bank') :
                         if ($statusBayarOrder == 'menunggu_verifikasi') :
                             echo '<span class="payment-status-badge menunggu"><i class="fa-solid fa-hourglass-half"></i> Menunggu Verifikasi</span>';
@@ -589,17 +624,6 @@
 
         <!-- BUKTI TRANSFER UPLOAD -->
         <?php
-            // ✅ FIX UTAMA: sebelumnya section ini HANYA muncul kalau
-            // status_pembayaran persis 'belum_bayar'. Padahal begitu
-            // pelanggan selesai upload bukti, controller langsung
-            // mengubah status jadi 'menunggu_verifikasi' — akibatnya
-            // section (termasuk preview bukti yang sudah diupload)
-            // langsung hilang total dan pelanggan tidak bisa melihat
-            // bukti yang sudah ia kirim maupun status verifikasinya.
-            //
-            // Sekarang section ini tetap tampil selama order memakai
-            // metode va_bank DAN pembayarannya belum lunas / dibatalkan
-            // (mencakup status 'belum_bayar' maupun 'menunggu_verifikasi').
             $tampilkanBukti = ($o['metode_pembayaran'] == 'va_bank')
                 && !in_array($statusBayarOrder, ['sudah_bayar', 'dibatalkan']);
         ?>
@@ -622,15 +646,11 @@
                 </div>
 
                 <?php if (empty($o['bukti_transfer'])) : ?>
-                    <!-- Belum upload sama sekali -->
                     <a href="<?= base_url('pelanggan/upload_bukti/' . $o['id']) ?>" class="btn-upload btn-upload-small">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         Upload Bukti Transfer
                     </a>
                 <?php else : ?>
-                    <!-- ✅ FIX: preview ini sekarang bisa benar-benar tampil,
-                         baik saat masih 'belum_bayar' (setelah ditolak admin
-                         dan upload ulang) maupun 'menunggu_verifikasi'. -->
                     <div class="bukti-uploaded <?= $statusBayarOrder == 'menunggu_verifikasi' ? 'pending' : '' ?>">
                         <div class="bukti-thumb" onclick="bukaModalBukti('<?= base_url('uploads/bukti_transfer/' . esc($o['bukti_transfer'], 'attr')) ?>')">
                             <img src="<?= base_url('uploads/bukti_transfer/' . $o['bukti_transfer']) ?>"
@@ -667,19 +687,27 @@
                 <a href="#">Hubungi Toko</a>
             </span>
 
-            <?php if (!in_array($st, ['selesai', 'sampai', 'dibatalkan'])) : ?>
-                <a href="<?= base_url('pelanggan/konfirmasi_selesai/' . $o['id']) ?>"
-                   class="btn-konfirmasi"
-                   onclick="return confirm('Apakah Anda yakin pesanan telah diterima dengan baik?')">
-                    <i class="fa-solid fa-circle-check"></i>
-                    Konfirmasi Selesai
+            <div class="order-foot-actions">
+                <!-- Link ke halaman lacak status pesanan -->
+                <a href="<?= base_url('pelanggan/lacak_pesanan/' . $o['id']) ?>" class="btn-lacak">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    Lacak Pesanan
                 </a>
-            <?php else : ?>
-                <span class="btn-selesai-disabled">
-                    <i class="fa-solid fa-check"></i>
-                    <?= in_array($st, ['selesai','sampai']) ? 'Selesai' : 'Dibatalkan' ?>
-                </span>
-            <?php endif; ?>
+
+                <?php if (!in_array($st, ['selesai', 'sampai', 'dibatalkan'])) : ?>
+                    <a href="<?= base_url('pelanggan/konfirmasi_selesai/' . $o['id']) ?>"
+                       class="btn-konfirmasi"
+                       onclick="return confirm('Apakah Anda yakin pesanan telah diterima dengan baik?')">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Konfirmasi Selesai
+                    </a>
+                <?php else : ?>
+                    <span class="btn-selesai-disabled">
+                        <i class="fa-solid fa-check"></i>
+                        <?= in_array($st, ['selesai','sampai']) ? 'Selesai' : 'Dibatalkan' ?>
+                    </span>
+                <?php endif; ?>
+            </div>
         </div>
 
         <!-- ULASAN -->
@@ -718,7 +746,7 @@
     <?php endforeach; ?>
 <?php endif; ?>
 
-<!-- ✦ BARU: Modal preview bukti transfer (klik thumbnail untuk memperbesar) -->
+<!-- Modal preview bukti transfer (klik thumbnail untuk memperbesar) -->
 <div class="img-modal" id="imgModalBukti">
     <button class="img-modal-close" onclick="tutupModalBukti()">
         <i class="fa-solid fa-xmark"></i>

@@ -45,7 +45,6 @@
         display: flex; align-items: center; gap: 5px;
     }
 
-    /* ✦ BARU: badge status stok keseluruhan di galeri */
     .detail-stock-badge {
         position: absolute;
         top: 14px; left: 14px;
@@ -59,8 +58,6 @@
         display: flex; align-items: center; gap: 5px;
         backdrop-filter: blur(4px);
     }
-    /* Jika ada diskon DAN produk habis, badge diskon tetap di kiri,
-       badge stok geser sedikit ke bawah supaya tidak tumpuk */
     .detail-discount-badge + .detail-stock-badge { top: 50px; }
 
     .btn-back {
@@ -151,7 +148,6 @@
 
     .size-options { display: flex; gap: 10px; flex-wrap: wrap; }
 
-    /* ✦ DIUBAH: size-label sekarang wrapper kolom (chip + info stok di bawahnya) */
     .size-label {
         cursor: pointer;
         display: flex;
@@ -188,7 +184,6 @@
         box-shadow: 0 4px 12px rgba(249,115,22,0.35);
     }
 
-    /* Chip untuk ukuran yang stoknya habis */
     .size-chip.chip-habis {
         opacity: 0.4;
         text-decoration: line-through;
@@ -202,7 +197,6 @@
         background: var(--surface-raised);
     }
 
-    /* ✦ BARU: label kecil info stok di bawah tiap chip ukuran */
     .size-stock-info {
         font-size: 10px;
         font-weight: 700;
@@ -219,7 +213,6 @@
     }
     .size-error.show { display: flex; }
 
-    /* Ringkasan stok ukuran terpilih */
     .size-selected-info {
         display: none;
         align-items: center; gap: 8px;
@@ -232,6 +225,48 @@
     .size-selected-info.show { display: flex; }
     .size-selected-info.aman    { background: rgba(34,197,94,0.1);  color: #4ade80; border: 1px solid rgba(74,222,128,0.2); }
     .size-selected-info.menipis { background: rgba(234,179,8,0.1);  color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
+
+    /* ── KUANTITAS (BARU) ── */
+    .quantity-section { display: flex; flex-direction: column; gap: 12px; }
+    .quantity-label { font-size: 14px; font-weight: 700; color: var(--ink); }
+    .quantity-controls {
+        display: inline-flex;
+        align-items: center;
+        background: var(--surface-raised);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        width: fit-content;
+        overflow: hidden;
+    }
+    .btn-qty {
+        background: transparent;
+        border: none;
+        color: var(--ink);
+        font-size: 14px;
+        width: 40px; height: 40px;
+        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: background var(--transition);
+    }
+    .btn-qty:hover:not(:disabled) { background: var(--surface-high); }
+    .btn-qty:disabled { opacity: 0.3; cursor: not-allowed; }
+    
+    .input-qty {
+        width: 45px; height: 40px;
+        background: transparent;
+        border: none;
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+        text-align: center;
+        color: var(--ink);
+        font-family: 'Outfit', sans-serif;
+        font-size: 15px; font-weight: 700;
+        -moz-appearance: textfield;
+    }
+    .input-qty::-webkit-outer-spin-button,
+    .input-qty::-webkit-inner-spin-button {
+        -webkit-appearance: none; margin: 0;
+    }
 
     /* ── DESKRIPSI ── */
     .desc-section { display: flex; flex-direction: column; gap: 10px; }
@@ -251,9 +286,7 @@
         cursor: pointer; padding: 0; width: fit-content;
     }
 
-    /* ── SPESIFIKASI PRODUK ──
-       ✦ TAMBAHAN: tabel info Merk, Bahan, Warna, Berat, Kategori, Ukuran
-       Mengikuti pola visual detail-price-box (surface-raised + border) */
+    /* ── SPESIFIKASI PRODUK ── */
     .spec-section { display: flex; flex-direction: column; gap: 12px; }
     .spec-label { font-size: 14px; font-weight: 700; color: var(--ink); }
     .spec-table {
@@ -282,40 +315,21 @@
         flex-shrink: 0;
     }
     .spec-key {
-        font-size: 12.5px;
-        font-weight: 600;
-        color: var(--ink-secondary);
-        width: 120px;
-        flex-shrink: 0;
+        font-size: 12.5px; font-weight: 600; color: var(--ink-secondary);
+        width: 120px; flex-shrink: 0;
     }
     .spec-val {
-        font-size: 13.5px;
-        font-weight: 600;
-        color: var(--ink);
-        flex: 1;
+        font-size: 13.5px; font-weight: 600; color: var(--ink); flex: 1;
     }
     .spec-val.muted { color: var(--ink-muted); font-weight: 400; font-style: italic; }
 
-    /* Chip ukuran + stok kecil di dalam spec-val */
     .spec-size-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        padding: 3px 10px;
-        border: 1px solid var(--border);
-        border-radius: var(--radius-sm);
-        font-size: 11.5px;
-        font-weight: 700;
-        color: var(--ink-secondary);
-        background: var(--surface);
-        margin-right: 6px;
-        margin-bottom: 6px;
+        display: inline-flex; align-items: center; gap: 5px;
+        padding: 3px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm);
+        font-size: 11.5px; font-weight: 700; color: var(--ink-secondary);
+        background: var(--surface); margin-right: 6px; margin-bottom: 6px;
     }
-    .spec-size-chip .dot {
-        width: 6px; height: 6px;
-        border-radius: 50%;
-        flex-shrink: 0;
-    }
+    .spec-size-chip .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
     .spec-size-chip .dot.aman    { background: #4ade80; }
     .spec-size-chip .dot.menipis { background: #facc15; }
     .spec-size-chip .dot.habis   { background: #f87171; }
@@ -324,73 +338,38 @@
     /* ── ACTIONS ── */
     .action-sticky {
         display: flex; gap: 10px;
-        position: sticky;
-        bottom: 24px;
+        position: sticky; bottom: 24px;
         background: rgba(11,17,32,0.92);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
         border-top: 1px solid var(--border);
-        padding: 16px 0 4px;
-        margin-top: auto;
+        padding: 16px 0 4px; margin-top: auto; z-index: 10;
     }
-
     .btn-buy-now {
-        flex: 1;
-        display: flex; align-items: center; justify-content: center; gap: 8px;
-        background: var(--brand); color: #fff;
-        border: none;
-        border-radius: var(--radius-md);
-        padding: 14px 20px;
-        font-family: 'Outfit', sans-serif;
-        font-size: 15px; font-weight: 700;
-        cursor: pointer;
-        transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+        flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+        background: var(--brand); color: #fff; border: none; border-radius: var(--radius-md);
+        padding: 14px 20px; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700;
+        cursor: pointer; transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
         box-shadow: 0 6px 20px rgba(249,115,22,0.30);
     }
-    .btn-buy-now:hover {
-        background: var(--brand-dark);
-        transform: translateY(-1px);
-        box-shadow: 0 8px 24px rgba(249,115,22,0.40);
-    }
+    .btn-buy-now:hover { background: var(--brand-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(249,115,22,0.40); }
     .btn-buy-now:active { transform: translateY(0); }
-    .btn-buy-now:disabled {
-        opacity: 0.45;
-        cursor: not-allowed;
-        box-shadow: none;
-        transform: none;
-    }
+    .btn-buy-now:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; transform: none; }
 
     .btn-keranjang {
         display: flex; align-items: center; justify-content: center; gap: 8px;
-        background: var(--surface-raised);
-        color: var(--ink);
-        border: 1.5px solid var(--border);
-        border-radius: var(--radius-md);
-        padding: 14px 18px;
-        font-family: 'Outfit', sans-serif;
-        font-size: 14px; font-weight: 600;
-        cursor: pointer;
-        transition: background var(--transition), border-color var(--transition);
+        background: var(--surface-raised); color: var(--ink); border: 1.5px solid var(--border);
+        border-radius: var(--radius-md); padding: 14px 18px; font-family: 'Outfit', sans-serif;
+        font-size: 14px; font-weight: 600; cursor: pointer; transition: background var(--transition), border-color var(--transition);
         text-decoration: none; white-space: nowrap;
     }
     .btn-keranjang:hover { background: var(--surface-high); border-color: rgba(255,255,255,0.2); }
-    .btn-keranjang:disabled {
-        opacity: 0.45;
-        cursor: not-allowed;
-    }
+    .btn-keranjang:disabled { opacity: 0.45; cursor: not-allowed; }
 
-    /* Notice produk habis total (semua ukuran stok 0) */
     .out-of-stock-notice {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background: rgba(239,68,68,0.1);
-        border: 1px solid rgba(239,68,68,0.25);
-        color: #f87171;
-        padding: 12px 16px;
-        border-radius: var(--radius-md);
-        font-size: 13px;
-        font-weight: 600;
+        display: flex; align-items: center; gap: 10px;
+        background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25);
+        color: #f87171; padding: 12px 16px; border-radius: var(--radius-md);
+        font-size: 13px; font-weight: 600;
     }
 
     /* ── RESPONSIVE ── */
@@ -401,18 +380,10 @@
         .detail-name { font-size: 22px; }
         .detail-main-price { font-size: 26px; }
         .action-sticky {
-            position: fixed;
-            bottom: 76px;
-            left: 0; right: 0;
-            padding: 10px 16px;
-            margin: 0;
-            background: rgba(11,17,32,0.97);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-top: 1px solid var(--border);
-            border-radius: 0;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
-            z-index: 50;
+            position: fixed; bottom: 76px; left: 0; right: 0;
+            padding: 10px 16px; margin: 0; background: rgba(11,17,32,0.97);
+            border-top: 1px solid var(--border); border-radius: 0;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3); z-index: 50;
         }
         .product-info { padding-bottom: 100px; }
         .spec-key { width: 96px; font-size: 12px; }
@@ -429,7 +400,6 @@
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
             <?php
-                // ✦ BARU: hitung total stok gabungan semua ukuran untuk badge & notice
                 $totalStokProduk = 0;
                 foreach ($ukuran as $u) {
                     $totalStokProduk += (int) ($u['stok'] ?? 0);
@@ -438,18 +408,15 @@
             ?>
             <?php if (isset($produk['diskon']) && $produk['diskon'] > 0 && !$produkHabisTotal) : ?>
                 <div class="detail-discount-badge">
-                    <i class="fa-solid fa-tag"></i>
-                    Hemat <?= $produk['diskon'] ?>%
+                    <i class="fa-solid fa-tag"></i> Hemat <?= $produk['diskon'] ?>%
                 </div>
             <?php endif; ?>
             <?php if ($produkHabisTotal) : ?>
                 <div class="detail-stock-badge">
-                    <i class="fa-solid fa-circle-xmark"></i>
-                    Stok Habis
+                    <i class="fa-solid fa-circle-xmark"></i> Stok Habis
                 </div>
             <?php endif; ?>
-            <img src="<?= base_url('images/' . $produk['gambar']) ?>"
-                 alt="<?= esc($produk['nama_produk']) ?>">
+            <img src="<?= base_url('images/' . $produk['gambar']) ?>" alt="<?= esc($produk['nama_produk']) ?>">
         </div>
     </div>
 
@@ -472,8 +439,7 @@
                 <span class="detail-old-price">Rp <?= number_format($produk['harga'], 0, ',', '.') ?></span>
                 <span class="detail-main-price">Rp <?= number_format($hargaPromo, 0, ',', '.') ?></span>
                 <span class="detail-savings">
-                    <i class="fa-solid fa-circle-check" style="font-size:11px;"></i>
-                    Hemat Rp <?= number_format($potongan, 0, ',', '.') ?>
+                    <i class="fa-solid fa-circle-check" style="font-size:11px;"></i> Hemat Rp <?= number_format($potongan, 0, ',', '.') ?>
                 </span>
             <?php else : ?>
                 <span class="detail-main-price no-discount">Rp <?= number_format($produk['harga'], 0, ',', '.') ?></span>
@@ -515,20 +481,31 @@
                 <?php endforeach; ?>
             </div>
             <div class="size-error" id="sizeError">
-                <i class="fa-solid fa-circle-exclamation"></i>
-                Silakan pilih ukuran terlebih dahulu.
+                <i class="fa-solid fa-circle-exclamation"></i> Silakan pilih ukuran terlebih dahulu.
             </div>
             <div class="size-selected-info" id="sizeSelectedInfo">
-                <i class="fa-solid fa-box"></i>
-                <span id="sizeSelectedText"></span>
+                <i class="fa-solid fa-box"></i> <span id="sizeSelectedText"></span>
             </div>
         </div>
 
-        <!-- ✦ TAMBAHAN: Spesifikasi Produk (Merk, Bahan, Ukuran, Warna, Berat, Kategori) -->
+        <!-- ✦ TAMBAHAN BARU: Input Kuantitas (Jumlah Barang) -->
+        <div class="quantity-section">
+            <span class="quantity-label">Atur Jumlah</span>
+            <div class="quantity-controls">
+                <button type="button" class="btn-qty" id="btnMinus" onclick="updateQty(-1)" disabled>
+                    <i class="fa-solid fa-minus"></i>
+                </button>
+                <input type="number" id="inputQty" class="input-qty" value="1" min="1" onchange="validateQty()">
+                <button type="button" class="btn-qty" id="btnPlus" onclick="updateQty(1)">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+        </div>
+
         <div class="spec-section">
             <span class="spec-label">Spesifikasi Produk</span>
             <div class="spec-table">
-
+                <!-- ... Konten spesifikasi tidak diubah ... -->
                 <div class="spec-row">
                     <span class="spec-icon"><i class="fa-solid fa-copyright"></i></span>
                     <span class="spec-key">Merk</span>
@@ -536,7 +513,6 @@
                         <?= !empty($produk['merk']) ? esc($produk['merk']) : '— Tidak ada data' ?>
                     </span>
                 </div>
-
                 <div class="spec-row">
                     <span class="spec-icon"><i class="fa-solid fa-layer-group"></i></span>
                     <span class="spec-key">Bahan</span>
@@ -544,7 +520,6 @@
                         <?= !empty($produk['bahan']) ? esc($produk['bahan']) : '— Tidak ada data' ?>
                     </span>
                 </div>
-
                 <div class="spec-row">
                     <span class="spec-icon"><i class="fa-solid fa-ruler"></i></span>
                     <span class="spec-key">Ukuran &amp; Stok</span>
@@ -570,7 +545,6 @@
                         <?php endif; ?>
                     </span>
                 </div>
-
                 <div class="spec-row">
                     <span class="spec-icon"><i class="fa-solid fa-palette"></i></span>
                     <span class="spec-key">Warna</span>
@@ -578,7 +552,6 @@
                         <?= !empty($produk['warna']) ? esc($produk['warna']) : '— Tidak ada data' ?>
                     </span>
                 </div>
-
                 <div class="spec-row">
                     <span class="spec-icon"><i class="fa-solid fa-weight-hanging"></i></span>
                     <span class="spec-key">Berat</span>
@@ -586,7 +559,6 @@
                         <?= !empty($produk['berat']) ? esc($produk['berat']) . ' gram' : '— Tidak ada data' ?>
                     </span>
                 </div>
-
                 <div class="spec-row">
                     <span class="spec-icon"><i class="fa-solid fa-tags"></i></span>
                     <span class="spec-key">Kategori</span>
@@ -594,7 +566,6 @@
                         <?= !empty($produk['nama_kategori']) ? esc($produk['nama_kategori']) : '— Tidak ada data' ?>
                     </span>
                 </div>
-
             </div>
         </div>
 
@@ -614,6 +585,8 @@
                 <?= csrf_field() ?>
                 <input type="hidden" name="product_id" value="<?= $produk['id'] ?>">
                 <input type="hidden" name="size_id" id="cartSizeInput" value="">
+                <!-- ✦ Input rahasia untuk menangkap Kuantitas ke Backend -->
+                <input type="hidden" name="qty" id="cartQtyInput" value="1"> 
                 <button type="button" class="btn-keranjang" onclick="addToCart()" <?= $produkHabisTotal ? 'disabled' : '' ?>>
                     <i class="fa-solid fa-cart-plus"></i> Keranjang
                 </button>
@@ -626,13 +599,17 @@
     const isLoggedIn   = <?= session()->get('isLoggedIn') ? 'true' : 'false' ?>;
     const checkoutBase = "<?= base_url('pelanggan/ringkasan_pesanan') ?>/<?= $produk['id'] ?>/";
 
+    let maxStock = 0;
+
     function getSelectedSizeInput() {
         return document.querySelector('input[name="selected_size"]:checked');
     }
+    
     function getSelectedSize() {
         const checked = getSelectedSizeInput();
         return checked ? checked.value : null;
     }
+    
     function showSizeError() {
         const err = document.getElementById('sizeError');
         err.classList.add('show');
@@ -642,7 +619,6 @@
         });
     }
 
-    // ✦ BARU: tampilkan info stok ukuran yang sedang dipilih
     function updateSelectedSizeInfo() {
         const checked = getSelectedSizeInput();
         const infoBox = document.getElementById('sizeSelectedInfo');
@@ -650,11 +626,16 @@
 
         if (!checked) {
             infoBox.classList.remove('show', 'aman', 'menipis');
+            maxStock = 0;
+            validateQty();
             return;
         }
 
         const stok   = parseInt(checked.getAttribute('data-stok'), 10) || 0;
         const ukuran = checked.getAttribute('data-ukuran');
+        
+        maxStock = stok;
+        validateQty();
 
         infoBox.classList.remove('aman', 'menipis');
         if (stok <= 5) {
@@ -667,6 +648,48 @@
         infoBox.classList.add('show');
     }
 
+    // ✦ Fungsi Update + dan -
+    function updateQty(change) {
+        const inputQty = document.getElementById('inputQty');
+        let currentVal = parseInt(inputQty.value) || 1;
+        let newVal = currentVal + change;
+        
+        inputQty.value = newVal;
+        validateQty();
+    }
+
+    // ✦ Fungsi Validasi Kuantitas & Sinkronisasi ke Input Hidden Keranjang
+    function validateQty() {
+        const inputQty  = document.getElementById('inputQty');
+        const cartQtyIn = document.getElementById('cartQtyInput');
+        const btnMinus  = document.getElementById('btnMinus');
+        const btnPlus   = document.getElementById('btnPlus');
+        
+        let val = parseInt(inputQty.value) || 1;
+
+        if (val < 1) val = 1;
+        
+        const checked = getSelectedSizeInput();
+        if (checked && val > maxStock) {
+            val = maxStock;
+        }
+
+        // Set kembali ke input visible dan sinkronkan ke hidden input keranjang
+        inputQty.value = val;
+        if (cartQtyIn) {
+            cartQtyIn.value = val;
+        }
+
+        // Kontrol disable/enable tombol
+        btnMinus.disabled = (val <= 1);
+        btnPlus.disabled  = (checked && val >= maxStock) || maxStock === 0;
+    }
+
+    // Jalankan validasi otomatis ketika user mengetik manual di kotak angka kuantitas
+    document.getElementById('inputQty').addEventListener('input', function() {
+        validateQty();
+    });
+
     document.querySelectorAll('input[name="selected_size"]').forEach(r => {
         r.addEventListener('change', updateSelectedSizeInfo);
     });
@@ -675,20 +698,31 @@
         if (!isLoggedIn) { window.location.href = "<?= base_url('auth/register') ?>"; return; }
         const size = getSelectedSize();
         if (!size) { showSizeError(); return; }
-        window.location.href = checkoutBase + size;
+        
+        // Ambil nilai kuantitas yang valid saat ini
+        const qty = document.getElementById('inputQty').value;
+        
+        // Lempar ke URL dengan parameter ?qty=...
+        window.location.href = checkoutBase + size + "?qty=" + qty;
     }
+
     function addToCart() {
         if (!isLoggedIn) { window.location.href = "<?= base_url('auth/register') ?>"; return; }
         const size = getSelectedSize();
         if (!size) { showSizeError(); return; }
+        
+        // Pastikan nilai quantity dan size ter-set dengan benar ke form sebelum disubmit
+        const qty = document.getElementById('inputQty').value;
         document.getElementById('cartSizeInput').value = size;
+        document.getElementById('cartQtyInput').value = qty;
+        
         document.getElementById('cartForm').submit();
     }
+
     function toggleDesc() {
         const txt = document.getElementById('descText');
         const btn = document.getElementById('descToggle');
         btn.textContent = txt.classList.toggle('expanded') ? 'Sembunyikan ↑' : 'Baca selengkapnya ↓';
     }
 </script>
-
 <?= $this->endSection() ?>

@@ -4,13 +4,33 @@
     $dari_keranjang   = !empty($items);
     $biaya_layanan    = $biaya_layanan    ?? 1000;
     $biaya_penanganan = $biaya_penanganan ?? 500;
+    
+    // Ambil variabel jumlah/qty jika dibeli langsung, default jadi 1 jika tidak ada
+    $jumlah_beli      = $jumlah ?? 1;
+
+    $total_diskon_item = 0;
+    $subtotal_kotor    = 0;
 
     if ($dari_keranjang) {
-        $subtotal_produk = $harga_asli ?? 0;
+        // Hitung subtotal kotor dan total diskon dari item keranjang yang di-JOIN dengan tabel produk
+        foreach (($items ?? []) as $it) {
+            $harga_satuan = $it['harga_asli'] ?? $it['harga'] ?? 0;
+            $jumlah       = $it['jumlah'] ?? 1;
+            $subtotal_kotor += ($harga_satuan * $jumlah);
+
+            $diskon_persen = $it['diskon'] ?? 0;
+            if ($diskon_persen > 0) {
+                $disc_item = ($harga_satuan * $diskon_persen / 100) * $jumlah;
+                $total_diskon_item += $disc_item;
+            }
+        }
+        $subtotal_produk = $subtotal_kotor - $total_diskon_item;
     } else {
         $diskon_persen   = $produk['diskon'] ?? 0;
-        $nominal_diskon  = ($produk['harga'] * $diskon_persen) / 100;
-        $subtotal_produk = $produk['harga'] - $nominal_diskon;
+        $harga_asli_prod = $produk['harga'] * $jumlah_beli; // Dikalikan dengan qty langsung
+        $nominal_diskon  = ($harga_asli_prod * $diskon_persen) / 100;
+        $subtotal_produk = $harga_asli_prod - $nominal_diskon;
+        $total_diskon_item = $nominal_diskon;
     }
     $total_awal = $subtotal_produk + $biaya_layanan + $biaya_penanganan;
 ?>
@@ -47,9 +67,7 @@
     .rs-ico.green  { background: rgba(34,197,94,0.12); color: #4ade80; }
     .rs-ico.blue   { background: rgba(59,130,246,0.12); color: #60a5fa; }
 
-    /* ── SECTION DALAM SATU CARD ──
-       ✦ Pengganti rs-card-head untuk memecah konten dalam 1 card besar
-       tanpa membuat kotak baru — hanya label kecil + divider */
+    /* ── SECTION DALAM SATU CARD ── */
     .rs-section { padding: 18px; }
     .rs-section + .rs-section {
         border-top: 1px solid var(--border);
@@ -130,7 +148,7 @@
     .payment-option:has(input:checked) { border-color: var(--brand); background: var(--brand-subtle); }
     .payment-option:has(input:checked) .payment-title { color: var(--brand); }
 
-    /* ── TOMBOL PESAN — di dalam card, BUKAN fixed ── */
+    /* ── TOMBOL PESAN ── */
     .btn-pesan {
         width: 100%;
         display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -152,8 +170,6 @@
     }
     @media (max-width: 768px) {
         .payment-grid { grid-template-columns: 1fr; }
-        /* ✦ FIX: sticky di mobile bisa menyebabkan card terpotong/menutupi
-           konten saat keyboard muncul. Non-aktifkan sticky di mobile. */
         .rs-grid > div:last-child .rs-card { position: static !important; top: auto !important; }
         .rs-section { padding: 14px 16px; }
         .product-nm { font-size: 13px; }
@@ -170,11 +186,11 @@
 <form action="<?= base_url('pelanggan/proses_pesanan') ?>" method="POST" id="formPesanan">
     <?= csrf_field() ?>
     <input type="hidden" name="kota_tujuan"     id="input_kota"   value="<?= esc($user_kota ?? '') ?>">
-    <input type="hidden" name="ongkir"           id="input_ongkir" value="0">
+    <input type="hidden" name="ongkir"          id="input_ongkir" value="0">
     <input type="hidden" name="biaya_layanan"    value="<?= $biaya_layanan ?>">
     <input type="hidden" name="biaya_penanganan" value="<?= $biaya_penanganan ?>">
-    <input type="hidden" name="total_harga"      id="input_total"  value="<?= $total_awal ?>">
-    <input type="hidden" name="metode"           id="input_metode" value="cod">
+    <input type="hidden" name="total_harga"     id="input_total"  value="<?= $total_awal ?>">
+    <input type="hidden" name="metode"          id="input_metode" value="cod">
 
     <?php if ($dari_keranjang): ?>
         <?php foreach (($id_keranjang ?? []) as $idk): ?>
@@ -184,6 +200,8 @@
     <?php else: ?>
         <input type="hidden" name="id_produk" value="<?= (int)$produk['id'] ?>">
         <input type="hidden" name="id_size"   value="<?= (int)$ukuran_pilihan['id'] ?>">
+        <!-- INPUT JUMLAH QTY AGAR TERKIRIM KE CONTROLLER -->
+        <input type="hidden" name="jumlah"    value="<?= (int)$jumlah_beli ?>">
     <?php endif; ?>
 
     <div class="rs-grid">
@@ -248,12 +266,19 @@
                     </div>
                     <?php if ($dari_keranjang): ?>
                         <?php foreach ($items as $item): ?>
+                        <?php
+                            $hs = $item['harga_asli'] ?? $item['harga'] ?? 0;
+                            $dp = $item['diskon'] ?? 0;
+                            $nd = ($hs * $dp) / 100;
+                            $hf = $hs - $nd;
+                        ?>
                         <div class="product-row">
                             <div class="product-thumb"><img src="<?= base_url('images/' . $item['gambar']) ?>" alt="<?= esc($item['nama_produk']) ?>"></div>
                             <div class="product-detail">
                                 <div class="product-nm"><?= esc($item['nama_produk']) ?></div>
                                 <div class="product-var">Qty: <?= (int)$item['jumlah'] ?></div>
-                                <span class="product-price">Rp <?= number_format($item['harga'] * $item['jumlah'], 0, ',', '.') ?></span>
+                                <?php if ($dp > 0): ?><span class="product-price-old">Rp <?= number_format($hs, 0, ',', '.') ?></span><?php endif; ?>
+                                <span class="product-price">Rp <?= number_format($hf * $item['jumlah'], 0, ',', '.') ?></span>
                             </div>
                         </div>
                         <?php endforeach; ?>
@@ -267,9 +292,9 @@
                             <div class="product-thumb"><img src="<?= base_url('images/' . $produk['gambar']) ?>" alt="<?= esc($produk['nama_produk']) ?>"></div>
                             <div class="product-detail">
                                 <div class="product-nm"><?= esc($produk['nama_produk']) ?></div>
-                                <div class="product-var">Ukuran: <?= esc($ukuran_pilihan['ukuran']) ?></div>
-                                <?php if ($dp > 0): ?><span class="product-price-old">Rp <?= number_format($produk['harga'], 0, ',', '.') ?></span><?php endif; ?>
-                                <span class="product-price">Rp <?= number_format($hf, 0, ',', '.') ?></span>
+                                <div class="product-var">Ukuran: <?= esc($ukuran_pilihan['ukuran']) ?> | Qty: <?= (int)$jumlah_beli ?></div>
+                                <?php if ($dp > 0): ?><span class="product-price-old">Rp <?= number_format($produk['harga'] * $jumlah_beli, 0, ',', '.') ?></span><?php endif; ?>
+                                <span class="product-price">Rp <?= number_format($hf * $jumlah_beli, 0, ',', '.') ?></span>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -315,14 +340,16 @@
                     <div class="price-list">
                         <div class="price-row-i">
                             <span>Subtotal Produk</span>
-                            <span>Rp <?= number_format($subtotal_produk, 0, ',', '.') ?></span>
+                            <span>Rp <?= number_format($dari_keranjang ? $subtotal_kotor : ($produk['harga'] * $jumlah_beli), 0, ',', '.') ?></span>
                         </div>
-                        <?php if (!$dari_keranjang && ($produk['diskon'] ?? 0) > 0): ?>
+
+                        <?php if ($total_diskon_item > 0): ?>
                         <div class="price-row-i disc">
-                            <span>Diskon (<?= $produk['diskon'] ?>%)</span>
-                            <span>− Rp <?= number_format($nominal_diskon, 0, ',', '.') ?></span>
+                            <span>Total Diskon Produk</span>
+                            <span>− Rp <?= number_format($total_diskon_item, 0, ',', '.') ?></span>
                         </div>
                         <?php endif; ?>
+
                         <div class="price-row-i">
                             <span>Ongkos Kirim</span>
                             <span id="display_ongkir" style="color:#4ade80; font-weight:700;">Rp 0</span>

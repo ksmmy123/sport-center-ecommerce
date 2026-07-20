@@ -569,9 +569,6 @@
         </nav>
 
         <div class="nav-actions">
-            <a href="<?= base_url('pelanggan/keranjang') ?>" class="nav-cart-pill" title="Keranjang">
-                <i class="fa-solid fa-bag-shopping"></i>
-            </a>
             <a href="<?= base_url('auth') ?>" class="nav-btn nav-btn-ghost">
                 <i class="fa-solid fa-right-to-bracket"></i> Masuk
             </a>
@@ -613,7 +610,7 @@
                 <i class="fa-solid fa-bolt"></i>
                 Sport Center Pemalang
             </div>
-            <h1>Perlengkapan Olahraga <span>Pilihanmu</span>, Kualitas Terjamin</h1>
+            <h1>Celana Olahraga <span>Pilihanmu</span>, Kualitas Terjamin</h1>
             <p>
                 Belanja celana sport pendek &amp; training panjang dengan bahan premium,
                 harga bersahabat, dan pengiriman ke seluruh Indonesia.
@@ -894,7 +891,7 @@
          CTA BAWAH
          ============================================================ -->
     <section class="lp-cta">
-        <h2>Siap Belanja Perlengkapan Olahraga?</h2>
+        <h2>Siap Belanja Celana Olahraga?</h2>
         <p>Daftar sekarang dan nikmati kemudahan belanja di Sport Center.</p>
         <a href="<?= base_url('auth/register') ?>" class="lp-btn lp-btn-brand lp-btn-lg">
             <i class="fa-solid fa-user-plus"></i>
@@ -912,7 +909,7 @@
                     <div class="nav-logo-badge">S</div>
                     <span class="nav-logo-text">SPORT<span>.</span></span>
                 </a>
-                <p>Perlengkapan olahraga pilihanmu dengan kualitas terjamin dan harga bersahabat, sejak berdiri di Pemalang.</p>
+                <p>Celana olahraga pilihanmu dengan kualitas terjamin dan harga bersahabat, sejak berdiri di Pemalang.</p>
                 <div class="lp-footer-social">
                     <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -930,7 +927,6 @@
                         <li><a href="<?= base_url('pelanggan/dashboard') ?>?kategori=<?= (int) $kat['id'] ?>"><?= esc($kat['nama_kategori']) ?></a></li>
                         <?php endforeach; ?>
                     <?php endif; ?>
-                    <li><a href="<?= base_url('pelanggan/keranjang') ?>">Keranjang Saya</a></li>
                 </ul>
             </div>
 
@@ -939,8 +935,6 @@
                 <ul>
                     <li><a href="<?= base_url('auth/inputPassword/pelanggan') ?>">Masuk Pelanggan</a></li>
                     <li><a href="<?= base_url('auth/register') ?>">Daftar Akun</a></li>
-                    <li><a href="<?= base_url('pelanggan/orders') ?>">Riwayat Pesanan</a></li>
-                    <li><a href="<?= base_url('auth/inputPassword/admin') ?>">Login Admin</a></li>
                 </ul>
             </div>
 

@@ -71,27 +71,40 @@ class Admin extends BaseController
         ->where('status_pembayaran', 'sudah_bayar')
         ->countAllResults();
 
+    // ✅ FIX: "Total Pendapatan" = uang yang BENAR-BENAR sudah diterima.
+    // Sebelumnya filternya "!= dibatalkan", jadi pesanan yang masih
+    // 'belum_bayar' atau 'menunggu_verifikasi' ikut dihitung sebagai
+    // pendapatan padahal uangnya belum tentu masuk. Sekarang difilter
+    // spesifik status_pembayaran = 'sudah_bayar'.
     $totalPendapatanBulanIni = $db->table('orders')
         ->where("DATE_FORMAT(tgl_pesan, '%Y-%m')", $bulanIni)
-        ->where('status_pembayaran !=', 'dibatalkan')
+        ->where('status_pembayaran', 'sudah_bayar')
         ->selectSum('total_harga')
         ->get()->getRow()->total_harga ?? 0;
 
+    // ✅ FIX: "Total Penjualan" = jumlah pesanan/transaksi yang terjadi
+    // (dihitung sebagai penjualan meskipun belum lunas dibayar — misal
+    // COD atau menunggu verifikasi tetap terhitung sebagai penjualan).
+    // Yang TIDAK dihitung hanya pesanan yang dibatalkan, karena itu
+    // bukan penjualan yang jadi.
     $totalPesananBulanIni = $db->table('orders')
         ->where("DATE_FORMAT(tgl_pesan, '%Y-%m')", $bulanIni)
+        ->where('status_pembayaran !=', 'dibatalkan')
         ->countAllResults();
 
-    // Data Bulan Lalu (untuk perbandingan tren)
+    // Data Bulan Lalu (untuk perbandingan tren) — filter disamakan
+    // dengan bulan ini supaya perbandingan apple-to-apple.
     $bulanLalu = date('Y-m', strtotime('-1 month'));
 
     $pendapatanBulanLalu = $db->table('orders')
         ->where("DATE_FORMAT(tgl_pesan, '%Y-%m')", $bulanLalu)
-        ->where('status_pembayaran !=', 'dibatalkan')
+        ->where('status_pembayaran', 'sudah_bayar')
         ->selectSum('total_harga')
         ->get()->getRow()->total_harga ?? 0;
 
     $pesananBulanLalu = $db->table('orders')
         ->where("DATE_FORMAT(tgl_pesan, '%Y-%m')", $bulanLalu)
+        ->where('status_pembayaran !=', 'dibatalkan')
         ->countAllResults();
 
     // Hitung persentase perubahan (hindari pembagian dengan nol)
@@ -173,8 +186,15 @@ class Admin extends BaseController
 
     // 4. Persiapkan data untuk dikirim ke view
     $data = [
-        'omzet'             => $db->table('orders')->selectSum('total_harga')->get()->getRow()->total_harga ?? 0,
-        'total_pesanan'     => $db->table('orders')->countAllResults(),
+        // ✅ FIX: sama seperti statistik bulan ini — 'omzet' (Total
+        // Pendapatan sepanjang waktu) sekarang hanya menghitung order
+        // yang statusnya 'sudah_bayar' (uang benar-benar diterima),
+        // sebelumnya menjumlahkan SEMUA order termasuk yang belum
+        // dibayar maupun yang dibatalkan.
+        'omzet'             => $db->table('orders')->where('status_pembayaran', 'sudah_bayar')->selectSum('total_harga')->get()->getRow()->total_harga ?? 0,
+        // ✅ FIX: 'total_pesanan' (Total Penjualan sepanjang waktu)
+        // sekarang tidak menghitung pesanan yang dibatalkan.
+        'total_pesanan'     => $db->table('orders')->where('status_pembayaran !=', 'dibatalkan')->countAllResults(),
         'total_produk'      => $db->table('products')->countAllResults(),
         
         // Data Stok Kritis hasil JOIN
@@ -265,6 +285,14 @@ class Admin extends BaseController
 
         return view('admin/pesanan', $data);
     }
+
+    // ✅ DIUBAH: ditambahkan penanganan khusus untuk status 'dibatalkan'.
+    // Sebelumnya kolom status_pengiriman di database sudah punya opsi enum
+    // 'dibatalkan', tapi method ini belum punya cabang logika untuk itu,
+    // sehingga kalau nilainya 'dibatalkan' akan jatuh ke blok "LOGIKA STATUS
+    // LAIN" di bawah dan status_pembayaran malah direset jadi 'belum_bayar'
+    // (padahal harusnya jadi 'dibatalkan' juga, sesuai enum kolom
+    // status_pembayaran: belum_bayar, sudah_bayar, dibatalkan).
     public function update_status_pengiriman($id) {
     $db = \Config\Database::connect();
     $status_baru = $this->request->getPost('status_pengiriman');
@@ -299,7 +327,21 @@ class Admin extends BaseController
 
         return redirect()->to(base_url('admin/pesanan'))->with('success', 'Pesanan selesai, stok berhasil dikurangi.');
     }
-    // --- LOGIKA STATUS LAIN ---
+
+    // ✅ BARU: penanganan khusus untuk pembatalan pesanan. status_pembayaran
+    // ikut diset 'dibatalkan' (bukan direset ke 'belum_bayar' seperti status
+    // lain), sesuai enum kolom status_pembayaran di database.
+    if ($status_baru === 'dibatalkan') {
+        $db->table('orders')->where('id', $id)->update([
+            'status_pengiriman' => 'dibatalkan',
+            'status_pembayaran' => 'dibatalkan',
+        ]);
+
+        return redirect()->to(base_url('admin/pesanan'))
+                         ->with('success', 'Pesanan #' . $id . ' telah dibatalkan.');
+    }
+
+    // --- LOGIKA STATUS LAIN (diproses / dikirim) ---
     $db->table('orders')->where('id', $id)->update([
         'status_pengiriman' => $status_baru,
         'status_pembayaran' => 'belum_bayar' // Reset jika batal/kembali diproses
@@ -356,17 +398,24 @@ class Admin extends BaseController
                          ->with('success', 'Bukti transfer order #' . $id . ' ditolak. Pelanggan perlu upload ulang.');
     }
 
-    // ✅ BARU: rapikan data lama yang salah ketik ('sudah_payar' -> 'sudah_bayar'),
-    // sesuai pengecekan ganda yang sudah ada di admin/pesanan.php dan
-    // pelanggan/orders.php terhadap kedua ejaan tersebut.
+    // ✅ FIX: sebelumnya kondisi where pada $fixTypo salah — mencari baris
+    // yang SUDAH bernilai 'sudah_bayar' lalu meng-update-nya jadi
+    // 'sudah_bayar' juga (tidak melakukan apa-apa). Tujuan aslinya adalah
+    // merapikan data lama yang salah ketik ejaan 'sudah_payar' menjadi
+    // 'sudah_bayar' yang benar, jadi kondisi where-nya sekarang mencari
+    // 'sudah_payar' (ejaan lama yang typo).
     public function normalize_status_pembayaran()
     {
         $db = \Config\Database::connect();
 
         // 1) Rapikan typo ejaan lama: 'sudah_payar' -> 'sudah_bayar'
         $fixTypo = $db->table('orders')
-                      ->where('status_pembayaran', 'sudah_bayar')
+                      ->where('status_pembayaran', 'sudah_payar')
                       ->update(['status_pembayaran' => 'sudah_bayar']);
+
+        // 2) Rapikan order yang statusnya 'belum_bayar' padahal sudah
+        //    ada bukti transfer (bukti_transfer terisi) -> arahkan ke
+        //    'menunggu_verifikasi' supaya admin bisa memverifikasinya.
         $fixNyangkut = $db->table('orders')
                           ->where('status_pembayaran', 'belum_bayar')
                           ->where('bukti_transfer IS NOT NULL')
@@ -374,7 +423,7 @@ class Admin extends BaseController
                           ->update(['status_pembayaran' => 'menunggu_verifikasi']);
 
         return redirect()->to(base_url('admin/pesanan'))
-                         ->with('success', 'Normalisasi selesai. Order dengan bukti transfer yang sebelumnya tersangkut kini berstatus "Menunggu Verifikasi".');
+                         ->with('success', 'Normalisasi selesai. Ejaan status lama sudah dirapikan dan order dengan bukti transfer yang sebelumnya tersangkut kini berstatus "Menunggu Verifikasi".');
     }
     
 
@@ -436,18 +485,45 @@ public function transaksi()
 {
     $db = \Config\Database::connect();
 
-    // 1. Mengambil total saldo dari kolom total_harga
-    $queryTotal = $db->table('orders')->selectSum('total_harga')->get();
-    $data['total_masuk'] = $queryTotal->getRow()->total_harga ?? 0;
+    // ✅ FIX (lanjutan): "Saldo Masuk" seharusnya cuma uang yang BENAR-
+    // BENAR sudah diterima toko. Sebelumnya filter cuma "!= dibatalkan",
+    // jadi order 'belum_bayar' dan 'menunggu_verifikasi' ikut terhitung
+    // padahal uangnya belum tentu masuk sama sekali. Sekarang difilter
+    // spesifik status_pembayaran = 'sudah_bayar' (lunas) saja.
+    $data['total_masuk'] = $db->table('orders')
+        ->where('status_pembayaran', 'sudah_bayar')
+        ->selectSum('total_harga')
+        ->get()->getRow()->total_harga ?? 0;
 
-    // 2. Mengambil semua data dari tabel orders untuk tabel 'Transaksi Terakhir'
-    // Variabel ini yang sebelumnya hilang sehingga menyebabkan error
+    // Tren saldo (bulan ini vs bulan lalu) — dihitung dari data asli,
+    // dengan filter status yang sama (hanya yang sudah lunas).
+    $bulanIni  = date('Y-m');
+    $bulanLalu = date('Y-m', strtotime('-1 month'));
+
+    $masukBulanIni = $db->table('orders')
+        ->where("DATE_FORMAT(tgl_pesan, '%Y-%m')", $bulanIni)
+        ->where('status_pembayaran', 'sudah_bayar')
+        ->selectSum('total_harga')->get()->getRow()->total_harga ?? 0;
+
+    $masukBulanLalu = $db->table('orders')
+        ->where("DATE_FORMAT(tgl_pesan, '%Y-%m')", $bulanLalu)
+        ->where('status_pembayaran', 'sudah_bayar')
+        ->selectSum('total_harga')->get()->getRow()->total_harga ?? 0;
+
+    $data['trend_saldo'] = $masukBulanLalu > 0
+        ? round((($masukBulanIni - $masukBulanLalu) / $masukBulanLalu) * 100, 1)
+        : ($masukBulanIni > 0 ? 100 : 0);
+
+    // Tabel tetap menampilkan SEMUA order apa pun statusnya (supaya admin
+    // bisa lihat riwayat lengkap termasuk yang belum/batal bayar), status
+    // masing-masing baris ditandai lewat badge di view.
     $data['transaksi'] = $db->table('orders')
-                            ->orderBy('tgl_pesan', 'DESC')
+                            ->select('orders.*, users.username')
+                            ->join('users', 'users.id = orders.user_id', 'left')
+                            ->orderBy('orders.tgl_pesan', 'DESC')
                             ->get()
                             ->getResultArray();
 
-    // 3. Mengirimkan array $data ke view
     return view('admin/transaksi', $data);
 }
 
@@ -562,27 +638,101 @@ public function transaksi()
 
         return redirect()->to(base_url('admin/feedback'))->with('success', 'Balasan berhasil disimpan.');
     }
+    // ✅ BARU: memastikan tabel 'pengaturan_toko' ada di database.
+    // Dibuat otomatis lewat kode (CREATE TABLE IF NOT EXISTS) supaya
+    // tidak perlu menjalankan file SQL migration secara manual. Kalau
+    // tabel masih kosong, diisi dulu dengan data default (nilai yang
+    // sebelumnya hardcode), supaya form tidak pernah tampil kosong.
+    private function ensurePengaturanTable($db)
+    {
+        $db->query("CREATE TABLE IF NOT EXISTS pengaturan_toko (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            nama_toko VARCHAR(255) NOT NULL DEFAULT '',
+            jalan VARCHAR(255) NOT NULL DEFAULT '',
+            kecamatan VARCHAR(100) NOT NULL DEFAULT '',
+            kota VARCHAR(100) NOT NULL DEFAULT '',
+            provinsi VARCHAR(100) NOT NULL DEFAULT '',
+            kode_pos VARCHAR(20) NOT NULL DEFAULT '',
+            no_telepon VARCHAR(50) NOT NULL DEFAULT '',
+            email VARCHAR(100) NOT NULL DEFAULT '',
+            jam_operasional VARCHAR(255) NOT NULL DEFAULT ''
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
+        $jumlahBaris = $db->table('pengaturan_toko')->countAllResults();
+        if ($jumlahBaris === 0) {
+            $db->table('pengaturan_toko')->insert([
+                'nama_toko'       => 'Sport Center Pemalang',
+                'jalan'           => 'JL.Menur 7 Gang Depot.Kebukuran, Kebojongan',
+                'kecamatan'       => 'Comal',
+                'kota'            => 'Pemalang',
+                'provinsi'        => 'Jawa Tengah',
+                'kode_pos'        => '52362',
+                'no_telepon'      => '0812-3456-xxxx',
+                'email'           => 'halo@sportcenter.id',
+                'jam_operasional' => 'Senin – Sabtu, 08.00 – 17.00 WIB',
+            ]);
+        }
+    }
 
     public function pengaturan()
 {
-    // Pastikan data ini ada dan didefinisikan
-    $data['alamat_admin'] = [
-        'nama_toko' => 'Sport Center Pemalang',
-        'jalan'     => 'JL.Menur 7 Gang Depot.Kebukuran, Kebojongan',
-        'kecamatan' => 'Comal',
-        'kota'      => 'Pemalang',
-        'provinsi'  => 'Jawa Tengah',
-        'maps_link' => 'https://www.google.com/maps/embed?pb=...' // Sesuaikan dengan link embed yang benar
-    ];
+    $db = \Config\Database::connect();
+    $this->ensurePengaturanTable($db);
 
-    // Kirim $data ke view
+    // ✅ FIX: sekarang alamat diambil dari database (tabel
+    // 'pengaturan_toko'), bukan array hardcode lagi — jadi begitu admin
+    // klik "Simpan Perubahan", perubahan yang tersimpan benar-benar
+    // muncul kembali di halaman ini.
+    $alamat = $db->table('pengaturan_toko')->get()->getRowArray() ?? [];
+
+    // 'maps_link' tetap dibangun OTOMATIS dari komponen alamat (jalan,
+    // kecamatan, kota, provinsi, kode_pos), memakai format pencarian
+    // Google Maps (https://www.google.com/maps?q=ALAMAT&output=embed)
+    // yang tidak perlu API key. Jadi begitu alamat diubah & disimpan,
+    // peta ikut otomatis mengikuti alamat yang baru.
+    $alamatLengkap = implode(', ', array_filter([
+        $alamat['jalan'] ?? '',
+        !empty($alamat['kecamatan']) ? 'Kec. ' . $alamat['kecamatan'] : '',
+        $alamat['kota'] ?? '',
+        $alamat['provinsi'] ?? '',
+        $alamat['kode_pos'] ?? '',
+    ]));
+
+    $alamat['maps_link'] = $alamatLengkap !== ''
+        ? 'https://www.google.com/maps?q=' . urlencode($alamatLengkap) . '&output=embed'
+        : '';
+
+    $data['alamat_admin'] = $alamat;
+
     return view('admin/pengaturan', $data);
 }
+
     public function simpan_pengaturan()
     {
+        $db = \Config\Database::connect();
+        $this->ensurePengaturanTable($db);
+
+        $baris = $db->table('pengaturan_toko')->get()->getRowArray();
+
+        // ✅ FIX: sebelumnya method ini tidak pernah menyentuh database
+        // sama sekali (langsung redirect dengan pesan error). Sekarang
+        // datanya benar-benar di-UPDATE ke tabel 'pengaturan_toko'.
+        $dataUpdate = [
+            'nama_toko'       => $this->request->getPost('nama_toko') ?? '',
+            'jalan'           => $this->request->getPost('jalan') ?? '',
+            'kecamatan'       => $this->request->getPost('kecamatan') ?? '',
+            'kota'            => $this->request->getPost('kota') ?? '',
+            'provinsi'        => $this->request->getPost('provinsi') ?? '',
+            'kode_pos'        => $this->request->getPost('kode_pos') ?? '',
+            'no_telepon'      => $this->request->getPost('no_telepon') ?? '',
+            'email'           => $this->request->getPost('email') ?? '',
+            'jam_operasional' => $this->request->getPost('jam_operasional') ?? '',
+        ];
+
+        $db->table('pengaturan_toko')->where('id', $baris['id'])->update($dataUpdate);
 
         return redirect()->to(base_url('admin/pengaturan'))
-                         ->with('error', 'Pengaturan toko belum tersambung ke database (masih hardcode di kode). Hubungi developer untuk mengaktifkan penyimpanan permanen.');
+                         ->with('success', 'Pengaturan toko berhasil disimpan.');
     }
     public function promosi()
     {

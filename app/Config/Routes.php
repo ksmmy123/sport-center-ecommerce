@@ -52,6 +52,7 @@ $routes->group('pelanggan', function($routes) {
     $routes->get('konfirmasi_selesai/(:num)', 'Pelanggan::konfirmasi_selesai/$1'); // Perbaikan: hapus kata 'pelanggan/'
     $routes->get('upload_bukti/(:num)', 'Pelanggan::upload_bukti/$1');
     $routes->post('proses_upload_bukti/(:num)', 'Pelanggan::proses_upload_bukti/$1');
+    $routes->get('lacak_pesanan/(:num)', 'Pelanggan::lacak_pesanan/$1');
 });
 
 // 3. Group Admin

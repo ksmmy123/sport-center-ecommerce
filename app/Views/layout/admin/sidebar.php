@@ -307,15 +307,6 @@
         Pengaturan
     </a>
 
-    <!-- ✅ BARU: Lihat Toko — buka landing page publik di tab baru, biar
-         admin gampang cek tampilan yang dilihat pelanggan/pengunjung. -->
-    <div class="sidebar-divider"></div>
-    <a href="<?= base_url('/') ?>" target="_blank" class="nav-link lihat-toko">
-        <span class="nav-icon-wrap"><i class="fas fa-store"></i></span>
-        Lihat Toko
-        <i class="fas fa-arrow-up-right-from-square" style="font-size:10px; margin-left:auto; opacity:0.6;"></i>
-    </a>
-
     <!-- Logout -->
     <a href="<?= base_url('auth/logout') ?>" class="sidebar-logout">
         <span class="nav-icon-wrap"><i class="fas fa-arrow-right-from-bracket"></i></span>

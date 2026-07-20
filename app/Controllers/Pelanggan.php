@@ -6,9 +6,6 @@ use App\Models\ProductModel;
 
 class Pelanggan extends BaseController
 {
-    // ✦ Batas maksimal unit per produk
-    protected const BATAS_MAKS = 3;
-
     protected $alamat_admin = [
         'nama_toko' => 'Sport Center Pemalang',
         'jalan'     => 'JL.Menur 7 Gang Depot.Kebukuran, Kebojongan',
@@ -22,18 +19,8 @@ class Pelanggan extends BaseController
     {
         $db = \Config\Database::connect();
 
-        // ✅ BARU: filter kategori dari query string (?kategori=<id>),
-        // dipakai oleh link kategori di landing page & chip filter di
-        // dashboard supaya menampilkan hanya produk kategori itu.
         $idKategori = $this->request->getGet('kategori');
 
-        // ✅ FIX: sebelumnya pakai ProductModel::findAll() tanpa join ke
-        // product_sizes, jadi halaman pelanggan tidak tahu stok produk
-        // (produk stok 0 tetap bisa ditambahkan ke keranjang / dibeli).
-        // ✅ FIX BARU: tambah JOIN ke `categories` supaya nama kategori
-        // produk diambil ASLI dari database, bukan ditebak lewat
-        // if ($category_id == 1) di view (yang sebelumnya bikin salah
-        // kalau ID kategori di database ternyata bukan 1/2).
         $builder = $db->table('products')
             ->select('products.*, categories.nama_kategori, SUM(product_sizes.stok) as total_stok')
             ->join('product_sizes', 'product_sizes.product_id = products.id', 'left')
@@ -46,16 +33,11 @@ class Pelanggan extends BaseController
 
         $products = $builder->get()->getResultArray();
 
-        // Nama kategori aktif (untuk judul halaman / info filter di view)
         $kategoriAktif = null;
         if (!empty($idKategori)) {
             $kategoriAktif = $db->table('categories')->where('id', (int) $idKategori)->get()->getRowArray();
         }
 
-        // ✅ BARU: daftar SEMUA kategori asli dari database, dipakai untuk
-        // membangun chip filter di dashboard.php (sebelumnya chip
-        // di-hardcode data-kategori="1" dan "2" yang ternyata tidak
-        // cocok dengan ID asli di tabel categories).
         $kategori_list = $db->table('categories')->get()->getResultArray();
 
         $data = [
@@ -86,18 +68,20 @@ class Pelanggan extends BaseController
 
         $data['active'] = 'keranjang';
         $data['items']  = $db->table('cart')
-            ->select('cart.id as id_keranjang, cart.jumlah, products.nama_produk, products.harga, products.gambar')
+            ->select('cart.id as id_keranjang, cart.jumlah, cart.product_size_id, products.nama_produk, products.harga, products.gambar, product_sizes.ukuran')
             ->join('products', 'products.id = cart.product_id')
+            ->join('product_sizes', 'product_sizes.id = cart.product_size_id', 'left')
             ->where('cart.user_id', $id_user)
             ->get()->getResultArray();
 
         return view('pelanggan/keranjang', $data);
     }
 
-    // ✦ DIPERBARUI: validasi batas maksimal 3 unit per produk
     public function tambah_keranjang()
     {
         $id_produk = $this->request->getPost('product_id');
+        $id_size   = $this->request->getPost('id_size');
+        $jumlah    = (int) ($this->request->getPost('jumlah') ?? 1); // Menangkap qty dinamis (misal: 9)
         $id_user   = session()->get('id');
 
         if (!$id_user) {
@@ -105,31 +89,24 @@ class Pelanggan extends BaseController
                              ->with('error', 'Silakan login terlebih dahulu');
         }
 
-        $db    = \Config\Database::connect();
-        $batas = self::BATAS_MAKS;
+        $db = \Config\Database::connect();
 
-        // Cek apakah produk ini sudah ada di keranjang user
         $existing = $db->table('cart')
             ->where('user_id', $id_user)
             ->where('product_id', $id_produk)
+            ->where('product_size_id', $id_size)
             ->get()->getRowArray();
 
         if ($existing) {
-            // Sudah ada — cek apakah jumlah sudah mencapai batas
-            if ($existing['jumlah'] >= $batas) {
-                return redirect()->back()
-                    ->with('error', "Batas maksimal pembelian adalah {$batas} unit per produk.");
-            }
-            // Belum melebihi — tambah jumlah
             $db->table('cart')
                ->where('id', $existing['id'])
-               ->update(['jumlah' => $existing['jumlah'] + 1]);
+               ->update(['jumlah' => $existing['jumlah'] + $jumlah]);
         } else {
-            // Belum ada di keranjang — insert baru dengan jumlah 1
             $db->table('cart')->insert([
-                'user_id'    => $id_user,
-                'product_id' => $id_produk,
-                'jumlah'     => 1,
+                'user_id'         => $id_user,
+                'product_id'      => $id_produk,
+                'product_size_id' => $id_size,
+                'jumlah'          => $jumlah,
             ]);
         }
 
@@ -137,19 +114,13 @@ class Pelanggan extends BaseController
                          ->with('success', 'Produk berhasil ditambahkan ke keranjang!');
     }
 
-    // ✦ DIPERBARUI: cek batas sebelum increment
     public function tambah($id_keranjang)
     {
-        $db    = \Config\Database::connect();
-        $batas = self::BATAS_MAKS;
+        $db = \Config\Database::connect();
 
         $item = $db->table('cart')->where('id', $id_keranjang)->get()->getRowArray();
 
         if ($item) {
-            if ($item['jumlah'] >= $batas) {
-                return redirect()->to(base_url('pelanggan/keranjang'))
-                    ->with('error', "Batas maksimal pembelian adalah {$batas} unit per produk.");
-            }
             $db->table('cart')->where('id', $id_keranjang)->increment('jumlah');
         }
 
@@ -239,31 +210,39 @@ class Pelanggan extends BaseController
 
         return redirect()->to(base_url('pelanggan/profile'))->with('success', 'Profil diperbarui!');
     }
-
     public function ringkasan_pesanan($id_produk, $id_size)
-    {
-        $db             = \Config\Database::connect();
-        $produk         = $db->table('products')->where('id', $id_produk)->get()->getRowArray();
-        $ukuran         = $db->table('product_sizes')->where('id', $id_size)->get()->getRowArray();
-        $daftar_wilayah = $db->table('wilayah')->get()->getResultArray();
+{
+    $db             = \Config\Database::connect();
+    
+    // Tangkap qty dari parameter URL (?qty=9), default jadi 1 jika tidak ada
+    $jumlah         = (int) ($this->request->getGet('qty') ?? 1);
 
-        $data = [
-            'produk'           => $produk,
-            'ukuran_pilihan'   => $ukuran,
-            'wilayah'          => $daftar_wilayah,
-            'alamat_admin'     => $this->alamat_admin,
-            'active'           => 'home',
-            'harga_asli'       => $produk['harga'],
-            'biaya_layanan'    => 1000,
-            'biaya_penanganan' => 500,
-            'user_nama'        => session()->get('nama'),
-            'user_telp'        => session()->get('no_hp'),
-            'user_alamat'      => session()->get('alamat_lengkap'),
-            'user_kota'        => session()->get('kota')
-        ];
+    $produk         = $db->table('products')->where('id', $id_produk)->get()->getRowArray();
+    $ukuran         = $db->table('product_sizes')->where('id', $id_size)->get()->getRowArray();
+    $daftar_wilayah = $db->table('wilayah')->get()->getResultArray();
 
-        return view('pelanggan/ringkasan_pesanan', $data);
-    }
+    $disc_persen    = $produk['diskon'] ?? 0;
+    $harga_final    = $produk['harga'] - ($produk['harga'] * $disc_persen / 100);
+    $subtotal       = $harga_final * $jumlah; // Dikalikan dengan jumlah (qty)
+
+    $data = [
+        'produk'           => $produk,
+        'ukuran_pilihan'   => $ukuran,
+        'jumlah'           => $jumlah, // Kirim variabel jumlah ke view
+        'wilayah'          => $daftar_wilayah,
+        'alamat_admin'     => $this->alamat_admin,
+        'active'           => 'home',
+        'harga_asli'       => $subtotal,
+        'biaya_layanan'    => 1000,
+        'biaya_penanganan' => 500,
+        'user_nama'        => session()->get('nama'),
+        'user_telp'        => session()->get('no_hp'),
+        'user_alamat'      => session()->get('alamat_lengkap'),
+        'user_kota'        => session()->get('kota')
+    ];
+
+    return view('pelanggan/ringkasan_pesanan', $data);
+}
 
     public function simpan_ulasan($id_order)
     {
@@ -291,9 +270,10 @@ class Pelanggan extends BaseController
         $id_user = session()->get('id');
 
         $items = $db->table('cart')
-            ->select('cart.id as id_keranjang, cart.jumlah, cart.product_id,
-                      products.nama_produk, products.harga, products.diskon, products.gambar')
+            ->select('cart.id as id_keranjang, cart.jumlah, cart.product_id, cart.product_size_id,
+                      products.nama_produk, products.harga, products.diskon, products.gambar, product_sizes.ukuran')
             ->join('products', 'products.id = cart.product_id')
+            ->join('product_sizes', 'product_sizes.id = cart.product_size_id', 'left')
             ->where('cart.user_id', $id_user)
             ->whereIn('cart.id', $id_keranjang_arr)
             ->get()
@@ -330,25 +310,10 @@ class Pelanggan extends BaseController
         ]);
     }
 
-    // ✦ DIPERBARUI: validasi batas 3 unit di checkout
-    // ✅ FIX BARU: order_items sekarang ikut menyimpan product_size_id,
-    // nama_produk, dan harga_satuan (snapshot) — sebelumnya kolom ini
-    // selalu NULL/0 karena tidak pernah disertakan saat insert.
-    //
-    // - Jalur "BELI LANGSUNG" (dari halaman detail produk yang sudah
-    //   memilih ukuran lewat $id_size): sekarang product_size_id, nama
-    //   produk, dan harga satuan ikut tersimpan persis sesuai ukuran
-    //   yang dipilih pelanggan.
-    // - Jalur "DARI KERANJANG": nama_produk & harga_satuan sekarang ikut
-    //   tersimpan. product_size_id TETAP NULL untuk jalur ini karena
-    //   tabel `cart` sendiri belum menyimpan ukuran yang dipilih saat
-    //   "Tambah ke Keranjang" (ini perbaikan terpisah yang belum
-    //   dikerjakan — beri tahu saya kalau mau saya lanjutkan).
     public function proses_pesanan()
     {
         $userId = session()->get('id');
         $db     = \Config\Database::connect();
-        $batas  = self::BATAS_MAKS;
 
         $total_harga      = (float) $this->request->getPost('total_harga');
         $ongkir           = (int)   $this->request->getPost('ongkir');
@@ -360,6 +325,7 @@ class Pelanggan extends BaseController
         $id_keranjang_arr = $this->request->getPost('id_keranjang') ?? [];
         $id_produk        = $this->request->getPost('id_produk');
         $id_size          = $this->request->getPost('id_size');
+        $jumlah_beli      = (int) ($this->request->getPost('jumlah') ?? 1); // Mengambil jumlah beli secara dinamis (misal: 9)
         $alamat           = session()->get('alamat_lengkap');
 
         if (empty($metode) || empty($kota_tujuan)) {
@@ -373,7 +339,6 @@ class Pelanggan extends BaseController
         $db->transBegin();
 
         try {
-            // A. Insert order
             $db->table('orders')->insert([
                 'user_id'           => $userId,
                 'alamat_pengiriman' => $alamat,
@@ -388,14 +353,9 @@ class Pelanggan extends BaseController
             ]);
             $orderId = $db->insertID();
 
-            // B. Insert order_items & validasi batas
             if ($dari_keranjang && !empty($id_keranjang_arr)) {
-
-                // DARI KERANJANG — multi item
                 foreach ($id_keranjang_arr as $idk) {
                     $cartItem = $db->table('cart')
-                        // ✅ FIX: tambah products.nama_produk supaya bisa
-                        // disimpan sebagai snapshot di order_items
                         ->select('cart.*, products.nama_produk, products.harga, products.diskon')
                         ->join('products', 'products.id = cart.product_id')
                         ->where('cart.id', (int)$idk)
@@ -403,25 +363,32 @@ class Pelanggan extends BaseController
 
                     if (!$cartItem) continue;
 
-                    // ✦ Validasi batas di checkout
-                    if ($cartItem['jumlah'] > $batas) {
-                        throw new \Exception(
-                            "Jumlah produk melebihi batas maksimal {$batas} unit per produk."
-                        );
+                    $qtyDibutuhkan = (int) $cartItem['jumlah'];
+                    $product_size_id = $cartItem['product_size_id'];
+
+                    if ($product_size_id) {
+                        $ukuranRow = $db->table('product_sizes')->where('id', $product_size_id)->get()->getRowArray();
+                        if (!$ukuranRow || $ukuranRow['stok'] < $qtyDibutuhkan) {
+                            throw new \Exception("Stok untuk produk \"{$cartItem['nama_produk']}\" tidak mencukupi.");
+                        }
+
+                        // Kurangi stok berdasarkan ukuran spesifik di cart
+                        $db->table('product_sizes')
+                           ->where('id', $product_size_id)
+                           ->update(['stok' => $ukuranRow['stok'] - $qtyDibutuhkan]);
                     }
 
-                    $harga_final = $cartItem['harga'] - ($cartItem['harga'] * ($cartItem['diskon'] / 100));
-                    $subtotal    = $harga_final * $cartItem['jumlah'];
+                    $disc_persen = $cartItem['diskon'] ?? 0;
+                    $harga_final = $cartItem['harga'] - ($cartItem['harga'] * ($disc_persen / 100));
+                    $subtotal    = $harga_final * $qtyDibutuhkan;
 
                     $db->table('order_items')->insert([
                         'order_id'        => $orderId,
                         'product_id'      => $cartItem['product_id'],
-                        // ⬇️ product_size_id TETAP NULL di jalur ini - tabel
-                        // cart belum menyimpan ukuran (perbaikan terpisah)
-                        'product_size_id' => null,
+                        'product_size_id' => $product_size_id,
                         'nama_produk'     => $cartItem['nama_produk'],
                         'harga_satuan'    => (int) round($harga_final),
-                        'jumlah'          => $cartItem['jumlah'],
+                        'jumlah'          => $qtyDibutuhkan,
                         'subtotal'        => $subtotal,
                     ]);
 
@@ -429,8 +396,6 @@ class Pelanggan extends BaseController
                 }
 
             } else {
-
-                // BELI LANGSUNG — single item (selalu 1, tidak perlu cek batas)
                 if (empty($id_produk) || empty($id_size)) {
                     throw new \Exception('Data produk tidak lengkap.');
                 }
@@ -438,28 +403,29 @@ class Pelanggan extends BaseController
                 $produk = $db->table('products')->where('id', $id_produk)->get()->getRowArray();
                 if (!$produk) throw new \Exception('Produk tidak ditemukan.');
 
+                $itemSize = $db->table('product_sizes')->where('id', $id_size)->get()->getRow();
+                if (!$itemSize || $itemSize->stok < $jumlah_beli) {
+                    throw new \Exception('Stok untuk ukuran ini tidak mencukupi sejumlah pesanan.');
+                }
+
                 $disc_persen = $produk['diskon'] ?? 0;
                 $harga_final = $produk['harga'] - ($produk['harga'] * $disc_persen / 100);
+                $subtotal    = $harga_final * $jumlah_beli;
 
                 $db->table('order_items')->insert([
                     'order_id'        => $orderId,
                     'product_id'      => $id_produk,
-                    // ✅ FIX: sekarang ikut disimpan - sebelumnya $id_size
-                    // hanya dipakai untuk mengurangi stok lalu dibuang
                     'product_size_id' => $id_size,
                     'nama_produk'     => $produk['nama_produk'],
                     'harga_satuan'    => (int) round($harga_final),
-                    'jumlah'          => 1,
-                    'subtotal'        => $harga_final,
+                    'jumlah'          => $jumlah_beli,
+                    'subtotal'        => $subtotal,
                 ]);
 
-                $itemSize = $db->table('product_sizes')->where('id', $id_size)->get()->getRow();
-                if (!$itemSize || $itemSize->stok < 1) {
-                    throw new \Exception('Stok untuk ukuran ini sudah habis.');
-                }
+                // Kurangi stok sesuai jumlah input (misal: 9)
                 $db->table('product_sizes')
                    ->where('id', $id_size)
-                   ->update(['stok' => $itemSize->stok - 1]);
+                   ->update(['stok' => $itemSize->stok - $jumlah_beli]);
             }
 
             $db->transCommit();
@@ -487,7 +453,6 @@ class Pelanggan extends BaseController
         return view('pelanggan/orders', $data);
     }
 
-    // ✦ DIPERBARUI: join ke categories agar nama_kategori ikut terambil
     public function detail($id)
     {
         $db = \Config\Database::connect();
@@ -542,7 +507,7 @@ class Pelanggan extends BaseController
         $db->table('order_items')->insert([
             'order_id'   => $orderId,
             'product_id' => $this->request->getPost('product_id'),
-            'jumlah'     => 1,
+            'jumlah'     => (int) ($this->request->getPost('jumlah') ?? 1),
             'subtotal'   => $this->request->getPost('total_akhir')
         ]);
         return redirect()->to(base_url('pelanggan/orders'))->with('success', 'Pesanan berhasil!');
@@ -602,15 +567,11 @@ class Pelanggan extends BaseController
                          ->with('success', 'Pesanan selesai dan status pembayaran diperbarui!');
     }
 
-    // Tampilkan halaman upload bukti
     public function upload_bukti($order_id)
     {
         $orderModel = new \App\Models\OrderModel();
         $order = $orderModel->find($order_id);
 
-        // ✅ FIX: session key yang benar adalah 'id' (lihat Auth::attemptLogin),
-        // bukan 'user_id' — sebelumnya selalu null sehingga order dianggap
-        // "tidak ditemukan" walau order itu memang milik user yang login.
         $user_id = session()->get('id');
         if (!$order || $order['user_id'] != $user_id) {
             return redirect()->to('pelanggan/orders')->with('error', 'Order tidak ditemukan.');
@@ -619,13 +580,11 @@ class Pelanggan extends BaseController
         return view('pelanggan/upload_bukti', ['order' => $order]);
     }
 
-    // Proses upload bukti
     public function proses_upload_bukti($order_id)
     {
         $orderModel = new \App\Models\OrderModel();
         $order = $orderModel->find($order_id);
 
-        // ✅ FIX: sama seperti di atas, pakai 'id' bukan 'user_id'
         $user_id = session()->get('id');
         if (!$order || $order['user_id'] != $user_id) {
             return redirect()->to('pelanggan/orders');
@@ -633,7 +592,6 @@ class Pelanggan extends BaseController
 
         $file = $this->request->getFile('bukti_transfer');
 
-        // Validasi server-side
         if (!$file || !$file->isValid() || $file->hasMoved()) {
             return redirect()->back()->with('error', 'File tidak valid, coba lagi.');
         }
@@ -650,11 +608,9 @@ class Pelanggan extends BaseController
             return redirect()->back()->with('error', 'Ukuran file maksimal 2MB.');
         }
 
-        // Simpan file
         $namaFile = $file->getRandomName();
         $file->move(ROOTPATH . 'public/uploads/bukti_transfer/', $namaFile);
 
-        // Update database
         $orderModel->update($order_id, [
             'bukti_transfer'    => $namaFile,
             'status_pembayaran' => 'menunggu_verifikasi',
@@ -662,6 +618,31 @@ class Pelanggan extends BaseController
 
         return redirect()->to('pelanggan/orders')
                          ->with('success', 'Bukti transfer berhasil dikirim! Menunggu verifikasi admin.');
+    }
+
+    public function lacak_pesanan($id_order)
+    {
+        $db     = \Config\Database::connect();
+        $userId = session()->get('id');
+
+        $order = $db->table('orders')->where('id', $id_order)->get()->getRowArray();
+
+        if (!$order || $order['user_id'] != $userId) {
+            return redirect()->to(base_url('pelanggan/orders'))
+                             ->with('error', 'Pesanan tidak ditemukan.');
+        }
+
+        $items = $db->table('order_items')
+            ->select('order_items.*, products.gambar')
+            ->join('products', 'products.id = order_items.product_id', 'left')
+            ->where('order_id', $id_order)
+            ->get()->getResultArray();
+
+        return view('pelanggan/lacak_pesanan', [
+            'active' => 'profile',
+            'order'  => $order,
+            'items'  => $items,
+        ]);
     }
 
     public function dashboard() { return view('pelanggan/dashboard'); }
